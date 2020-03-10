@@ -1,0 +1,244 @@
+{% extends "new_base.html" %}
+{% block body_content %}
+{% autoescape off %}
+
+<div ng-app="myApp">
+<div ng-controller="panguBlockCtrl" style="margin-left: 10px;width: 1140px;margin: 0 auto;position:relative;">
+	<!-- <oper-loading ng-show="showLoading" loading-data="loadingData"></oper-loading> -->
+	<div>
+      <h2 ng-bind="mapsParam.cluster" style="float: left;"></h2>
+      <!-- <a href="https://lark.alipay.com/fgxnzx/fmptta/ac0cmp" style="color: red;font-size: 20px;float: right;padding: 5px;" target="_target">阿里云变更管理规范</a> -->
+    </div>
+    <div style="clear: both;"></div>
+    <!-- 当前volum -->
+    <div style="padding-top: 10px;">
+      <!-- <screen-volume screen-volume-data="volumeData" select-dir="selectDirFunc(value)"></screen-volume> -->
+    </div>
+	
+	<!-- 图表 表格相关 内容 -->
+    <div style="padding-top: 10px;">
+    	<!-- tab 相关数据 -->
+    	<list-tab tab-list-data="tabListData" click-func="tabClickFunc({'index':index})"></list-tab>
+    	<div class="listPanguoperate" style="margin-bottom: 10px;"></div>
+		
+		<!-- BlockMaster运维 页相关数据 -->
+    	<div ng-show="clickTab=='BlockMaster'">
+			
+			<screen-table screen-table-data="listBlockMaster" opea-click-func="opeaClickFunc({'item':item, 'info':info})" style="margin-top: 20px;"></screen-table>
+    	</div>
+    	<div ng-show="clickTab=='BlockServer'">
+    		<div>2</div>
+    	</div>
+    	<div ng-show="clickTab=='BlockGcworker'">
+    		<div>3</div>
+    	</div>
+    	<div ng-show="clickTab=='Device'">
+    		<div>
+	    		<div>	
+					<label>设备总数:</label>
+					<span ng-bind="getDeviceData.DeviceCount"></span>
+					<label style="margin-left: 20px;">设备总逻辑空间:</label>
+					<span ng-bind="getDeviceData.TotalSize"></span>	
+	    		</div>
+    			<screen-table screen-table-data="listBlockDevice" opea-click-func="opeaClickFunc({'item':item, 'info':info})" style="margin-top: 20px;"></screen-table>
+    		</div>
+    	</div>
+    	<div ng-show="clickTab=='snapshot'">
+    		<div>5</div>
+    	</div>
+    	<div ng-show="clickTab=='Segment'">
+    		<div>6</div>
+    	</div>
+    </div>
+</div>
+</div>
+<script type="text/javascript">
+myApp.controller('panguBlockCtrl',function($scope,$http,$uibModal,apis){
+	//解析 url 获取url相关参数
+    $scope.mapsParam=get_pangu_urlParameter(window.location.href);
+	//tab 配置参数
+	$scope.tabListData=[
+		{"name":"BlockMaster运维","color":"","showClass":true,"key":"BlockMaster"},
+		{"name":"BlockServer运维","color":"","showClass":false,"key":"BlockServer"},
+		{"name":"BlockGcworker运维","color":"","showClass":false,"key":"BlockGcworker"},
+		{"name":"Device运维","color":"","showClass":false,"key":"Device"},
+		{"name":"快照运维","color":"","showClass":false,"key":"snapshot"},
+		{"name":"Segment运维","color":"","showClass":false,"key":"Segment"},
+	];
+	var listTheade={
+		"BlockMasterTH":[
+	        {"name":"节点地址","key":"machine","width":"170px"},
+	        {"name":"角色","key":"ROLE"},
+	        {"name":"LogId","key":"LOGID"},
+	        {"name":"操作","key":"operation","width":"233px"},
+	    ],
+	    "BlockDeviceTH":[
+	        {"name":"DeviceId","key":"DeviceId","width":"170px"},
+	        {"name":"状态","key":"status"},
+	        {"name":"逻辑容量","key":"size_GB"},
+	        {"name":"Segment情况","key":"segments"},
+	        {"name":"标志位","key":"flags"},
+	        {"name":"操作","key":"operation","width":"233px"},
+	    ],
+	}
+	$scope.clickTab=$scope.tabListData[0].key;
+	$scope.tabClickFunc=function(data,str){
+      $scope.clickTab=$scope.tabListData[data.index].key;
+      $scope.tabListData=showTabList(data,$scope.tabListData);
+      refreshTab($scope.tabListData[data.index].key)
+      // if(!str){
+      //   getClusterToken("init");
+      // }
+    };
+    function refreshTab(tabName){
+      switch(tabName){
+        case "BlockMaster":refreshBlockMaster();
+        break;
+        case "BlockServer":refreshBlockServer();
+        break;
+        case "BlockGcworker":refreshBlockGcworker();
+        break;
+        case "Device":refreshDevice();
+        break;
+        case "snapshot":refreshkuaizhao();
+        break;
+        case "Segment":refreshSegment();
+        break;
+      }
+    };
+    
+    //所有表格点击事件汇总
+    $scope.opeaClickFunc=function(data){
+
+
+
+    };
+    var cluster=$scope.mapsParam.cluster?$scope.mapsParam.cluster:"";
+    //所有get请求 入口和出口
+    function reqPanguBlock(urlStr,key){
+    	$http({
+	        method: 'GET',
+	        url:urlStr
+	    }).then(function(data,status){
+	        switch(key){
+	        	case "getBlockMaster":dealBlockMaster(data.data);
+        		break;
+        		case "getBlockDevice":dealBlockDevice(data.data);
+        		break;
+	        }
+	        console.log("success");
+	    }).catch(function(data,status){
+	        
+	        console.log(data);
+	    })	
+    };
+    $scope.tabClickFunc({index:0});
+
+    // BlockMaster运维 页相关数据
+    function refreshBlockMaster(){
+    	// panguBlock_block_master
+    	var reqStr=$scope.mapsParam.portal?"panguBlock_block_master":"master";
+    	var urlStr='/api/v1/'+cluster+'/'+reqStr+'?cmd=lsbm';
+    	//获取 block_master 数据 
+    	reqPanguBlock(urlStr,"getBlockMaster");
+    };
+    //处理获取的 block_master 数据 
+    function dealBlockMaster(data){
+    	var blockMasterDataArr=[];
+    	var count=0;
+    	var oper_btn=[{"name":"获取Flag值","key":"get_bm_flag"},{"name":"设置Flag值","key":"set_bm_flag"},{"name":"获取版本信息","key":"get_bm_version"},{"name":"检查线程hang","key":"checkLineHang"},{"name":"切换为Leader","key":"switch_leader"}];
+    	for(var i in data){
+    		var temObj={};
+    		var machine=data[i].ID.split("//")[1].split(":")[0];
+    		temObj.machine=dealTablebodyObj(machine);
+    		temObj.ROLE=dealTablebodyObj(data[i].ROLE);
+    		temObj.LOGID=dealTablebodyObj(data[i].LOGID);
+    		temObj.operation=dealTablebodyObj("","",oper_btn,"","id"+count);
+    		count++;
+    		blockMasterDataArr.push(temObj);
+    	};
+    	$scope.listBlockMaster = {
+	        "theadData":listTheade.BlockMasterTH,
+	        "tbodyData":blockMasterDataArr,
+	        "showSearch":true,//是否显示模糊查询,默认显示
+	        "showPage":true,//是否显示分页 true为显示 默认显示
+	        // "title":"Master选举状态",
+	        "titleBtn":[{"name":"刷新","key":"refresh"},{"name":"获取所有节点版本","key":"get_bmAll_version"},{"name":"获取所有节点Flag值","key":"get_bmAll_flag"},{"name":"设置所有节点Flag值","key":"set_bmAll_flag"}]
+	    };
+    };
+
+    // BlockServer运维 页相关数据
+    function refreshBlockServer(){
+    	
+    };
+
+    function refreshBlockGcworker(){
+    	
+    };
+    // Device运维 页相关数据
+    function refreshDevice(){
+    	// panguBlock_block_device
+    	var reqStr=$scope.mapsParam.portal?"panguBlock_block_device":"block_device";
+    	var urlStr='/api/v1/'+cluster+'/'+reqStr+'?cmd=lsdev';
+    	//获取 block_device 数据 
+    	reqPanguBlock(urlStr,"getBlockDevice");
+    };
+    //处理集群上所有的Device及其相关信息 
+    $scope.getDeviceData={}
+    function dealBlockDevice(data){
+    	// {"name":"DeviceId","key":"DeviceId","width":"170px"},
+        // {"name":"状态","key":"status"},
+        // {"name":"逻辑容量","key":"size_GB"},
+        // {"name":"Segment情况","key":"segments"},
+        // {"name":"标志位","key":"flags"},
+        // {"name":"操作","key":"operation","width":"233px"},
+    	var blockDeviceDataArr=[];
+    	var count=0;
+    	var oper_btn=[{"name":"打开","key":"open_dev"},{"name":"配置","key":"set_dev"},{"name":"查询","key":"select_dev"},{"name":"克隆","key":"clone_dev"},{"name":"复制","key":"copy_dev"},{"name":"resize","key":"resize_dev"},{"name":"关闭","key":"close_dev"},{"name":"删除","key":"delete_dev"}];
+    	$scope.getDeviceData.TotalSize=data.TotalSize;
+    	$scope.getDeviceData.DeviceCount=data.DeviceCount;
+    	for(var i in data){
+    		var temObj={};
+    		if(i=="TotalSize"||i=="FLAGS"||i=="DeviceCount"){
+    			continue;
+    		}
+    		temObj.DeviceId=dealTablebodyObj(data[i].device);
+    		temObj.status=dealTablebodyObj(data[i].status);
+    		temObj.size_GB=dealTablebodyObj(data[i].size_GB);
+    		temObj.segments=dealTablebodyObj(data[i].segments);
+    		temObj.flags=dealTablebodyObj(data[i].flags);
+    		temObj.operation=dealTablebodyObj("","",oper_btn,"","id"+count);
+    		count++;
+    		blockDeviceDataArr.push(temObj);
+    	};
+    	$scope.listBlockDevice = {
+	        "theadData":listTheade.BlockDeviceTH,
+	        "tbodyData":blockDeviceDataArr,
+	        "showSearch":true,//是否显示模糊查询,默认显示
+	        "showPage":true,//是否显示分页 true为显示 默认显示
+	        // "title":"Master选举状态",
+	        "titleBtn":[{"name":"刷新","key":"refresh"},{"name":"创建","key":"create_dev"}],
+	        "batchBtn":[{"name":"全局操作","showBtnList":false,"listData":[
+	        	// {"name":"查询所有shutdown节点能否下线","key":"get_csAll_safe"},{"name":"获取所有节点BuildInfo","key":"cs_all_buildinfo"},{"name":"获取所有节点Flag值","key":"get_csAll_flag"},{"name":"设置所有节点Flag值","key":"set_csAll_flag"}
+	        	]},
+          		{"name":"批量操作","showBtnList":false,"listData":[
+          			// {"name":"查询shutdown节点能否下线","key":"batch_get_csAll_safe"},{"name":"获取节点Flag值","key":"batch_get_csAll_flag"},{"name":"设置节点Flag值","key":"batch_set_All_flag"}
+          		]},
+          		{"name":"批量删除","showBtnList":false,"listData":[
+	        	// {"name":"查询所有shutdown节点能否下线","key":"get_csAll_safe"},{"name":"获取所有节点BuildInfo","key":"cs_all_buildinfo"},{"name":"获取所有节点Flag值","key":"get_csAll_flag"},{"name":"设置所有节点Flag值","key":"set_csAll_flag"}
+	        	]},]
+	    };
+    };
+    function refreshkuaizhao(){
+    	
+    }
+    function refreshSegment(){
+    	
+    }
+
+     
+
+})	
+</script>
+{% endautoescape %}
+{%endblock%}

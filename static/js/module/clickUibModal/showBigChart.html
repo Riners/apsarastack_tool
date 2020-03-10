@@ -1,0 +1,21 @@
+<div class="modal-header">
+  <h3 class="modal-title" style="float: left;" ng-bind="showTitle"></h3>
+  <button class="btn btn-warning" type="button" ng-click="cancel()" style="float: right;">关闭</button>
+  <div class="clickTimeFocus" style="height: 20px;margin :5px 50px 5px 20px;float: right;" ng-show="hideTimeList">
+    <a href="" ng-click="updataAloneTime(0.5)">  30分钟  |</a>
+    <a href="" ng-click="updataAloneTime(1)">  1小时  |</a>
+    <a href="" ng-click="updataAloneTime(2)">  2小时  |</a>
+    <a href="" ng-click="updataAloneTime(6)">  6小时  |</a>
+    <a href="" ng-click="updataAloneTime(12)">  12小时  |</a>
+    <a href="" ng-click="updataAloneTime(24)">  1天  |</a>
+    <a href="" ng-click="updataAloneTime(24*7)">  7天  |</a>
+    <a href="" ng-click="updataAloneTime(24*30)">  30天  </a>
+  </div>
+  <div style="clear: both;"></div>
+</div>
+<div class="modal-body">
+    <div id="showGroupDashboardId" style="width: 1100px;margin-top: 0px;">
+      <pangu-highchart  pangu-highchart-data="showBigChartData" style="margin-top:10px;">
+      </pangu-highchart>
+    </div>
+</div>

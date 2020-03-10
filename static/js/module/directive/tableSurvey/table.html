@@ -1,0 +1,146 @@
+<div class="surveyTable">
+	<div ng-show="!tableData" style="height:200px;border:1px solid #CCCCCC;padding-top:60px;margin-top:20px;">
+		<div style="text-align:center">
+			<img src='/static/img/data_image.gif' style="display: inline-block;"/>
+		</div>
+	    <div style="text-align:center;padding-left:10px">正在加载...</div> 
+	</div>
+	<div ng-show="tableData">
+		<h5 ng-bind="jsonTable.title"></h5>
+	    <div style="display: flex;margin-top: 20px;" class="tableSurvey_search" ng-show="!jsonTable.closeSelectInput">
+	        <span style="font-size: 14px;margin-right: 10px;background-color: #eee;padding: 6px;font-size: 14px;" ng-show="!jsonTable.closeSelectInput">模糊查询</span>
+	        <div  style="width: 250px;margin-right: 10px;" class="input-group" ng-show="!jsonTable.closeSelectInput">
+	            <span class="input-group-addon">
+	                <a class="glyphicon glyphicon-search" ng-click="selectName()"></a>
+	            </span>
+	            <input type="text" ng-model="inputSelectName"  class="form-control" placeholder="请输入名称进行搜索"   ng-change="selectName()">
+	        </div>
+	        <button ng-if="tableData.showFanxuanBtn" ng-click="fanxuan()" class="fanxuan">反选</button>
+	    </div>
+	    <table class="hovertable" style="width: 100%;margin-top: 20px;word-break: break-all;">
+	        <thead>
+		        <tr>
+		        	<th ng-if="checkBox" style="width:/{/checkBoxTdWidth/}/;">
+			        	<input type="checkbox" ng-click="checkBoxAction({'checkedRows':tableData.tbodyData,'index':0});checkedRows({'checkRowsData':checkRowsData})" ng-checked="isCheckedAll" />
+			        </th>
+		            <th ng-repeat="val in jsonTable.theadData track by $index"  style="width: /{/val.width/}/" ng-class="{true:'theadHighLight',false:'theadNotHeightLigth'}[val.tbodyKey === theadHighLight]">
+		                <span ng-bind="val.showName"></span>
+		                <span ng-class="{true:'glyphicon glyphicon-triangle-bottom',false:'glyphicon glyphicon-triangle-top'}[val.showSortIcon]" ng-click="singleRowSort(val.tbodyKey)" ng-if="!jsonTable.showSortIconData"></span>
+		            </th>
+		        </tr>
+	        </thead>
+	        <tbody ng-show="showTdData">
+	            <tr ng-repeat="info in jsonTable.tbodyData track by $index" style="">
+	                <td ng-if="checkBox">
+		        		<input type="checkbox" ng-click="checkBoxAction({'checkedRows':info});checkedRows({'checkRowsData':checkRowsData})" ng-checked="info.rowKey.checkedKey" />
+		        	</td>
+	                <td ng-repeat="(key, val) in info track by $index" style="text-align:/{/val.textAlign/}/;background:/{/val.trbackground/}/;color:/{/val.color/}/;position:relative;padding-bottom:/{/val.padding_bottom/}/;" ng-attr-title="/{/val.title/}/">
+	                    <div ng-if="!val.render && !val.fetchData">
+	                    	<span class="inline-edit" ng-show="val.inlineEdit" ng-click="tableAction({'item':info, 'info':'inlineEdit', 'key':key})">
+	                    		<i class="iconfont icon-lietou-jianliku-tianjiajianli-shoudongshuru table-inline-edit-icon"></i>
+	                    	</span>
+	                        <a href="/{/info[jsonTable.theadData[$index].tbodyKey].url/}/" target="/{/jsonTable.target/}/" ng-bind="info[jsonTable.theadData[$index].tbodyKey].name" ng-if="info[jsonTable.theadData[$index].tbodyKey].url" style="text-decoration:underline;color:/{/val.color/}/;"></a>
+		                    <span ng-bind="info[jsonTable.theadData[$index].tbodyKey].name" ng-if="!info[jsonTable.theadData[$index].tbodyKey].url&&!info[jsonTable.theadData[$index].tbodyKey].click&&!info[jsonTable.theadData[$index].tbodyKey].type">
+	                        </span>
+	                        <textarea style="width: 100%;/{/info[jsonTable.theadData[$index].tbodyKey].style/}/;" ng-bind="info[jsonTable.theadData[$index].tbodyKey].name" ng-if="info[jsonTable.theadData[$index].tbodyKey].type=='textarea'" ng-disabled=true>
+	                        </textarea>
+	                        <a ng-bind="info[jsonTable.theadData[$index].tbodyKey].name" ng-if="info[jsonTable.theadData[$index].tbodyKey].click" ng-click="tableAction({'item':info, 'info':info[jsonTable.theadData[$index].tbodyKey].name, 'key':key})" href>
+	                        </a>
+	                        <!-- <span ng-if="!info[jsonTable.theadData[$index].tbodyKey].url">
+	                            <a ng-bind="info[jsonTable.theadData[$index].tbodyKey].name" ng-if="info[jsonTable.theadData[$index].tbodyKey].click" ng-click="tableAction({'item':info, 'info':info[jsonTable.theadData[$index].tbodyKey].name, 'key':key})" href></a>
+	                            <a ng-bind="info[jsonTable.theadData[$index].tbodyKey].name" ng-if="!info[jsonTable.theadData[$index].tbodyKey].click"></a>
+	                        </span> -->
+	                        <a class="/{/info[jsonTable.theadData[$index].tbodyKey].a_class/}/" ng-click="tableAction({'item':info, 'info':info[jsonTable.theadData[$index].tbodyKey].a_class})"></a>
+		                    <div>
+		                    	<button ng-repeat="button in info[jsonTable.theadData[$index].tbodyKey].button" ng-bind="button" class="pangu-table-action-button" ng-click="tableAction({'item':info, 'info':button, 'key':key})" style="height:auto"></button>
+		                    </div>
+	                        <!-- glyphicon glyphicon-pencil -->
+	                        
+	                    </div>
+	                    <div ng-if="val.render && !val.fetchData">
+	                    	<span class="inline-edit" ng-show="val.inlineEdit" ng-click="tableAction({'item':info, 'info':'inlineEdit', 'key':key})">
+	                    		<i class="iconfont icon-lietou-jianliku-tianjiajianli-shoudongshuru table-inline-edit-icon"></i>
+	                    	</span>
+	                		<p 
+	                			ng-repeat="item in val.render.data" 
+	                			ng-bind="item.name ? item.name : item" 
+	                			class="/{/val.render.hoverStyle/}/" 
+	                			style="color:/{/item.color/}/;cursor:/{/item.cursor/}/;" 
+	                			ng-click="tableAction({'item':info, 'info':item, 'key':key})"
+	                			ng-if="!item.span && !item.button"
+	                			title="/{/item.title/}/"
+	                		>
+	                		</p>
+	                		<span                			
+	                			ng-repeat="item in val.render.data" 
+	                			ng-bind="item.name ? item.name : item" 
+	                			class="/{/val.render.hoverStyle/}/" 
+	                			style="color:/{/item.color/}/;cursor:/{/item.cursor/}/;" 
+	                			ng-click="tableAction({'item':info, 'info':item, 'key':key})"
+	                			ng-if="item.span && !item.button"
+	                		>
+	                		</span>
+	                		<button 
+	                			ng-repeat="item in val.render.data"  
+	                			ng-bind="item.name ? item.name : item"  
+	                			class="pangu-table-action-button" 
+	                			ng-click="tableAction({'item':info, 'info':item, 'key':key})"
+	                			ng-if="item.button"
+	                			style="height:auto"
+	                		>
+	                		</button>
+	                		<!-- MS:234887,236428,247220展示类试版本点击效果 -->
+	                		<div ng-repeat="verVal in val.render.versionData">
+	                			<div ng-repeat="val in verVal" style="float: left">		
+		                            <span ng-bind="val.name" ng-if="!val.click"></span>
+		                            <a href ng-bind="val.name" ng-if="val.click" ng-click="tableAction({'item':info, 'info':val, 'key':key})"></a>
+		                            <a class="/{/val.a_class/}/" ng-click="tableAction({'item':info, 'info':val.a_class})"></a>
+		                            
+	                            </div>
+	                            <div style="clear: both;"></div>
+	                        </div>
+	                		<!--<p ng-repeat="item in val.render.data" ng-bind="item.name" ng-if="val.render.data.mark_color" ></p>-->
+	                	</div>
+	                	<div ng-if="val.fetchData">
+	                		<img src='/static/img/data_image.gif' style="display: inline-block;"/>
+	                		<p>检查中...</p>
+	                	</div>
+	                </td>
+	            </tr>
+	        </tbody>
+	        <tbody ng-show="!showTdData">
+	            <!--<tr><td colspan="{{colspanNum}}" style="font-size: 20px;color: blue;">暂时没有表格数据!</td></tr>  -->
+	            <tr>
+	            	<td colspan="{{colspanNum}}">
+	            		<img src="/static/js/common/img/empty.png" style="width:100px;height:100px"/>
+	            		<p style="text-align:center;color:#6d6f73;">暂无数据</p>
+	            	</td>
+	            </tr>  
+	        </tbody>
+	        <!--<tbody>
+	        	<tr>
+	        		<td colspan="{{colspanNum}}">
+	        		    
+	        		</td>
+	        	</tr>   
+	        </tbody>-->
+	    </table>
+	    <!-- 分页 -->
+	    <div style="float: right;">
+	        <div class="pull-left" style="margin-right: 20px;margin-top: 5px;">总条数:
+	          <span ng-bind="totalItems"></span>
+	          <span>条</span>
+	        </div>
+	        <div class="pull-left" style="margin-top: 5px;">
+	            每页&nbsp;
+	          <select ng-model="itemsPerPage" ng-change="changePagesize()" ng-options="option for option in [2,10,20, 40, 100, 200]"></select>
+	            &nbsp;条
+	        </div>
+	        <div style="font-size: 12px;float: left">
+	            <uib-pagination items-per-page="itemsPerPage" total-items="totalItems" ng-model="currentPage" max-size="maxSize" first-text="首页" previous-text="上一页" next-text="下一页" last-text="最后页" boundary-links="true" boundary-link-numbers="true" ng-change="changePage()" style="margin-top: 0px;"></uib-pagination>
+	        </div>
+	        <div style="clear: both;"></div>
+	    </div>
+	    <div style="clear: both;"></div>
+	</div>
+</div>

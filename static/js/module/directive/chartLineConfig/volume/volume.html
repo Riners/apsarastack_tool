@@ -1,0 +1,18 @@
+<!-- 面包屑 -->
+<div style="padding-top:20px;">
+  <div style="float: left;margin-left: 7px;">
+    <label>当前volume:</label>
+  </div>
+  <div style="float: left;">
+    <select  ng-model="selectindex" ng-change="selectDir(selectindex)">     
+      <option ng-repeat="val in getDirSelectListData track by $index" value="/{/val/}/" ng-bind="val"></option>
+    </select>
+  </div>
+  <div style="margin-left: 10px;float: left;" ng-show="">
+    <span ng-repeat="val in crumbsArr track by $index" >
+      <span ng-if="val">/</span>
+      <a href ng-bind="val" ng-click="showCrumbsList(val,$index)"></a>
+    </span>  
+  </div>
+  <div style="clear: both;"></div>  
+</div>

@@ -1,0 +1,134 @@
+<div class="steps-details-content">
+	<div ng-repeat="item in stepsDetailsData track by $index">
+		<div class="step-details-item-content">
+			<div style="float: left;" class="left-step">
+				<div class="step-vertical-item step-vertical-finish" style="height:100%" ng-if="item.left_steps_status === 'finish'">
+					<div class="steps-icon">
+						<span class="glyphicon glyphicon-ok"></span>
+					</div>
+					<div class="step-line"></div>
+				</div>
+				<div class="step-vertical-item steps-vertical-process" style="height:100%" ng-if="item.left_steps_status === 'process'">
+					<div class="steps-icon">
+						<span class=""></span>
+					</div>
+					<div class="step-line"></div>
+				</div>
+				<div class="step-vertical-item steps-vertical-error" style="height:100%" ng-if="item.left_steps_status === 'error'">
+					<div class="steps-icon">
+						<span class="">!</span>
+					</div>
+					<div class="step-line"></div>
+				</div>
+				<div class="step-vertical-item steps-vertical-jump" style="height:100%" ng-if="item.left_steps_status === 'jump'">
+					<div class="steps-icon">
+						<span class="">s</span>
+					</div>
+					<div class="step-line"></div>
+				</div>
+				<div class="step-vertical-item steps-vertical-waiting" style="height:100%" ng-if="item.left_steps_status === 'waiting'">
+					<div class="steps-icon" style="background:#CCCCCC;">
+						<span class=""></span>
+					</div>
+					<div class="step-line" style="background:#CCCCCC;"></div>
+				</div>
+			</div>
+			<div style="float:left;padding-bottom: 10px;" class="right-table">
+				<div class="details-item-top" style="margin-bottom:10px;">
+					<div style="float: left;">
+						<a name="/{/item.maoDian/}/"></a>
+						<h5 style="font-weight:bold;" ng-bind="item.step">Title</h5>
+					</div>
+					<div style="float: right;height:30px" class="base-info-title">
+						<div class="top-item status" ng-mouseenter="showErrorReason({'data':item.pop_class})" style="position:relative;height:30px;margin-right:100px">
+							<!--<div ng-bind="item.status_info" ng-if="item.status === 'error'" style="position: absolute;" class="promp-error-reason">
+								
+							</div>-->
+						    <!--<div class="/{/item.pop_class/}/" ng-show="item.status === 'error'">
+							    <p ng-bind="item.status_info"></p>
+						        <div class='triangle-bottom'></div>
+						    </div>-->
+							<p ng-class="{'step-status finish':item.status === 'succ','step-status error':item.status === 'fail'}" 
+							   ng-bind="item.status" ng-click="showInfo({'info':item.status_info})"
+							   title="/{/item.status_info/}/"
+							   ng-if="item.status === 'fail'"
+							>fail</p>
+							<p ng-class="{'step-status finish':item.status === 'succ','step-status jump':item.left_steps_status === 'jump','step-status running':item.status === 'running'}" 
+							   ng-bind="item.status" ng-click="showInfo({'info':item.status_info})"
+							   ng-if="item.status !== 'fail'"
+							>sucess</p>
+							<!--<p ng-class="{'step-status finish':item.status === 'succ','step-status error':item.status === 'fail'}" 
+							   ng-bind="item.status" ng-click="showInfo({'info':item.status_info})"
+							   ng-if="item.status === 'succ'"
+							>jump</p>
+							<p ng-class="{'step-status finish':item.status === 'succ','step-status error':item.status === 'fail'}" 
+							   ng-bind="item.status" ng-click="showInfo({'info':item.status_info})"
+							   ng-if="item.status === 'succ'"
+							>runing</p>-->
+						</div>
+						<p style="width:50px;background:#337ab7;height:22px;display:inline-block;margin-right:100px;" class="handle-switch top-item">
+							<span style="float: left;width: 25px;height:22px;border-radius:3px 0 0 3px;text-align:center;color:#FFFFFF" 
+								ng-click="switchMa({'type':'manual','item':item})"
+								ng-class="{'manual':item.handleSwitch === 'manual','not-nanual':item.handleSwitch === 'auto'}"
+						    >M
+							</span>
+							<span style="float: left;width: 25px;height:22px;border-radius:0 3px 3px 0;color:white;text-align:center;" 
+								ng-click="switchMa({'type':'auto','item':item})"
+								ng-class="{'not-auto':item.handleSwitch === 'manual','auto':item.handleSwitch === 'auto'}"
+							>A</span>
+						</p>
+						<p class="begin-time top-item" ng-bind="item.begin_time">开始时间2017-10-01</p>
+						<p class="during-time top-item" ng-bind="item.duration_time">耗时1个月</p>
+						<p style="margin-right:5px;cursor:pointer;" ng-click="handleTableExpand({'item':item})" class="top-item">
+							<span ng-class="{'glyphicon glyphicon-triangle-top':item.table_show === true,'glyphicon glyphicon-triangle-bottom':item.table_show === false}"></span>
+						</p>
+					</div>
+					<div style="clear:both;"></div>
+				</div>
+				<div class="details-item-table" ng-if="item.table_show">
+					<table style="width: 100%;">
+						<thead>
+							<th style="width:/{/info.width/}/;" ng-repeat="info in item.table_data.theadData" ng-bind="info.showName">开始时间</th>
+							<!--<th style="width: 200px;">结束时间</th>
+							<th style="width: 200px;">耗时</th>
+							<th>失败原因</th>-->
+						</thead>
+						<tbody>
+							<tr ng-repeat="info in item.table_data.tbodyData">
+								<td ng-repeat="(key, val) in info track by $index" ng-bind="val.name" style="line-height:/{/val.lineHeight;/}/;" ng-show="val.name">2017-10-01</td>
+								<td ng-repeat="(key, val) in info track by $index" style="line-height:/{/val.lineHeight;/}/;max-height:220px;overflow:hidden;" ng-show="val.render" class="/{/item.msg_class/}/">
+									<div style="max-height:200px;overflow: hidden;" class="msg-content">
+									    <p ng-repeat="item in val.render track by $index" ng-bind="item" style="margin-bottom:0;max-width:508px;word-break: break-all;"></p>
+									</div>
+									<div style="display:none;" class="msg-details-content">
+										<p style="margin-bottom:0;max-width:508px;">
+											<span>...</span>
+											<!--<a href="#" style="float: right;">查看完整日志</a>-->
+											<button style="float: right;background:#337AB7;color:#FFFFFF;border:0;" ng-click="showDetailsMsg({'val':val})">查看完整日志</button>
+											<div style="clear:both;"></div>
+										</p>
+									</div>
+								</td>
+								<!--<td ng-bind="item.end_time">2017-11-01</td>
+								<td ng-bind="item.duration_time">1个月</td>
+								<td ng-bind="item.fail_reason">话让她如火如荼光和热文化认同文化认同</td>-->
+							</tr>
+						</tbody>
+					</table>
+					<div style="padding:8px 5px;border: 1px solid #CCCCCC;border-top:0;max-height:200px;overflow-y:auto;" ng-show="item.status_info">
+						<div class="steps-err-msg-content">
+							<p style="color:#000000;font-weight:bold;margin-bottom:0;" class="steps-err-msg-title">错误信息:</p>
+							<button class="refer-all-errMsg" ng-click="showDetailsErrMsg({'val':item.err_msg})">查看完整错误信息</button>
+							<div style="clear:both;"></div>
+						</div>
+                        <div>
+                        	<p ng-repeat="info in item.err_msg track by $index" ng-bind="info" style="margin-bottom:0;word-break:break-all;"></p>
+                        </div>
+						<!--<div ng-bind="item.status_info"></div>-->
+					</div>
+				</div>
+			</div>
+			<div style="clear:both;"></div>
+		</div>
+	</div>
+</div>

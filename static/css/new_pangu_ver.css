@@ -1,0 +1,137 @@
+.new_pangu_ver .publish-new-version-btn {
+    /*position: absolute;
+    right: 0px;
+    top: 82px;*/
+    border-color: #337ab7;
+	background: #337AB7;
+	color: #FFFFFF;
+	outline: none;
+	border-radius: 5px;
+    height: 30px;
+    border: 0 !important;
+}
+.new_pangu_ver table thead tr {
+	height: 35px;
+}
+.new_pangu_ver table tbody tr td{
+	height: 35px;
+}
+.new_pangu_ver table tbody button {
+	font-size: 12px;
+	transform: scale(1) !important;
+	line-height: 100%;
+    padding: 4px 8px;
+    border-radius: 4px;
+}
+.pangu_ver.modal-header{
+	background: #F3F3F3;
+}
+.pangu_ver.modal-header p{
+	font-weight: bold;
+	color: #000000;
+}
+.pangu_ver.modal-body {
+	padding: 15px 25px;
+}
+.pangu_ver.modal-body .label-title{
+	color: #525050;
+	padding-right: 5px;
+	font-weight: bold;
+}
+.pangu_ver.modal-body .buildId {
+	
+}
+.pangu_ver.modal-body > p{
+	padding: 4px 0;
+}
+.pangu_ver.modal-body p input{
+	width: 250px;
+	height: 35px;
+    line-height: 35px;
+    outline: none;
+}
+.pangu_ver.modal-body select {
+	width: 250px;
+	outline: none;
+}
+.pangu_ver.modal-body textarea{
+	width: 407px;
+	outline: none;
+	height: 80px;
+}
+.pangu_ver.modal-footer {
+	background: #F3F3F3;
+}
+.pangu_ver button {
+	border: 0 !important;
+}
+.new_pangu_ver .search-type {
+    border-color: #337ab7;
+    background: #337AB7;
+    color: #FFFFFF;
+    outline: none;
+    border-radius: 5px;
+    height: 30px;
+    border: 0 !important;
+}
+.new_pangu_ver .search-content button {
+	border-color: #337ab7;
+    background: #337AB7;
+    color: #FFFFFF;
+    outline: none;
+    border-radius: 5px;
+    height: 30px;
+    border: 0 !important;
+}
+.new_pangu_ver .search-content {
+	display:block;
+	/*clear:both;
+	content:'';
+	display:block;
+	overflow:hidden;*/
+}
+.new_pangu_ver .search-content .status select {
+	width:176px;
+	height:26px;
+}
+.new_pangu_ver .search-content .exact-search-submit {
+	padding-top:16px ;
+}
+.new_pangu_ver .search-content .input-common-style {
+	float:left;
+}
+.new_pangu_ver .search-content .input-common-style input {
+	width:120px;
+}
+.new_pangu_ver .search-content .input-common-style select {
+	width:120px;
+}
+.new_pangu_ver .search-content > div {
+	float:left;
+	margin-right:20px;
+}
+.new_pangu_ver .search-content p.label-title {
+	font-weight:bold;
+}
+.new_pangu_ver .tableSurvey_search {
+	margin-top:5px !important;
+}
+.modal-body .ver-select select {
+	width:250px !important;
+}
+.modal-body .ver-select input{
+	margin-left:-250px !important;
+	width: 225px !important;
+}
+.modal-body.pangu_ver .search-result-box {
+	width:250px !important;
+}
+/*iconfont 图标*/
+@font-face {
+  font-family: 'iconfont';  /* project id 660459 */
+  src: url('//at.alicdn.com/t/font_660459_63pctgm8c1ve7b9.eot');
+  src: url('//at.alicdn.com/t/font_660459_63pctgm8c1ve7b9.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_660459_63pctgm8c1ve7b9.woff') format('woff'),
+  url('//at.alicdn.com/t/font_660459_63pctgm8c1ve7b9.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_660459_63pctgm8c1ve7b9.svg#iconfont') format('svg');
+}

@@ -1,0 +1,12 @@
+<!--<div class="modal-header">
+     <p ng-bind="title">机器列表</p>
+</div>-->
+<div class="modal-body" style="padding:15px 25px">
+	<div>
+	    <table-survey table-data="tableData" func-table-action="terminalService({'rowData':item, 'action':info})" check-rows-data="checkedRows"></table-survey>
+	</div>
+</div>
+<div class="modal-footer batchDialog">
+   <!-- <button class="btn btn-primary" type="button" ng-click="ok(checkedRows)">OK</button>-->
+    <button class="btn btn-warning" type="button" ng-click="cancel()">关闭</button>
+</div>

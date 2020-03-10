@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+               <table class="table table-bordered">
+                        <thead>
+                        <tr>
+                            <th>序号</th>
+                            <th>ip地址</th>
+                            <th>主机名</th>
+                            <th>操作系统</th>
+{#                            <th></th>#}
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for host in all_host %}
+                            <tr>
+                                <td>{{ forloop.counter }}</td>
+                                {#                                <td>{{ book.id }}</td>#}
+                                <td>{{ host.ip_addr }}</td>
+                                <td>{{ host.hostname }}</td>
+                                <td>{{ host.system_os }}</td>
+                                <td>
+                                    <a class="btn btn-danger" href="/delete_book/?id={{ host.id }}"><i class="fa fa-trash-o fa-fw"></i>删除</a>
+                                    <a class="btn btn-info" href="/edit_book/?id={{ host.id }}"><i class="fa fa-pencil fa-fw"></i>编辑</a>
+
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+</body>
+</html>

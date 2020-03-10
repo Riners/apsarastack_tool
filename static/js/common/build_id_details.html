@@ -1,0 +1,11 @@
+<!--<div class="pangu_ver modal-header">
+     <p ng-bind="modal_title">BuildID(<span ng-bind="tableData.build_id.name"></span>) - 修改版本信息</p>
+</div>-->
+<div class="pangu_ver modal-body" style="max-height:500px;overflow-y:auto;">
+     <div>
+     	<p ng-repeat="val in build_id_details track by $index" ng-bind="val.text" style="color:/{/val.color/}/"></p>
+     </div>
+</div>
+<div class="pangu_ver modal-footer">
+    <button class="btn btn-warning" type="button" ng-click="cancel()">关闭</button>
+</div>

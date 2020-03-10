@@ -1,0 +1,28 @@
+<div>
+    <div>
+        <div>
+            <label>模糊查询</label>
+            <!-- <input type="text" ng-model="selected" uib-typeahead="n.name as n.name for n in dataTable1.tdData| filter:$viewValue | limitTo:8" name="">  -->
+            <!-- <input type="text" ng-model="selected" uib-typeahead="n.name as n.name+'('+n.ename+')' for n in names | filter:$viewValue | limitTo:8" class="form-control" ng-change="chSelect()"> -->
+            <div class="input-group" style="margin-bottom: 10px;width: 250px;">
+                <span class="input-group-addon">
+                    <a class="glyphicon glyphicon-search"></a>
+                  </span>
+                  <!-- 搜索 -->
+                <input class="form-control" type="text" ng-model="searchStr" ng-change="changeSelect(searchStr)" placeholder="输入名称进行搜索">
+            </div>
+        </div>
+    </div>
+    <table class="hovertable" style="width: 100%">
+        <thead>
+        <tr>
+            <th ng-repeat="val in jsonTable.thData track by $index" ng-bind="val"></th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr onmouseover="this.style.backgroundColor='#94d4b3';" onmouseout="this.style.backgroundColor='white';" ng-repeat="val in jsonTable.tdData track by $index">
+                <td ng-repeat="(key,valNum) in val track by $index" ng-bind="valNum"></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

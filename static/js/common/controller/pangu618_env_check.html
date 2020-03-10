@@ -1,0 +1,14 @@
+<div class="modal-header">
+     <p ng-bind="env_check_title"></p>
+</div>
+<div class="modal-body">
+    <table-survey 
+		table-data="pangu618_env" 
+		func-table-action="operate({'rowData':item, 'action':info, 'key':key})"
+	>
+	</table-survey>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
+<!--    <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>-->
+</div>

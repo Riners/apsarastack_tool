@@ -1,0 +1,43 @@
+<!-- <div ng-show="chartDashConfData.chartSizeSmall">
+	<div ng-repeat="info in chartDashConfData.metrics track by $index" class="group-dashboard-Chart"  style="position:relative;padding-top: 20px;">
+		<pangu-loading ng-if="info.showChartloading"></pangu-loading>
+		<div class="group-dashboard-Chart1" ng-if="!info.showChartloading">
+		  <b ng-bind="info.matrix" title="/{/info.matrix/}/"></b>
+		  <a class="glyphicon glyphicon-resize-full" style="float: right;margin-top: 4px;margin-right:20px;font-size: smaller;" ng-click="showBigChart(mapTargetData[info.id],info.url)"></a>
+		</div>
+		<div id="/{/info.id/}/" style="width: 100% ;height: 180px;margin-top: 0px;" ng-if="!info.showChartloading">
+		  <pangu-highchart  pangu-highchart-data="mapTargetData[info.id]" style="margin-top:10px;">
+		  </pangu-highchart>
+		</div>
+	</div>
+	<div style="clear: both;"></div>
+</div>
+<div ng-show="!chartDashConfData.chartSizeSmall" style="padding-top:20px;width: 98%;">
+	<div ng-repeat="info in chartDashConfData.metrics track by $index">
+		<h4 ng-bind="info.matrix" style="text-align: center;"></h4>
+		<div id="/{/info.id/}/" style="width: 100%;height: 230px;">	
+	      <pangu-highchart  pangu-highchart-data="mapTargetData[info.id]" style="">
+		  </pangu-highchart>
+	    </div>
+    </div>
+</div> -->
+<div ng-repeat="info in chartDashConfData.metrics track by $index" ng-if="info.showBigChart" style="padding-top:20px;width: 98%;">
+	<h4 ng-bind="info.matrix" style="text-align: center;"></h4>
+	<div id="/{/info.id/}/" style="width: 100%;height: 230px;">	
+      <pangu-highchart  pangu-highchart-data="mapTargetData[info.id]" style="">
+	  </pangu-highchart>
+    </div>
+</div>
+<div ng-repeat="info in chartDashConfData.metrics track by $index" class="group-dashboard-Chart"  style="position:relative;padding-top: 20px;width: /{/defaultObj.width /}/" ng-if="!info.showBigChart">
+	<pangu-loading ng-if="info.showChartloading"></pangu-loading>
+	<div class="group-dashboard-Chart1" ng-if="!info.showChartloading">
+	  <b ng-show="!info.clickHref" ng-bind="info.matrix" title="/{/info.matrix/}/"></b>
+	  <a ng-show="info.clickHref" ng-bind="info.matrix" title="/{/info.matrix/}/" href="/{/info.clickHref/}/" target="_blank"></a>
+	  <a class="glyphicon glyphicon-resize-full" style="float: right;margin-top: 4px;margin-right:20px;font-size: smaller;" ng-click="showBigChart(mapTargetData[info.id],info.url)"></a>
+	</div>
+	<div id="/{/info.id/}/" style="width: 100% ;height: 180px;margin-top: 0px;" ng-if="!info.showChartloading">
+	  <pangu-highchart  pangu-highchart-data="mapTargetData[info.id]" style="margin-top:10px;">
+	  </pangu-highchart>
+	</div>
+</div>
+<div style="clear: both;"></div>

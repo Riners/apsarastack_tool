@@ -1,0 +1,7 @@
+<div style="">
+  <ul class="nav nav-pills">
+    <li ng-repeat="val in tabListData track by $index" ng-class="{'tabTableClick':val.showClass,'tabTable':!val.showClass}"  style="font-size: 12px;margin-left:0px;" >
+      <a href="" ng-bind="val.name" class="/{/val.color/}/" ng-click="tabClickFunc({'index':$index})" style="padding:7px;border-radius: 0px;font-size: 12px;"></a>
+    </li>
+  </ul>
+</div>

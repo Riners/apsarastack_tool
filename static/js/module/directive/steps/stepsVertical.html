@@ -1,0 +1,56 @@
+<!--<div>
+	<div>
+		<div class="pangu-steps-item-content">
+		    <div class="pangu-steps-item pangu-steps-finished" ng-if="item.status === 'finish'">
+				<div class="item-top">
+					<div class="step-line"></div>
+				    <div class="steps-icon">
+						<span class="glyphicon glyphicon-ok"></span>
+					</div>
+				    <div style="clear:both"></div>
+				</div>
+			</div>
+			<div class="pangu-steps-item pangu-steps-process" ng-if="item.status === 'process' || item.status === 'error'">
+				<div class="item-top">
+					<div class="step-line" ng-if="item.status === 'process'"></div>
+					<div class="step-line-error" ng-if="item.status === 'error'"></div>
+					<div ng-class="{'steps-icon':item.status === 'process','steps-icon-error':item.status === 'error'}">
+						<span class="" ng-if="item.status === 'error'">!</span>
+					</div>
+					<div style="clear:both"></div>
+				</div>
+			</div>
+			<div class="pangu-steps-item pangu-steps-wait" ng-if="item.status === 'waiting'">
+				<div class="item-top">
+					<div class="step-line"></div>
+					<div class="steps-icon">
+					</div>
+					<div style="clear:both"></div>
+				</div>
+			</div>
+		</div>
+	    <div style="clear:both"></div>
+	</div>
+	<div style="clear: both;"></div>
+</div>-->
+
+<div class="step-vertical">
+	<div class="step-vertical-item step-vertical-finish">
+		<div class="steps-icon">
+			<span class="glyphicon glyphicon-ok"></span>
+		</div>
+		<div class="step-line"></div>
+	</div>
+	<div class="step-vertical-item steps-vertical-process">
+		<div class="steps-icon">
+			<span class=""></span>
+		</div>
+		<div class="step-line"></div>
+	</div>
+	<div class="step-vertical-item steps-vertical-error">
+		<div class="steps-icon">
+			<span class=""></span>
+		</div>
+		<div class="step-line"></div>
+	</div>
+</div>

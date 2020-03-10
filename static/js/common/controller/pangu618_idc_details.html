@@ -1,0 +1,30 @@
+<div class="modal-header">
+     <p ng-bind="idc_details_title"></p>
+</div>
+<div class="modal-body">
+	<table class="idc-details-table">
+		<tbody>
+			<tr ng-repeat="item in idc_details track by $index">
+				<td ng-bind="item.name" style="width:200px;"></td>
+				<td ng-bind="item.content"></td>
+			</tr>
+		</tbody>
+		<p ng-if="!data_num" style="text-align: center;font-size: 25px;color: #337ab7;">没有故障信息</p>
+	</table>
+	<div class="idc_details" ng-show="data_num">
+		<!--<p>总条数:<span ng-bind="data_num"></span>条</p>-->
+		<ul>
+			<li style="margin-right:10px;margin-top: 5px;">总条数:<span ng-bind="data_num"></span>条</li>
+			<li class="action-btn" ng-click="changeIdc('pre')">上一条</li>
+			<li ng-bind="current_num" class="current-num"></li>
+			<li class="action-btn" ng-click="changeIdc('next')">下一条</li>
+			<li style="margin-left:8px">跳至第<input ng-model="jump_num" ng-change="jump(jump_num)" style="width:50px;margin-top:3px;"/>条</li>
+			<div style="clear:both;"></div>
+		</ul>
+	</div>
+	<div style="clear:both;"></div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" type="button" ng-click="ok()">关闭</button>
+<!--    <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>-->
+</div>

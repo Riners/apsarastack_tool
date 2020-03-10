@@ -1,0 +1,208 @@
+<div id="operWinId" style="position:relative;">
+<oper-loading ng-show="showLoading" loading-data="loadingData"></oper-loading>
+<div class="modal-header">
+  <div ng-show="!data.dangerImg">
+    <h3 ng-bind="data.name"></h3>
+  </div>
+  <!-- dangerImg:高位操作 -->
+  <div ng-show="data.dangerImg">
+    <img src='/static/img/danger.png' style="float: left;display: inline-block;"/> 
+    <h3 ng-bind="data.name" style="color: red;margin-left: 5px;"></h3>
+    <span ng-bind="buildinfoTitleId"></span>
+  </div>
+</div>
+<div class="modal-body" style="word-wrap: break-word;">
+  <!-- 公共展示部分,有这显示没有就不显示 -->
+  <div style="margin-bottom: 10px;">
+    <div ng-show="data.ip">
+      <label style="width: 20%;max-width: 113px;">当前Host/IP:</label>
+      <span  ng-bind="data.ip" style=""></span>
+    </div>
+    <!-- <div ng-show="data.diskid">
+      <label style="width: 20%;max-width: 113px;">当前DiskId:</label>
+      <span  ng-bind="data.diskid" style=""></span>
+    </div>
+    <div ng-show="showSourceAddress&&data.sourceAddress">
+      <label>源地址:</label>
+      <span  ng-bind="data.sourceAddress" style="width: 70%;"></span>
+    </div> -->
+  </div>
+  <!-- changesafe id -->
+  <div ng-show="data.changesafe" style="margin: 0 0 10px 0;">
+    <label style="width: 20%;max-width: 113px;">changesafe id:</label>
+    <input type="text" ng-model="inputData.changesafeId" style="width: 20%" ng-disabled="inputData.changesafeCheck">
+    <span style="color: red" ng-bind="errTip.errTipSafeId" ng-show="errTip.errTipSafeId"></span>
+    <input type="checkBox" ng-checked="inputData.changesafeCheck" ng-click="changeChangesafeCheck()">
+    <span>紧急变更</span>
+    <a href="https://changefree.alibaba-inc.com/" style="padding: 5px;" target="_target">chanagesafe 链接</a>
+  </div>
+  <!-- flag下拉选项数据 -->
+  <datalist id="url_list">
+   <option label="/{/val.name/}/" value="/{/val.name/}/" ng-repeat="val in flagList"/>
+  </datalist>
+  <div ng-show="data.key=='get_bm_flag'||data.key=='get_bs_flag'||data.key=='get_gc_flag'||data.key=='get_bmAll_flag'||data.key=='get_bsAll_flag'||data.key=='get_gcAll_flag'||data.key=='get_bm_batch_Flag'||data.key=='get_bs_batch_Flag'||data.key=='get_gc_batch_Flag'" style="">
+    <div>
+      <label style="width: 20%;">请输入flag:</label>
+      <input type="text" ng-model="inputData.flag" style="width: 60%" list="url_list">
+      <button class="panguButton" style="margin-left: 10px;" ng-click="clickTrue(data.key)">点击查询</button>
+      <span style="color: red" ng-bind="errTip.errTipFlag" ng-show="errTip.errTipFlag"></span>
+      <div style="" ng-show="flagObj[inputData.flag]">
+        <label>描述:</label>
+        <span ng-bind="flagObj[inputData.flag].explanation" style="color: blue;"></span>
+        <label>默认值:</label>
+        <span ng-bind="flagObj[inputData.flag].default" style="color: blue;"></span>
+        <label>类型:</label>
+        <span ng-bind="flagObj[inputData.flag].type" style="color: blue;"></span>
+        <div style="clear: both;"></div>
+      </div>
+    </div>
+    <screen-table screen-table-data="get_ms_flagData" style="margin-top: 10px;"></screen-table>
+    <!-- <div  style="margin-top: 10px;text-align: center;">
+      <button class="panguButton" ng-click="cancelDesc()">关闭</button>
+    </div> -->
+  </div>
+  <div ng-show="data.key=='set_bmAll_flag'||data.key=='set_bsAll_flag'||data.key=='set_gcAll_flag'">
+    <div style="">
+      <label style="width: 20%;">请输入flag:</label>
+      <input type="text" ng-model="inputData.flag" style="width: 60%;" list="url_list" ng-change="changeFlag()">
+      <span style="color: red" ng-bind="errTip.errTipFlag" ng-show="errTip.errTipFlag"></span>
+      <div style="margin-top: 10px;" ng-show="flagObj[inputData.flag]">
+        <label>描述:</label>
+        <span ng-bind="flagObj[inputData.flag].explanation" style="color: blue;"></span>
+        <div style="clear: both;"></div>
+      </div>
+    </div>
+    <div style="margin-top: 10px;">
+      <!-- <div> -->
+        <label style="width: 20%;">请输入value:</label>
+        <input type="text" ng-model="inputData.value" style="width: 60%;">
+        <label ng-show="flagObj[inputData.flag]">类型:</label>
+        <span ng-bind="flagObj[inputData.flag].type" style="color: blue;" ng-show="flagObj[inputData.flag]"></span>
+      <div>
+        <span style="color: red" ng-show="errTip.errTipValue" ng-bind="errTip.errTipValue"></span>
+      </div>
+    </div>
+    <span style="color: red">(注意：当前操作只是修改进程内部的flag，如果发生重启修改将失效；如果期望重启后仍然生效，请到天基上执行：配置修改的操作。)</span>
+  </div>
+
+  <!-- init 相关信息列表 -->
+  <div ng-show="data.key=='query_device'||data.key=='query_device_segment'||data.key=='query_device_snapshot'||data.key=='list_cluster_dcgc'||data.key=='device_segment_chkseg'||data.key=='distseg_device'">
+    <chart-lineshennong lineconfig-data="chartConfigData"></chart-lineshennong>
+    <div style="margin-top: 30px;">
+      <screen-table screen-table-data="get_basic_buildinfo" style="margin-top: 10px;"></screen-table>
+      <screen-table ng-show="showInfoTable" screen-table-data="get_env_buildinfo" opea-click-func="opeaClickFunc({'item':item, 'info':info})" style="margin-top: 10px;"></screen-table>
+    </div>
+  </div>
+  <!-- buildinfo 相关信息列表 -->
+  <div ng-show="data.key=='list_ver_gbi_gc'||data.key=='list_ver_gbi_bs'||data.key=='list_ver_gbi_bm'">
+    <div ng-show="data.key=='chunk_info'">
+      <label>filename:</label>
+      <span ng-bind="abnchunkFilename" style="word-wrap: break-word;"></span>
+    </div>
+    <div ng-show="data.key=='list_ver_gbi_gc'||data.key=='list_ver_gbi_bs'||data.key=='list_ver_gbi_bm'">
+      <list-tab tab-list-data="buildinfoTiantengId" click-func="tabClickBuildInfo({'index':index})"></list-tab>
+      <div class="listPanguoperate"></div>
+      <div style="margin-top: 10px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;" ng-click="clickBuildinfoTip()">
+        <span ng-bind="buildInfolsServerStr"  title="/{/buildInfolsServerStr/}/" style="padding: 5px;" ></span>
+      </div>
+    </div>
+    
+    <screen-table screen-table-data="get_basic_buildinfo" style="margin-top: 10px;"></screen-table>
+    <screen-table ng-show="showInfoTable" screen-table-data="get_env_buildinfo" opea-click-func="opeaClickFunc({'item':item, 'info':info})" style="margin-top: 10px;"></screen-table>
+  </div>
+  <!-- 输入框 -->
+  <div ng-show="data.key=='baksnap_device'"> 
+    <label style="width: 20%;">srcCluster:</label>
+    <input type="text" ng-model="inputData.srcCluster" style="width: 60%;">
+    <label style="width: 20%;">dstCluster:</label>
+    <input type="text" ng-model="inputData.dstCluster" style="width: 60%;">
+  </div>
+  <div ng-show="data.key=='crt_snap'"> 
+    <label style="width: 20%;">DeviceId:</label>
+    <input type="text" ng-model="data.DeviceId" style="width: 60%;" ng-disabled="true">
+    <label style="width: 20%;">snapIndex:</label>
+    <input type="text" ng-model="inputData.inputfirst" style="width: 60%;">
+  </div>
+  <div ng-show="data.key=='clone_dev'"> 
+    <label style="width: 20%;">dstId:</label>
+    <input type="text" ng-model="inputData.inputfirst" style="width: 60%;">
+    <label style="width: 20%;">dstSize:</label>
+    <input type="text" ng-model="inputData.inputsecond" style="width: 60%;">
+    <label style="width: 20%;">dstSector:</label>
+    <input type="text" ng-model="inputData.inputthird" style="width: 60%;">
+  </div>
+  <div ng-show="data.key=='crt_dev'"> 
+    <label style="width: 20%;">deviceId:</label>
+    <input type="text" ng-model="inputData.inputfirst" style="width: 60%;">
+    <label style="width: 20%;">snapIndex:</label>
+    <input type="text" ng-model="inputData.inputsecond" style="width: 60%;">
+    <label style="width: 20%;">size(B):</label>
+    <input type="text" ng-model="inputData.inputthird" style="width: 60%;">
+    <label style="width: 20%;">sector:</label>
+    <input type="text" ng-model="inputData.inputFourth" style="width: 60%;">
+  </div>
+  <div ng-show="data.key=='cp_dev'"> 
+    <label style="width: 20%;">srcDev:</label>
+    <input type="text" ng-model="inputData.srcDev" style="width: 60%;">
+    <label style="width: 20%;">dstDev:</label>
+    <input type="text" ng-model="inputData.dstDev" style="width: 60%;">
+  </div>
+  <div ng-show="data.key=='add_bs_schbs'"> 
+    <label style="width: 20%;">请输入location值:</label>
+    <input type="text" ng-model="inputData.inputLocation" style="width: 60%;">
+  </div>
+  <div ng-show="data.key=='device_segment_loaddev'"> 
+    <label style="width: 20%;">请输入BlockServer:</label>
+    <input type="text" ng-model="inputData.inputLocation" style="width: 60%;">
+  </div>
+  <div ng-show="data.key=='device_snapshot_srnsnap'"> 
+    <label style="width: 20%;">请输入副本数:</label>
+    <input type="text" ng-model="inputData.inputLocation" style="width: 60%;">
+  </div>
+  <div ng-show="data.key=='stat_config_dev'"> 
+    <label style="width: 20%;">请输入version:</label>
+    <input type="text" ng-model="inputData.inputLocation" style="width: 60%;">
+  </div>
+  <div ng-show="data.key=='set_config_dev'"> 
+    <label style="width: 20%;">请选择compress:</label>
+    <select ng-model="inputData.compress" style="width: 60%;height: 26px;">
+      <option ng-repeat="val in inputData.compressList track by $index" value="/{/val/}/" ng-bind="val" ></option>
+    </select>
+    <label style="width: 20%;">algorithm:</label>
+    <input type="text" ng-model="inputData.inputfirst" style="width: 60%;" ng-disabled="inputData.compress!='enable'">
+    <hr style="height:1px;border:none;border-top:1px dashed #0066CC">
+    <label style="width: 20%;">请选择EC:</label>
+    <select ng-model="inputData.EC" style="width: 60%;height: 26px;">
+      <option ng-repeat="val in inputData.ECList track by $index" value="/{/val/}/" ng-bind="val" ></option>
+    </select>
+    <label style="width: 20%;">dara_chunks:</label>
+    <input type="text" ng-model="inputData.inputsecond" style="width: 60%;" ng-disabled="inputData.EC!='enable'">
+    <label style="width: 20%;">parity_chunks:</label>
+    <input type="text" ng-model="inputData.inputthird" style="width: 60%;" ng-disabled="inputData.EC!='enable'">
+    <label style="width: 20%;">packet_bits:</label>
+    <input type="text" ng-model="inputData.inputFourth" style="width: 60%;" ng-disabled="inputData.EC!='enable'">
+    <hr style="height:1px;border:none;border-top:1px dashed #0066CC">
+    <label style="width: 20%;">请选择prefetch:</label>
+    <select ng-model="inputData.prefetch" style="width: 60%;height: 26px;">
+      <option ng-repeat="val in inputData.prefetchList track by $index" value="/{/val/}/" ng-bind="val" ></option>
+    </select>
+    <hr style="height:1px;border:none;border-top:1px dashed #0066CC">
+    <label style="width: 20%;">copy:</label>
+    <input type="text" ng-model="inputData.inputFifth" style="width: 60%;">
+    <hr style="height:1px;border:none;border-top:1px dashed #0066CC">
+    <label style="width: 20%;">storage_mode:</label>
+    <input type="text" ng-model="inputData.inputSixth" style="width: 60%;">
+    <h5>注：3-HDD，4-SSD，5-HYBRID-SSD-HDD，6-CACHED-SSD-HDD</h5>
+  </div>
+  <!-- tip -->
+  <div ng-show="data.tip" style="">
+    <h4 ng-bind="data.tip"></h4>
+  </div>
+</div>  
+<div class="modal-footer">
+  <div style="text-align: center;">
+    <button class="panguButton" ng-click="clickTrue()" ng-show="showTrueButton">确定</button>
+    <button class="panguButton" ng-click="cancelDesc()">关闭</button>
+  </div>
+</div>
+</div>

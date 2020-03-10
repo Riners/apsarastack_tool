@@ -1,0 +1,53 @@
+<div id="operWinId2" style="position:relative;">
+<oper-loading ng-show="showLoading" loading-data="loadingData"></oper-loading>
+<div class="modal-header">
+  <h3 ng-bind="data.title"></h3>
+</div>
+<div class="modal-body" >
+  <div style="word-wrap: break-word;">
+    <span ng-bind="val.name" style="color: /{/val.color/}/;" ng-repeat="val in data.arr track by $index"></span>
+  </div>
+  <div ng-show="data.key=='get_chunk_meta'||data.key=='file_info'" style="overflow: auto;height: 310px;">
+    <!-- <screen-table screen-table-data="get_basic_buildinfo"></screen-table> -->
+    <table class="table table-striped screenTbody">
+      <tbody>
+        <tr ng-repeat="val in chunkMetaData track by $index">
+          <td>
+            <span ng-bind="val.metaName.name"></span>
+          </td>
+          <td>
+            <span ng-bind="val.metaValue.name"></span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+  <div ng-show="data.key=='crb'">
+  	<label>请输入"清空回收站"进行确认删除</label>
+  	<input type="text" ng-model="crbstr">
+  	<label ng-bind="tipstr" style="color: red"></label>
+  </div>
+  <div ng-show="data.key=='dir_delete'||data.key=='file_delete'">
+    <label>请输入"DELETE"进行确认删除</label>
+    <input type="text" ng-model="FileDeleteStr">
+    <label ng-bind="tipstr" style="color: red"></label>
+  </div>
+  <div ng-show="data.key=='buildinfo_hostTable'">
+    <screen-table screen-table-data="table_buildinfo" style="margin-top: 10px;"></screen-table>
+  </div>
+  <div ng-show="data.key=='show_type'">
+    <a href="/{/data.url/}/" target="_blank" ng-bind="data.desc"></a>
+  </div>
+  <!-- tip -->
+  <div>
+    <span ng-bind="data.tip"></span>
+  </div>
+</div>
+<div class="modal-footer" >
+    <!-- ng-show="data.key!='crb'" data.key!='crb'&&-->
+    <button class="panguButton" ng-click="okDesc()" ng-show="data.key!='show_type'&&data.key!='get_chunk_meta'&&data.key!='file_info'">确定</button>
+    <button class="panguButton" ng-click="cancelDesc()">关闭</button>
+</div>
+
+</div>

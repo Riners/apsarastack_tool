@@ -1,0 +1,92 @@
+{% extends "new_base.html" %}
+{% block body_content %}
+{% autoescape off %}
+
+<style type="text/css">
+  
+</style>
+<div ng-app="myApp">
+	<div ng-controller="fileIndexCtrl" style="margin-left: 10px;width: 1140px;margin: 0 auto;">
+    <div style="width: 80%;margin-top: 20px;">
+      <table class="table table-striped" style="width: 100%;">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Last modified</th>
+            <th>Size</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody ng-show="!showTableDiskAbn">
+          <tr ng-repeat="val in fileData">
+            <td>
+              <span class="/{/val.type/}/"></span>
+              <span ng-bind="val.name"></span>
+              <i class="fa fa-file-text-o fa-fw" ></i>
+              <i class="fa fa-folder fa-fw"></i>
+            </td>
+            <td ng-bind="val.last_modified"></td>
+            <td ng-bind="val.size"></td>
+            <td ng-bind="val.Description"></td>
+          </tr>
+        </tbody>
+      </table>
+      <!-- 分页 -->
+      <div style="float: right;margin-top: 5px;">
+          <div class="pull-left" style="margin-right: 20px;margin-top: 5px;">总条数:
+            <span ng-bind="totalItems"></span>
+            <span>条</span>
+          </div>
+          <div class="pull-left" style="margin-top: 5px;">
+              每页&nbsp;
+            <select ng-model="itemsPerPage" ng-change="changePagesize()" ng-options="option for option in [2,10,20, 40, 100, 200]"></select>
+              &nbsp;条
+          </div>
+          <div style="font-size: 12px;float: left">
+              <uib-pagination items-per-page="itemsPerPage" total-items="totalItems" ng-model="currentPage" max-size="maxSize" first-text="首页" previous-text="上一页" next-text="下一页" last-text="最后页" boundary-links="true" boundary-link-numbers="true" ng-change="changePage()" style="margin-top: 0px;"></uib-pagination>
+          </div>
+          <div style="clear: both;"></div>
+      </div>
+    </div>
+	</div>
+</div>
+<script type="text/javascript">
+	myApp.controller('fileIndexCtrl',function($scope,$http){
+    //解析 url 获取url相关参数
+    $scope.mapsParam=get_pangu_urlParameter(window.location.href);
+    // file
+    // folder-->glyphicon glyphicon-folder-close 文件夹
+    // file-->glyphicon glyphicon-file 文件
+    $scope.fileData=[
+      {"name":"parent1asdasdsadasdas","type":"glyphicon glyphicon-folder-close","last_modified":"12341","size":"97M1","Description":"描述1"},
+      {"name":"parent2","type":"glyphicon glyphicon-file","last_modified":"12342","size":"97M2","Description":"描述2"},
+      {"name":"parent3asdasdasdfsdf","type":"glyphicon glyphicon-folder-close","last_modified":"12343","size":"97M3","Description":"描述3"},
+      {"name":"parent4asdasdassdfs","type":"glyphicon glyphicon-file","last_modified":"12344","size":"97M4","Description":"描述4"},
+      {"name":"parent5","type":"glyphicon glyphicon-folder-close","last_modified":"12345","size":"97M5","Description":"描述5"},
+    ];
+    var listFileData=$scope.fileData;
+    $scope.totalItems=$scope.fileData.length;
+    $scope.itemsPerPage=2;//每页显示的数量.设置值小于1表示显示所有项
+
+    //改变每页查询条数
+    $scope.changePagesize=function(){
+      $scope.fileData=listFileData.slice(0,$scope.itemsPerPage);
+    };
+    $scope.changePagesize();
+    $scope.currentPage=1;//当前页
+    $scope.maxSize = 5;  //可点击选着数字最大个数
+    //切换分页时调取函数
+    $scope.changePage=function(){
+     var start=($scope.currentPage-1)*$scope.itemsPerPage;
+      $scope.fileData=listFileData.slice(start,start+$scope.itemsPerPage);
+    };
+
+
+
+	})
+</script>
+
+
+
+{% endautoescape %}
+{%endblock%}

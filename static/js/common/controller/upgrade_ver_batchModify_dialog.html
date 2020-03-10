@@ -1,0 +1,24 @@
+<div class="upgrade_cfg modal-header upgrade batchDialog">
+     <p ng-bind="title">创建新的升级</p>
+</div>
+<div class="upgrade_cfg modal-body upgrade batchDialog" style="padding:15px 25px">
+	<div>
+		<div>
+	     	<span class="label-title" style="float: left;position: relative;top: 5px;"> 升级排期:</span>
+	     	<select class="form-control" ng-model="step" placeholder="请选择" style="float: left;">
+			    <option ng-repeat="val in schedulingTimeList track by $index" value="/{/val/}/" ng-bind="val"></option>
+			</select>
+			<div style="clear: both;"></div>
+	   </div>
+	    <div>
+	     	<div class="label-title" style="margin-top: 5px;"> Comments:</div>
+	        <textarea placeholder="请输入升级的comments" ng-model="$parent.remark"></textarea>
+	        <div style="clear: both;"></div>
+	    </div>
+	</div>
+</div>
+<div class="upgrade_cfg modal-footer batchDialog">
+	<button style="position: relative;left:-300px;height:34px;background:#286090;border-radius:4px;color: #FFFFFF;border: 0;outline: none;" ng-click="referAllCluster()">查看所有修改的集群</button>
+    <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
+    <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+</div>

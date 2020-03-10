@@ -1,0 +1,19 @@
+<div ng-click="isShowBaseInfo()" style="overflow: hidden;">
+  <span ng-class="{'glyphicon glyphicon-chevron-right':isShowBaseInfoTable == true,'glyphicon glyphicon-chevron-down':isShowBaseInfoTable == false}" style="float:left;font-size:10px;padding-bottom: 5px;"></span>
+  <h5 style="float:left;" ng-class="{'group-dashboard-title-h5 hideBaseInfo':isShowBaseInfoTable == true,'group-dashboard-title-h5':isShowBaseInfoTable == false}">基础信息</h5>
+</div>
+<table class="baseInfoTable" ng-hide="isShowBaseInfoTable">
+  <thead>
+    <tr>
+      <th colspan="2" ng-repeat="val in jsonTable.thData" ng-bind="val"></th>
+      <!-- <th colspan="2">相关机器信息</th>
+      <th colspan="2">相关异常信息</th> -->
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="val in jsonTable.tdData track by $index">
+      <td ng-repeat="info in jsonTable.tdData[$index]" ng-bind="info">
+      </td>   
+    </tr>
+  </tbody>
+</table>

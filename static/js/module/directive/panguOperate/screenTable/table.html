@@ -1,0 +1,140 @@
+<!-- <button class="panguButton">按钮样式</button> -->
+<!-- <div style="border: 1px solid #ceced6;"> -->
+<div>
+	<h3 ng-bind="tableData.title" style="padding: 0 10px 0px 10px;text-align: center;"></h3>
+    <div style="display: flex;float: left;" class="tableSurvey_search" ng-show="tableData.showSearch">
+        <label style="font-weight: normal;font-size: 12px;color: #666;padding: 10px;">模糊查询 :</label>
+        <div  style="width: 250px;margin-right: 10px;" class="input-group">
+            <span class="input-group-addon">
+                <a class="glyphicon glyphicon-search" ng-click="selectName()"></a>
+            </span>
+            <input type="text" ng-model="inputSelectName"  class="form-control" placeholder="请输入名称进行搜索"   ng-change="selectName()">
+        </div>
+    </div>
+    <div style="float: right;display: inline-block;vertical-align: middle;box-sizing: border-box;">
+    	<button ng-click="tableAction({'item':'btn', 'info':btn.key})" class="panguButton" style="margin-right: 5px;float: left;" ng-repeat="btn in tableData.titleBtn" ng-bind="btn.name"></button>
+    	<button ng-repeat="val in tableData.batchBtn track by $index" class="panguButton" style="margin-right: 5px;float: left;" ng-click="clickBtnList($index)" id="tableMoreTd">
+    		<span ng-bind="val.name" style="position: relative;padding: 2px"></span>
+    		<span class="glyphicon glyphicon-triangle-bottom"></span>
+    		<ul style="position: absolute;margin: 10px 0 0 -17px;" class="showTableMore" ng-show="val.showBtnList">
+				<li style="list-style-type:none;padding: 2px;" ng-repeat="info in val.listData">
+					<a ng-bind="info.name" class="/{/info.class/}/" ng-click="tableAction({'item':'btn', 'info':info.key})"></a>
+				</li>
+    		</ul>	
+    	</button>
+    </div>
+    <div style="clear: both;"></div>
+	<table class="table table-striped screenTbody" style="width: 100%;word-break: break-all;border: 1px solid #ceced6;" id="testtableid1">
+		<thead>
+	      <tr>
+	      	<th ng-show="tableData.secondTable" style="width: 50px;">
+
+	      	</th>
+	      	<th ng-show="tableData.showCheckBox" style="width: 50px;">
+	      		<input type="checkbox" ng-click="clickCheckBox('all')" ng-checked="isCheckedAll" style="margin: 0px;" />
+	      	</th>
+	        <th ng-repeat="val in tableData.theadData track by $index" style="width: /{/val.width/}/;max-width:/{/val.maxWidth/}/ " ng-class="{true:'textAlignLeft'}[$index==0]">
+	        	
+	        	<div style="position: relative;" ng-show="tableData.showTheadSort">
+		        	<span ng-bind="val.name"></span>
+		        	<span style="position: relative;">
+			        	<a  ng-click="clickRowSort(val.key,'des')" class="glyphicon glyphicon-triangle-top" style="top:-3px;font-size: 10px;transform: scale(0.8);position: absolute;"></a>
+						<a  ng-click="clickRowSort(val.key,'ase')" class="glyphicon glyphicon-triangle-bottom" style="top:7px;font-size: 10px;transform: scale(0.8);position: absolute;"></a><!--  -->
+					</span>
+				</div>
+				<div ng-show="!tableData.showTheadSort">
+					<span ng-bind="val.name"></span> 
+				</div>
+	        </th>
+	      </tr>
+	    </thead>
+	    <tbody ng-repeat="info in tableData.tbodyData track by $index"  ng-show="showTableTbody">
+			<tr style="" class="/{/info[tableData.theadData[0].key].backgroundclass/}/" id="test3">
+				<td ng-show="tableData.secondTable">
+					<a class="glyphicon glyphicon-arrow-right" style="color: #4ec74e" ng-show="!info.secondTable.switchWhen" ng-click="clickSecondTableIcon($index)" href></a>
+					<a class="glyphicon glyphicon-arrow-down" style="color: #4ec74e"  ng-show="info.secondTable.switchWhen" ng-click="clickSecondTableIcon($index)" href></a>
+				</td>
+				<td ng-show="tableData.showCheckBox" style="width: 50px;">
+					<input type="checkbox" ng-checked="info.checkBox" ng-click="clickCheckBox('alone',$index)"/>
+				</td>
+				<td ng-repeat="val in tableData.theadData track by $index" ng-class="{true:'textAlignLeft'}[$index==0]">
+					<div>
+						<span class="/{/icon/}/" ng-repeat="icon in info[val.key].icon"></span>
+						<a ng-bind="info[val.key].name" ng-click="tableAction({'item':info, 'info':'href'})" ng-show="info[val.key].click" href title="/{/info[val.key].title/}/"></a>
+						<!-- <p><u ng-bind="info[val.key].showTitleName" ></u></p> -->	
+						<span ng-bind="info[val.key].name" ng-show="!info[val.key].click" style="color: /{/info[val.key].color/}/;/{/info[val.key].style/}/"></span>
+						<textarea ng-show="info[val.key].type=='textarea'" ng-bind="info[val.key].content" style="height: /{/info[val.key].height/}/;width: 100%">
+						</textarea>
+						<ul ng-if="info[val.key].arrName" style="list-style:none;">
+							<li ng-repeat="li in info[val.key].arrName track by $index" >	
+								<!-- {'index':$index,'key':info[val.key].key} -->
+								<a ng-bind="li" ng-click="tableAction({'item':info, 'info':$index})" ng-show="info[val.key].click" href></a>
+                            	<span ng-bind="li" ng-show="!info[val.key].click"></span>
+                        	</li>
+						</ul>	
+						<div style="float: left" ng-repeat="button in info[val.key].button.slice(0,info[val.key].button.length>3?2:3)">
+						<a href ng-bind="button.name" style="margin-right: 10px;" ng-click="tableAction({'item':info, 'info':button})" ng-show="!button.unclick"></a>
+						<span ng-bind="button.name" ng-show="button.unclick" style="margin-right: 10px;"></span>
+						</div>
+						<!-- 操作超过3个显示更多 -->
+						<div style="float: left">
+						<a href ng-show="info[val.key].button.length>3" id="tableMoreTd">
+		                    <span style="position: relative;" ng-click="clickTableMore(info[val.key].id)">更多</span>             
+		                    <ul style="position: absolute;" class="showTableMore" ng-if="info[val.key].id==showTableMore">
+		                      <li style="list-style-type:none;padding: 2px;" ng-repeat="lival in info[val.key].button.slice(2)"><a href ng-bind="lival.name" ng-click="tableAction({'item':info, 'info':lival})" class="/{/lival.class/}/"></a></li>
+		                    </ul>
+		                </a>
+		                </div>
+		                <div style="clear: both;"></div>
+
+					</div>
+				</td>
+			</tr>
+			<tr ng-show="info.secondTable.switchWhen">
+				<td colspan="{{tableData.showCheckBox?(tableData.theadData.length+2):(tableData.theadData.length+1)}}" >
+					<div style="word-break: break-all;border: 1px solid #ceced6;    margin-left: 50px;">
+						<table class="table table-striped screenTbody" >
+							<tr>
+								<th ng-repeat="thVal in info.secondTable.theadData track by $index" ng-bind="thVal.name" style="width: /{/thVal.width/}/;max-width:/{/thVal.maxWidth/}/ "></th>
+							</tr>
+							<tr ng-repeat="tdVal in info.secondTable.tbodyData track by $index">
+								<td ng-repeat="val in info.secondTable.theadData track by $index" >
+								<div>
+									<span ng-bind="tdVal[val.key].name" style="color: /{/tdVal[val.key].color/}/;/{/tdVal[val.key].style/}/"></span>
+									
+									<div style="float: left" ng-repeat="button in tdVal[val.key].button.slice(0,tdVal[val.key].button.length>3?2:3)">
+									<a  href ng-bind="button.name" style="margin-right: 10px;" ng-click="tableAction({'item':tdVal, 'info':button})"></a>
+									</div>
+								</div>
+								</td>
+							</tr>
+						</table>
+					</div>
+				</td>
+			</tr>
+	    </tbody>
+	    <!-- 没有数据时显示表格没有数据 -->
+	    <tbody ng-show="!showTableTbody">
+			<tr><td colspan="{{tableData.showCheckBox?(tableData.theadData.length+1):tableData.theadData.length}}" style="text-align: center;" ng-bind="tableData.showTdTip"></td></tr>
+			<!-- font-size: 20px;color: blue; -->
+	    </tbody>
+	</table>
+	<h5 ng-bind="tableData.tableExplain" ng-show="tableData.tableExplain" style="margin-top: 10px;margin-bottom: 10px;"></h5>
+	<!-- 分页 -->
+    <div style="float: right;margin-top: -10px" ng-show="tableData.showPage">
+        <div class="pull-left" style="margin-right: 20px;margin-top: 5px;">总条数:
+          <span ng-bind="totalItems"></span>
+          <span>条</span>
+        </div>
+        <div class="pull-left" style="margin-top: 5px;">
+            每页&nbsp;
+          <select ng-model="itemsPerPage" ng-change="changePagesize()" ng-options="option for option in [2,10,20, 40, 100, 200]"></select>
+            &nbsp;条
+        </div>
+        <div style="font-size: 12px;float: left">
+            <uib-pagination items-per-page="itemsPerPage" total-items="totalItems" ng-model="currentPage" max-size="maxSize" first-text="首页" previous-text="上一页" next-text="下一页" last-text="最后页" boundary-links="true" boundary-link-numbers="true" ng-change="changePage()" style="margin-top: 0px;"></uib-pagination>
+        </div>
+        <div style="clear: both;"></div>
+    </div>
+    <div style="clear: both;"></div>	
+</div>

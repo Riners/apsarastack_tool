@@ -1,0 +1,14 @@
+<div style="position: relative;width: 560px;height: 27px;">
+  <div style="position: absolute;width: 560px;">
+    <select style="width: 500px;height: 26px;margin-left: 50px;" ng-model="selectindex" ng-change="clickTime(selectindex)">     
+      <option ng-repeat="val in selectTimeData.selectData track by $index" value="/{/val.value/}/" ng-bind="val.name"></option>
+    </select>  
+  </div> 
+  <div style="position: absolute;width: 525px;height: 23px">
+    <span style="padding: 0 4px 0 10px">时段:</span>
+    <input id="clientStartTime" type="datetime-local" ng-model="startTime" style="width: 230px;">
+    <span>-</span>
+    <input id="clientStartTime" type="datetime-local" ng-model="endTime" style="width: 230px;">
+  </div>  
+  <div style="clear: both;"></div>  
+</div>

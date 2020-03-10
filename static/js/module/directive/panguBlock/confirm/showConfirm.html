@@ -1,0 +1,29 @@
+<div id="operWinIdBlock2" style="position:relative;">
+<oper-loading ng-show="showLoading" loading-data="loadingData"></oper-loading>
+
+<div class="modal-header">
+  <div ng-show="!data.dangerImg">
+    <h3 ng-bind="data.name"></h3>
+  </div>
+  
+</div>
+<div class="modal-body" style="word-wrap: break-word;">
+  
+  <div style="word-wrap: break-word;">
+    <span ng-bind="val.name" style="color: /{/val.color/}/;" ng-repeat="val in data.arr track by $index"></span>
+  </div>
+  <div ng-show="data.key=='show_type'">
+    <a href="/{/data.url/}/" target="_blank" ng-bind="data.desc"></a>
+  </div>
+  <!-- tip -->
+  <div ng-show="data.tip">
+    <h4 ng-bind="data.tip"></h4>
+  </div>
+</div>  
+<div class="modal-footer">
+  <div style="text-align: center;">
+    <button class="panguButton" ng-click="clickTrue()">确定</button>
+    <button class="panguButton" ng-click="cancelDesc()">关闭</button>
+  </div>
+</div>
+</div>

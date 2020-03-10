@@ -1,0 +1,91 @@
+<div class="upgrade_cfg modal-header">
+     <p>创建新的配置升级</p>
+</div>
+<div class="upgrade_cfg modal-body">
+	<!--<div class="tbody-sub-title">升级基础信息</div>-->
+	<div>
+		<p class="upgrade-name">
+	     	<span class="label-title"> 升级名称:</span>
+	     	<input type="text" ng-model="tag" placeholder="请输入升级名称"/>
+	    </p>
+	    <p style="min-height: 35px;" class="upgrade-group">
+	     	<span class="label-title" style="float: left;position: relative;top: 5px;"> 升级应用线:</span>
+	     	<select class="form-control" ng-model="group" placeholder="请选择" style="float: left;">
+			    <option ng-repeat="val in upgradeGruopList track by $index" value="/{/val/}/" ng-bind="val"></option>
+			</select>
+	    </p>
+	    <div style="clear: both;"></div>
+	    <div>
+	     	<p class="label-title"> 配置升级描述:</p>
+	     	<textarea placeholder="请输入配置升级描述" ng-model="$parent.remark"></textarea>
+	    </div>
+	</div>
+     
+     <div class="tbody-sub-title time-arrange-title">排期时间安排(日期时间格式示例:2017-12-12)</div>
+     <div class="time-arrange-content">
+     	<ul>
+     		<li>
+     			<span class="label-title"> 灰度1:</span>
+	     	    <input type="date" ng-model="dstep_gray_scale_1" placeholder=""/>
+     		</li>
+     		<li class="layout-middle">
+     			<span class="label-title"> 灰度2:</span>
+	     	    <input type="date" ng-model="dstep_gray_scale_2" placeholder=""/>
+     		</li>
+     		<li>
+     			<span class="label-title"> 灰度3:</span>
+	     	    <input type="date" ng-model="dstep_gray_scale_3" placeholder=""/>
+     		</li>
+     		<li class="layout-middle">
+     			<span class="label-title"> 灰度4:</span>
+	     	    <input type="date" ng-model="dstep_gray_scale_4" placeholder=""/>
+     		</li>
+     		<li>
+     			<span class="label-title"> 升级1:</span>
+	     	    <input type="date" ng-model="dstep_upgrade_1" placeholder=""/>
+     		</li>
+     		<li class="layout-middle">
+     			<span class="label-title"> 升级2:</span>
+	     	    <input type="date" ng-model="dstep_upgrade_2" placeholder=""/>
+     		</li>
+     		<li>
+     			<span class="label-title"> 升级3:</span>
+	     	    <input type="date" ng-model="dstep_upgrade_3" placeholder=""/>
+     		</li>
+     		<li class="layout-middle">
+     			<span class="label-title"> 升级4:</span>
+	     	    <input type="date" ng-model="dstep_upgrade_4" placeholder=""/>
+     		</li>
+     		<li>
+     			<span class="label-title"> 升级5:</span>
+	     	    <input type="date" ng-model="dstep_upgrade_5" placeholder=""/>
+     		</li>
+     		<li class="layout-middle">
+     			<span class="label-title"> 升级6:</span>
+	     	    <input type="date" ng-model="dstep_upgrade_6" placeholder=""/>
+     		</li>
+     		<li>
+     			<span class="label-title"> 升级7:</span>
+	     	    <input type="date" ng-model="dstep_upgrade_7" placeholder=""/>
+     		</li>
+     		<li class="layout-middle">
+     			<span class="label-title"> 升级8:</span>
+	     	    <input type="date" ng-model="dstep_upgrade_8" placeholder=""/>
+     		</li>
+     		<li>
+     			<span class="label-title"> 升级9:</span>
+	     	    <input type="date" ng-model="dstep_upgrade_9" placeholder=""/>
+     		</li>
+     		<li class="layout-middle upgrade-ten">
+     			<span class="label-title"> 升级10:</span>
+	     	    <input type="date" ng-model="dstep_upgrade_10" placeholder=""/>
+     		</li>
+     		<div style="clear: both;"></div>
+     	</ul>
+     </div>
+</div>
+<div style="clear: both;"></div>
+<div class="upgrade_cfg modal-footer">
+    <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
+    <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+</div>

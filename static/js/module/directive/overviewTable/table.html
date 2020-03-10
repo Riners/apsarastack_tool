@@ -1,0 +1,31 @@
+<div class="baseInfo-content">
+<table class="baseInfoTable" ng-hide="isShowBaseInfoTable">
+	<thead>
+		<tr>
+			<th colspan="2" ng-repeat="val in tableArr.thData track by $index" ng-bind="val"></th>
+		</tr>
+	</thead>
+	<tbody>
+        <tr ng-repeat="val in tableArr.tdData track by $index">
+            <!-- <td ng-repeat="info in val track by $index" ng-bind="info.name" class="/{/info.color/}/">
+            </td> -->
+            <td ng-repeat="info in val track by $index" class="/{/info.color/}/">
+            	<a href="/{/info.url/}/" ng-bind="info.name" ng-if="info.url" class="/{/info.color/}/">
+            	</a>
+                  <div ng-if="!info.joinName">
+                        <span ng-bind="info.name" ng-if="!info.url"></span>
+                  </div>
+            	<!-- <span ng-bind="info.name" ng-if="!info.url"></span> -->
+                  <div ng-if="info.joinName">
+                        <span ng-bind="val.name" class="/{/val.color/}/" ng-repeat="val in info.joinName track by $index"></span>
+                  </div>
+            </td>
+
+            <!-- <td ng-repeat="(key,valNum) in val track by $index">
+            	<a href="/{/valNum.url/}/" ng-bind="valNum.name" ng-if="valNum.url"></a>
+            	<span ng-bind="valNum.name" ng-if="!valNum.url"></span>
+            </td>
+ -->        </tr>
+	</tbody>
+</table>
+</div>

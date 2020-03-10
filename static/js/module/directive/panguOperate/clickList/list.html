@@ -1,0 +1,11 @@
+<div>
+<div class="clickTimeFocus clickTimeFocusMargin" style="height: 20px;float: left;">
+	<a href="" ng-repeat="val in listData track by $index"  > 
+		<!-- <span ng-bind="val.name" ng-click="dirClickFunc({'name':val.name})"></span> -->
+		<span ng-bind="val.name" ng-click="clickList(val.key)" style="color: /{/val.color/}/"></span>
+		<span> | </span> 
+	</a>
+	
+</div>
+<div style="clear: both;"></div>
+</div>

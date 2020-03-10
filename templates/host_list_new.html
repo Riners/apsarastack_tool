@@ -1,0 +1,62 @@
+{% extends 'cluster_base.html' %}
+
+{% block body_content %}
+
+
+       <div id="container" style="height: 400px; width: 400px">
+
+       </div>
+      <script type="text/javascript" src="/static/echarts/echarts.min.js"></script>
+       <script type="text/javascript" src="/static/echarts/echarts-gl.min.js"></script>
+       <script type="text/javascript" src="/static/echarts/ecStat.min.js"></script>
+       <script type="text/javascript" src="/static/echarts/dataTool.min.js"></script>
+       <script type="text/javascript" src="/static/echarts/china.js"></script>
+       <script type="text/javascript" src="/static/echarts/world.js"></script>
+       <script type="text/javascript" src="/static/echarts/bmap.min.js"></script>
+
+
+       <script type="text/javascript">
+var dom = document.getElementById("container");
+var myChart = echarts.init(dom);
+var app = {};
+option = null;
+option = {
+    title: {
+        text: 'ECS计算资源',
+        {#subtext: '',#}
+        left: 'center'
+    },
+    tooltip: {
+        trigger: 'item',
+        formatter: '{a} <br/>{b} : {c} ({d}%)'
+    },
+    legend: {
+        orient: 'vertical',
+        left: 'right',
+        data: [ 'used_cpu', 'aviliable_cpu']
+    },
+    series: [
+        {
+            name: 'ECS计算资源库存',
+            type: 'pie',
+            radius: '40%',
+            center: ['60%', '50%'],
+            data: [
+                {#{value: 120000, name: 'nc_cpu'},#}
+                {value: 40000, name: 'used_cpu'},
+                {value: 80000, name: 'aviliable_cpu'},
+            ],
+            emphasis: {
+                itemStyle: {
+                    shadowBlur: 10,
+                    shadowOffsetX: 0,
+                    shadowColor: 'rgba(0, 0, 0, 0.5)'
+                }
+            }
+        }
+    ]
+};
+if (option && typeof option === "object") {
+    myChart.setOption(option, true);
+};
+{% endblock %}

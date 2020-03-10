@@ -1,0 +1,22 @@
+<div>
+  	<div style="position: relative;">
+     	<div style="border:1px solid #CCCCCC;width:307px;min-height:35px;margin-left:;padding-top:5px;padding-right:25px;" class="mul-select-input">
+     		<span ng-repeat="item in selectedList track by $index" style="padding:0 2px;float:left;">
+				<span ng-bind="item" style="float: left;margin-left:5px"></span>
+				<span style="cursor:pointer;float:left;display:block;width:15px;height:15px;line-height:15px;font-size:12px;text-align:center;border-radius:100%;border:1px solid #CCCCCC" ng-click="deletSelect({'selected':item})">x</span>
+				<div style="clear:both;"></div>
+			</span>
+		    <div style="clear:both;"></div>
+     	</div>
+     	<!--<select class="form-control" ng-model="group" placeholder="请选择应用线" style="position:absolute;left:282px;top:0;width:26px;height：34px" ng-change="selectChange({'data':group})">
+		    <option ng-repeat="val in optionList track by $index" value="/{/val/}/" ng-bind="val"></option>
+		</select>-->
+		<div style="width:20px;height: 20px;line-height: 20px;border:1px solid #005CC5;
+			border-radius:100%;text-align: center;position:absolute;left:282px;top:8px;cursor: pointer;"
+			ng-click="openModal({'selectKey':selectKey})"
+			class="mul-select-icon"
+		>
+			<span class="glyphicon glyphicon-plus"></span>
+		</div>
+	</div>
+</div>

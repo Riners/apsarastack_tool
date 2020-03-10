@@ -1,0 +1,136 @@
+<style type="text/css">
+
+</style>
+<div class="modal-header">
+  <h3 ng-bind="data.name"></h3>
+</div>
+<div class="modal-body">
+  <div style="">
+  	<!-- 获取flag -->
+    <div ng-show="data.key=='get_ms_flag'||data.key=='get_all_flag'" style="text-align: center;">
+      <div>
+        <label>请输入flag:</label>
+        <input type="text" ng-model="inputData.flag" style="width: 380px;">
+        <button class="btn btn-primary" ng-click="getFlag()">点击查询</button>
+		  </div>
+			<div style="margin-top:20px;">
+				<table class="table table-striped" style="width: 100%;">
+					<thead>
+    				<tr>
+    					<th style="text-align: center;">Status</th>
+    					<th style="text-align: center;">Value</th>
+    					<th style="text-align: center;">Server</th>
+    				</tr>
+          </thead>
+          <tbody>
+						<tr ng-repeat="val in getDlagData track by $index" >
+							<td ng-bind="val.Status"></td>
+							<td ng-bind="val.Value"></td>
+							<td ng-bind="val.Server"></td>
+						</tr>
+          </tbody>
+				</table>
+			</div>
+    </div>
+    <!-- 设置所有flag -->
+    <div ng-show="data.key=='set_all_flag'||data.key=='set_ms_flag'" style="text-align: center;">
+      <div>
+        <label style="width: 110px;">请输入flag:</label>
+        <input type="text" ng-model="inputData.flag" style="width: 420px;">
+        <br>
+        <label style="width: 107px;">请输入value:</label>
+        <input type="text" ng-model="inputData.value" style="width: 420px;">
+        <!-- <button class="btn btn-primary" ng-click="getFlag('get_all_flag')">点击查询</button> -->
+      </div>
+    </div>
+    <div ng-show="data.key=='checkpoint'" style="text-align: center;">
+      <span style="text-align: center;">是否通知master做checkpoint</span>
+    </div>
+    <!-- buildinfo -->
+    <div ng-show="data.key=='buildinfo'" style="text-align: center;">
+      <div style="margin-top:20px;">
+        <h3>buildinfo基础信息</h3>
+        <table class="table table-striped" style="width: 100%;">
+          <thead>
+            <tr>
+              <th style="text-align: center;">ReleaseName</th>
+              <th style="text-align: center;">Target</th>
+              <th style="text-align: center;">TiantengId</th>
+              <th style="text-align: center;">HostName</th>
+              <th style="text-align: center;">Mode</th>
+              <th style="text-align: center;">Time</th>
+              <th style="text-align: center;">Path</th>
+              <th style="text-align: center;">Env</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td ng-bind="buildinfoData.ReleaseName"></td>
+              <td ng-bind="buildinfoData.Target"></td>
+              <td ng-bind="buildinfoData.TiantengId"></td>
+              <td ng-bind="buildinfoData.HostName"></td>
+              <td ng-bind="buildinfoData.Mode"></td>
+              <td ng-bind="buildinfoData.Time"></td>
+              <td>
+                <div style="word-wrap: break-word;max-width: 200px;">
+                  <span ng-bind="buildinfoData.Path"></span>
+                </div>
+              </td>
+              <td ><!-- ng-bind="buildinfoData.Env" -->
+                <div>
+                  <label>tianteng_id:</label>
+                  <span ng-bind="buildinfoData.Env.tianteng_id"></span>
+                </div>
+                <div style="word-wrap: break-word;min-width: 150px;">
+                  <label>kernel:</label>
+                  <span ng-bind="buildinfoData.Env.kernel"></span>
+                </div>
+                <div style="word-wrap: break-word;min-width: 150px;">
+                  <label>gcc:</label>
+                  <span ng-bind="buildinfoData.Env.gcc"></span>
+                </div> 
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <hr>
+      <div style="margin-top:20px;">
+        <h3>编译环境信息</h3>
+        <table class="table table-striped" style="width: 100%;">
+          <thead>
+            <tr>
+              <th style="text-align: center;">Name</th>
+              <th style="text-align: center;">Branch</th>
+              <th style="text-align: center;">Revision</th>
+              <th style="text-align: center;">URL</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="val in buildinfoData.BuildInfoData track by $index" >
+              <td ng-bind="val.Name"></td>
+              <td ng-bind="val.Branch"></td>
+              <td ng-bind="val.Revision"></td>
+              <td ng-bind="val.URL"></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <!-- 切换master -->
+    <div ng-show="data.key=='switch_ms'" style="text-align: center;">
+      <label>是否将:</label>
+      <span ng-bind="showIp.new_primary"></span>
+      
+      <h3 style="text-align: center;">切换为primary master</h3>
+    </div>
+    <!-- 将master oplog flush到磁盘 -->
+    <div ng-show="data.key=='flush_oplog'" style="text-align: center;">
+      <span style="text-align: center;">是否将master oplog flush到磁盘</span>
+    </div>
+  </div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" ng-click="okDesc()">确定</button>
+    <button class="btn btn-primary" ng-click="cancelDesc()">取消</button>
+</div>

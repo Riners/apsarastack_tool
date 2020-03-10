@@ -1,0 +1,20 @@
+<div>
+    <table class="new-pangu-table">
+        <thead>
+	        <tr>
+	        	<td ng-repeat="info in columns track by $index" ng-bind="info.title" style="width:/{/info.width/}/;"></td>
+	        </tr>
+        </thead>
+        <tbody>
+        	<tr ng-repeat="item in panguTableData track by $index">
+        		<td ng-repeat="(key, val) in item track by $index"  ng-if="key != 'action'">
+        			<a href="/{/val.url/}/"  ng-bind="val.text" ng-if="val.url" style="text-decoration: underline;"></a>
+                	<span ng-bind="val.text" ng-if="!val.url"></span>
+        		</td>
+        		<td ng-repeat="(key, val) in item track by $index"  ng-if="key == 'action'">
+        			<button ng-repeat="info in val.text" ng-bind="info" class="pangu-table-action-button" ng-click="tableAction({'item':item, 'info':info})"></button>
+        		</td>
+        	</tr>
+        </tbody>
+    </table>
+</div>

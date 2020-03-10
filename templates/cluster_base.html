@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+        <title>ApsaraStack Tool</title>
+<link rel="icon" type="image/png" sizes="144x144" href="/static/img/favicon.ico"/>
+<link rel="apple-touch-icon" type="image/png" sizes="144x144" href="/static/img/favicon.ico"/>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+  <link rel="stylesheet" href="/static/css/bootstrap.css">
+  <link rel="stylesheet" href="/static/css/menu.css">
+  <link rel='stylesheet' href="/static/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="/static/css/group.css">
+  <link rel="stylesheet" href="/static/css/docs.css" />
+  <link rel="stylesheet" href="/static/css/zhaoping.css" />
+  <link rel='stylesheet' href='/static/css/headerMenu.css' />
+  <link rel="stylesheet" href="/static/js/angular-ui-select/dist/select.css" />
+  <link rel="stylesheet" href="/static/css/markdown.css" />
+  <link rel="stylesheet" href="/static/css/group_dashboard_clusters.css" />
+  <link rel='stylesheet' href='/static/css/new_index.css'/>
+  <link rel='stylesheet' href='/static/css/new_pangu_ver.css'/>
+  <link rel='stylesheet' href='/static/css/new_upgrade_cfg.css'/>
+  <link rel='stylesheet' href='/static/css/new_upgrade.css'/>
+  <link rel='stylesheet' href='/static/css/access_management.css'/>
+  <link rel="stylesheet" href="/static/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/static/css/AdminLTE.min.css">
+  <link rel="stylesheet" href="/static/css/_all-skins.min.css">
+
+  <script src="/static/js/jquery-3.1.0.min.js"></script>
+  <script src="/static/js/jquery-ui.min.js"></script>
+  <script src="/static/js/adminlte.min.js"></script>
+  <script src="/static/js/angular.min.js"></script>
+  <script src="/static/js/angular/angular-sanitize.js"></script>
+  <script src="/static/js/common/angular-file-upload.min.js"></script>
+  <script src='/static/js/common/markdown.js'></script>
+  <script src='/static/js/common/marked.js'></script>
+  <script src='/static/js/ansi_up.js'></script>
+  <script src="/static/js/Highcharts-4.2.5/highcharts.js"></script>
+  <script src="/static/js/Highcharts-4.2.5/highcharts-more.js"></script>
+  <script src="/static/js/Highcharts-4.2.5/modules/heatmap.js"></script>
+  <script src="/static/js/Highcharts-4.2.5/modules/treemap.js"></script>
+  <script src="/static/js/Highcharts-4.2.5/modules/exporting.js"></script>
+  <script src="/static/js/common/angularui/js/ui-bootstrap-tpls-1.3.2.js"></script>
+  <script src='/static/js/bootstrap.min.js'></script>
+  <script src="/static/js/d3.min.js"></script>
+  <script src="/static/js/eventDrops.js"></script>
+  <script src="/static/js/pangu.js"></script>
+  <!-- <script src="https://cdn.bootcss.com/showdown/1.3.0/showdown.min.js"></script> -->
+  <script src="/static/js/angular-animate.min.js"></script>
+
+ <script src="/static/js/ngClipboard.js"></script>
+ <script src="/static/js/module/app.js"></script>
+ <script src="/static/js/module/clusterBase.js"></script>
+ <script src="/static/js/module/config/panguConfig.js"></script>
+ <script src="/static/js/module/directive/loading/loading.js"></script>
+ <script src="/static/js/module/panguChart/panguTreemap.js"></script>
+ <script src="/static/js/module/directive/overviewTable/table.js"></script>
+ <script src="/static/js/module/directive/chartPromptIcon/icon.js"></script>
+ <script src="/static/js/module/factory/pangu_factory.js"></script>
+ <script src="/static/js/module/service/pangu_service.js"></script>
+ <script src="/static/js/module/service/pangu_cluster_service.js"></script>
+ <script src="/static/js/module/directive/panguCollapse/panguCollapse.js"></script>
+ <script src="/static/js/module/directive/selectTime/selectTime.js"></script>
+ <script src="/static/js/module/panguHighchart.js"></script>
+ <script src="/static/js/module/directive/panguTab/panguTab.js"></script>
+ <script src="/static/js/module/directive/panguTitle/title.js"></script>
+ <script src="/static/js/module/directive/switchTabTable/tabTable.js"></script>
+ <script src="/static/js/module/directive/panguTable/panguTable.js"></script>
+ <script src="/static/js/module/directive/tableSurvey/table.js"></script>
+ <script src="/static/js/module/directive/steps/steps.js"></script>
+ <script src="/static/js/module/directive/steps/stepsDetails.js"></script>
+ <script src="/static/js/module/directive/formSelect/formSelect.js"></script>
+ <script src="/static/js/module/directive/multiselect/multiselect.js"></script>
+ <script src="/static/js/module/clickUibModal/showBigChart.js"></script>
+ <script src="/static/js/module/directive/chartLineConfig/chartConfig.js"></script>
+ <script src="/static/js/module/directive/chartLineConfig/shennongChart/chartConfig.js"></script>
+ <script src="/static/js/module/directive/chartLineConfig/volume/volume.js"></script>
+ <script src="/static/js/module/directive/panguOperate/listTab/tabTable.js"></script>
+ <script src="/static/js/module/directive/panguOperate/screenVolume/screenVolume.js"></script>
+ <script src="/static/js/module/directive/panguOperate/screenTable/table.js"></script>
+ <!-- <script src="/static/js/module/directive/panguOperate/screenTable/kbnTableRow.js"></script> -->
+ <script src="/static/js/module/directive/panguOperate/clickUibModal/showOperation.js"></script>
+ <script src="/static/js/module/directive/panguOperate/secUibModal/operation.js"></script>
+ <script src="/static/js/module/directive/panguOperate/operLoading/loading.js"></script>
+ <script src="/static/js/module/directive/loadingInterface/loading.js"></script>
+ <script src="/static/js/module/directive/panguOperate/numControl/numControl.js"></script>
+ <script src="/static/js/module/directive/panguOperate/clickList/list.js"></script>
+ <script src="/static/js/module/directive/panguOperate/refresh/ref.js"></script>
+ <script src="/static/js/module/directive/panguBlock/showLog/log.js"></script>
+
+</head>
+
+<body class="hold-transition skin-blue sidebar-mini" style="height: 100%;position:relative;">
+
+	<div class="header" id="new_base_header_id">
+		<div class="panguPortal-index" style="float: left;">
+	  		<p class="logo"><a href="/host_list/">Apstack Tool</a></p>
+	  		<!-- <p class="glyphicon glyphicon-option-vertical icon"></p> -->
+	    </div>
+	    <div  style="float:right;margin-right:100px;font-size: 22px;line-height: 50px;color: white;" id="cluster_base_clustername_id">	
+			<!-- <span>集群名:</span> -->
+
+		</div>
+		<div  style="float:right;margin-right:100px;font-size: 22px;line-height: 50px;color: white;" id="cluster_ver_id">	
+			<!-- <span>集群名:</span> -->
+
+		</div>
+	    <div class="dropdown-menu-content" style="margin-left: 179px;position: relative;">
+	    	<nav class="navbar navbar-default navabr-content" role="navigation" style="float: left;position: absolute;background: #3e4048;border-color: #3e4048;">
+				<div class="container-fluid" style="padding-left: 0;">
+					<div>
+					  <ul class="nav navbar-nav header-menu-left-content">
+						</ul>
+					</div>
+				</div>
+			</nav>
+
+			<div style="clear: both;"></div>
+		</div>
+	</div>
+
+    <!--</div>-->
+
+    <script type="text/javascript" language="javascript">
+    $(function () {
+        strActivePage = "{{ active_page }}";
+        //alert(strActivePage);
+        if ("" != strActivePage)
+        {
+            $('#{{active_page}}').addClass("active");
+        }
+    });
+    </script>
+
+
+
+
+
+<div style="position: relative;">
+
+	<div style="width: 203px;background-color: #222d32;position: absolute;" class="menuLeftCss" id="leftMenuId"><!-- height: -webkit-fill-available; -->
+		<ul id="menuLeftId" class="sidebar-menu" data-widget="tree"><!-- onclick="clickmenuLeftId()" -->
+			<li id="menuLeftId0" class="treeview">
+				<a href>
+		            <span style="margin-left: 20px;">机器信息</span>
+		            <span class="pull-right-container">
+		              <i class="fa fa-angle-left pull-right"></i>
+		            </span>
+		         </a>
+		         <ul class="treeview-menu">
+		            <li id="menuLeftId01"><a href="/host_info/" style="margin-left: 30px;">机器分布情况</a></li>
+		            
+		            <li id="menuLeftId02"><a href="/host_list/" style="margin-left: 30px;">机器列表</a></li>
+		            <!-- <li id="menuLeftId03" ><a href="/monitor_latest" style="margin-left: 30px;">监控状态</a></li> -->
+		         </ul>
+			</li>
+			<li id="menuLeftIdCluOpr" class="treeview">
+	          <a href>
+	            <span style="margin-left: 20px;">资源库存</span>
+	            <span class="pull-right-container">
+	              <i class="fa fa-angle-left pull-right"></i>
+	            </span>
+	          </a>
+	          <ul class="treeview-menu">
+	            <li id="menuLeftIdCluOpr1"><a href="/resource_water/" style="margin-left: 30px;">库存总览</a></li>
+	            <li id="menuLeftIdCluOpr2"><a href="/cluster_opr_cs" style="margin-left: 30px;">库存曲线</a></li>
+	            <!-- Chunkserver黑名单 -->
+	            <li id="menuLeftIdCluOpr3"><a href="/cs_blacklist" style="margin-left: 30px;">Chunkserver黑名单</a></li>
+	          </ul>
+	        </li>
+	        <li id="menuLeftId11" class="treeview">
+	          <a href>
+	            <span style="margin-left: 20px;">磁盘水位</span>
+	            <span class="pull-right-container">
+	              <i class="fa fa-angle-left pull-right"></i>
+	            </span>
+	          </a>
+	          <ul class="treeview-menu">
+	            <li id="menuLeftId110"><a href="/cluster_data_lessmin_abn_chunk" style="margin-left: 30px;">数据安全</a></li>
+	            <li id="menuLeftId111"><a href="/cluster_data_rebalance" style="margin-left: 30px;">rebalance</a></li>
+	            <li id="menuLeftId113"><a href="/cluster_data_file" style="margin-left: 30px;">文件运维</a></li>
+	            <li id="menuLeftId112"><a href="/cluster_data_recycle" style="margin-left: 30px;">回收站</a></li>
+
+	            <li id="menuLeftId115"><a href="/replication" style="margin-left: 30px;">replication流控</a></li>
+	            <li id="menuLeftId116"><a href="/pangu_gc" style="margin-left: 30px;">盘古GC</a></li>
+	          </ul>
+	        </li>
+			<li id="menuLeftId3"><a href="/resource_water"><span style="margin-left: 20px;">集群水位</span></a></li>
+			<li id="menuLeftId32"><a href="/host_list"><span style="margin-left: 20px;">机器信息</span></a></li>
+			<li id="menuLeftId4"><a href="/configuration"><span style="margin-left: 20px;">配置变更</span></a></li>
+	        <li id="menuLeftId5" class="treeview">
+	          <a href>
+	            <span style="margin-left: 20px;" style="margin-left: 20px;">健康管理</span>
+	            <span class="pull-right-container">
+	              <i class="fa fa-angle-left pull-right"></i>
+	            </span>
+	          </a>
+	          <ul class="treeview-menu">
+	            <li id="menuLeftId6"><a href="/env_check" style="margin-left: 30px;">环境检查</a></li>
+	            <li id="menuLeftId7"><a href="/availability" style="margin-left: 30px;">一键分析</a></li>
+	          </ul>
+	        </li>
+			<li id="menuLeftIdDisk" class="treeview">
+	          <a href>
+	            <span style="margin-left: 20px;" style="margin-left: 20px;">磁盘维修</span>
+	            <span class="pull-right-container">
+	              <i class="fa fa-angle-left pull-right"></i>
+	            </span>
+	          </a>
+	          <ul class="treeview-menu">
+	          	<li id="menuLeftIdDisk2"><a href="/disk_downline" style="margin-left: 30px;">普通磁盘主动下线</a></li>
+	            <li id="menuLeftIdDisk1"><a href="/disk_upline" style="margin-left: 30px;">普通磁盘更换</a></li>
+	            <li id="menuLeftIdDisk4"><a href="/disk_upline_undisk" style="margin-left: 30px;">普通磁盘更换（无法识盘场景）</a></li>
+	            <li id="menuLeftIdDisk3"><a href="/disk_history" style="margin-left: 30px;">磁盘操作历史</a></li>
+	          </ul>
+	        </li>
+	        
+	        <li id="menuLeftId31" ><a href="/monitor_history"><span style="margin-left: 20px;" >监控历史</span></a></li>
+
+	    </ul>
+	</div>
+	<div id="new_base_body_id" style="margin-left:209px;overflow-y: auto;" class="menuRightCss">
+	<!-- hiddleOverY -->
+		{% block body_content %}
+		
+		{%endblock%}
+	</div>
+
+	
+</div>
+<!-- <script src="/static/js/common/headerMenu.js"></script> -->
+<!--公告-->
+<div class="portal-gong-gao" ng-if=true>
+	<span><i class="iconfont icon-gonggao"></i></span>
+	<span class="gong-gao-msg"></span>
+	<span class="gong-gao-close"><i class="iconfont icon-msnui-close"></i></span>
+</div>
+<!--portal在线答疑系统-->
+<div class="vone" ng-if=true>
+	<div class="vone-content">
+		<div class="show-vone">
+			 <i class="iconfont icon-xiangzuozhankai"></i>
+		</div>
+		<div class="portal-chat">
+			<span class="hide-vone">-</span>
+			<div class="portal-chat-icon">
+				Vone
+			</div>
+			<div class="portal-chat-tip">
+				<div>
+					<p>欢迎使用Vone在线答疑系统，</p>
+					<p>当您遇到问题时，点击Vone即可向答疑小二提问</p>
+				</div>
+				<i class="triangle-chat-tip"></i>
+			</div>
+		</div>
+	</div>
+	<div class="chat-content mobile-page" style="display:none;height:0;width:0;">
+		<div class="chat-action-bar">
+			<div class="chat-action-more"><i class="iconfont icon-gengduo"></i></div>
+			<div class="admin-title">
+				<p style="font-size:16px;">抚民</p>
+				<p style="font-size:10px;color:#dde3e6;padding-top:3px;">现在<p>
+			</div>
+		</div>
+		<div class="chat-details-content">
+		    
+		</div>
+		<div class="chat-edit-content">
+			<textarea style="resize:none;" class="user-edit-msg" placeholder="请描述你的问题"></textarea>
+			<button class="send-button">发送</button>
+			<!--<i class="iconfont icon-shangchuanfujian"></i>
+			<i class="iconfont icon-jietu"></i>-->
+		</div>
+	</div>
+</div>
+
+{%block footer%}
+
+    <script src="/static/js/bootstrap-combobox.js"></script>
+{%endblock%}
+
+</body>
+</html>

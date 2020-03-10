@@ -1,0 +1,42 @@
+<style type="text/css">
+ 	table tbody tr td:last-child {
+     	display: none;
+	}
+	table thead tr th:last-child{
+     	display: none;
+ 	}
+</style>
+<div class="modal-header">
+  <h3 ng-bind="title" style="word-break: break-all;"></h3>
+</div>
+<div class="modal-body">
+<div style="width: 890px;height: 300px;">
+	<div style="float: left;width: 220px;height: 300px;">
+		<div>
+			<!-- <span class="input-group-addon">
+	            <a class="glyphicon glyphicon-search" ng-click="selectName()"></a>
+	        </span> -->
+	        <!-- <input type="text" ng-model="inputSelectName"  class="form-control" placeholder="请输入名称进行搜索"   ng-change="selectName()"> -->
+	        <span>搜索</span>
+			<input type="text" name="nihao"/>
+	        
+        </div>
+        <div>
+        	<span>状态</span>
+			<ul class="list-group">
+				<li class="list-group-item">
+					<div ></div>
+				无</li>
+				<li class="list-group-item">停止</li>
+			</ul>
+        </div>
+	</div>
+	<div style="float: left;width: 660px;height: 300px;">
+    	<table-survey table-data="all_cluster_status_tableData" func-table-action="terminalService({'rowData':item, 'action':info})" check-rows-data="checkedRows"></table-survey>
+    </div>
+</div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" ng-click="okDesc()">确定修改</button>
+    <button class="btn btn-primary" ng-click="cancelDesc()">取消修改</button>
+</div>

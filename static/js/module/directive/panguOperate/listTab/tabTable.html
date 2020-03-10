@@ -1,0 +1,16 @@
+<div>
+	<div style="float: left;background: #E2E3E5;height: 37px;line-height: 41px;width: 20px;text-align: center;"  ng-if="tabConfig.isShowTabBtn" ng-click="clickTabBtn('left')">
+    	<span class="glyphicon glyphicon-menu-left"></span>
+    </div>
+	<div style="float: left;">
+	  <ul class="nav nav-pills">
+	    <li ng-repeat="val in showTabListData track by $index" ng-class="{'tabTableClick':val.showClass,'tabTable':!val.showClass}"  style="font-size: 12px;margin-left:0px;" >
+	      <a href="" ng-bind="val.name" class="/{/val.color/}/" ng-click="tabClickFunc({'index':$index+cutLeftNum})" style="padding:7px;border-radius: 0px;font-size: 12px;"></a>
+	    </li>
+	  </ul>
+  	</div>
+  	<div class="" style="float:left;background: #E2E3E5;height: 37px;line-height: 41px;width: 20px;text-align: center;" ng-if="tabConfig.isShowTabBtn" ng-click="clickTabBtn('right')">
+    	<span class="glyphicon glyphicon-menu-right"></span>
+    </div>
+    <div style="clear:both;"></div>
+</div>

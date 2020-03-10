@@ -1,0 +1,13 @@
+.portal-version-info thead tr th{
+	text-align: center;
+    background-color: #f3f3f3;
+    border-width: 1px;
+    padding: 8px;
+    border-style: solid;
+    border-color: #ccc;
+}
+.portal-version-info tbody tr td{
+	border: 1px solid #CCCCCC;
+	height: 35px;
+	text-align: center;
+}

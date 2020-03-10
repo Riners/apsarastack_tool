@@ -1,0 +1,61 @@
+.zhaoping-header{
+	padding: 20px 50px;
+}
+.zhaoping-header p{
+	font-weight:bold;
+	font-size: 18px;
+	position: relative;
+    top: 8px;
+}
+
+.zhaoping-header .zhaoping-page ul li{
+	float: left;
+	list-style: none;
+}
+.zhaoping-header .zhaoping-page ul li.page{
+	position: relative;
+	top: 8px;
+}
+.zhaoping-header .zhaoping-page ul li.btn{
+	width: 40px;
+	height: 35px;
+	border: 1px solid #ccc !important;
+	text-align: center;
+	line-height: 25px;
+	font-size: 12px;
+}
+.zhaoping-header .zhaoping-page ul li.btn.action-right{
+	margin-left: 10px;
+}
+.zhaoping-header .zhaoping-page ul li.btn.action-left{
+	margin-left: 20px;
+}
+.zhaoping-table table{
+	width: 100%;
+	margin: 0 50px;
+}
+.zhaoping-table table thead th{
+	font-size: 14px;
+	background: #f5f5f5;
+}
+.zhaoping-table table thead tr{
+	height: 35px;
+	line-height: 35px;
+}
+.zhaoping-table table tbody tr{
+	height: 40px;
+	line-height: 40px;
+	border-bottom: 1px solid #e3e3e3;
+}
+.zhaoping-table table tbody tr .tbody-action{
+	line-height: 40px;
+}
+.zhaoping-table table tbody tr .tbody-action button{
+	height: 28px;
+	line-height: 28px;
+	position: relative;
+	top: 4px;
+}
+.zhaoping-table table tbody tr .tbody-action button.apply{
+	margin-left: 10px;
+}

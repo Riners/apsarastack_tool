@@ -1,0 +1,44 @@
+<style type="text/css">
+
+</style>
+<div class="modal-header">
+  <h3>请输入预计时间</h3>
+</div>
+<div class="modal-body">
+	<div style="margin-top: 20px;">
+      <!-- <a href="" ng-click="backTable()">返回列表</a> -->
+      <h3 style="margin-top: 20px;">基础信息</h3>
+      <form style="margin-top: 20px;margin-left:30px;">
+        <div>
+        联系组名称(<span style="color: red">*</span>): <input type="text" ng-model="fromInputData.contact_group" placeholder="请输入联系组名称"><br>
+        </div>
+        <div style="margin-top: 10px;">
+          <div style="margin-top: 10px;float: left;">
+            <span>联系组描述(<span style="color: red">*</span>): </span>
+          </div>
+          <div style="float: left;">
+            <textarea style="width: 400px;margin-left: 4px;" type="text" ng-model="fromInputData.contact_desc" placeholder="请输入联系组描述"></textarea>
+          </div> 
+          <div style="clear: both;"></div>
+        </div>
+        <div style="margin-top: 10px">
+        添加联系人(<span style="color: red">*</span>): <input type="text" ng-model="fromInputData.contact_name" placeholder="工号"><br> 
+        </div>
+        <div style="margin-top: 10px"> 
+          <span style="color: red;float: left;margin-right: 5px;">已添加联系人:</span> 
+          <div style="float: left;border:1px solid #a09f9f;margin-right: 10px;border-radius: 3px;" ng-repeat="info in fromInputData.contact_name_list track by $index" >
+            <span style="padding-left:10px;" ng-bind="info"></span>
+            <span class="glyphicon glyphicon-remove" ng-click="spliceNameList(info,$index)" style="padding-right: 5px;"></span>
+          </div>
+          <div style="clear: both;"></div>
+        </div>
+      </form>
+      <div>
+      <!-- <button class="btn btn-primary" style="margin-top: 20px;" ng-click="save_alert_contact_group()">确定修改</button> -->
+      </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" ng-click="okDesc()">确定修改</button>
+    <button class="btn btn-primary" ng-click="cancelDesc()">取消修改</button>
+</div>

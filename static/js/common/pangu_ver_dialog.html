@@ -1,0 +1,89 @@
+<div class="pangu_ver modal-header">
+     <p ng-bind="modal_title">BuildID(<span ng-bind="tableData.build_id.name"></span>) - 修改版本信息</p>
+</div>
+<div class="pangu_ver modal-body">
+     <p ng-show="isEdit">
+     	<span class="label-title"> BuildID:</span>
+     	<span ng-bind="build_id" class="buildId" ></span>
+     </p>
+     <p ng-show="!isEdit">
+     	<span class="label-title"> BuildID:</span>
+     	<input type="text" ng-model="build_id" placeholder="请输入BuildID" ng-change="changeBuildId()"/>
+     </p>
+     <p ><!-- ng-show="!isEdit" -->
+     	<span class="label-title"> 版本:</span>
+        <input type="" ng-model="version" />
+     	<!-- <span ng-bind="version" class="buildId"></span> -->
+     </p>
+     <!--<div class="ver-select">
+		<label style="float:left;padding-right:7px;position:relative;top:7px">版本:</label>
+		<div style="float:left;margin-bottom:12px;" class="create-page-search-select">
+			<search-select 
+				selectone="version"  
+				option-list="version_list" 
+				action="searchSelectAction" 
+				config="shennong_tmpl_conf"
+				pass="shennong_tmpl_pass"
+			>
+			</search-select>
+		</div>
+		<div style="clear:both;"></div>
+	</div>-->
+     <!--<p>
+     	<span class="label-title"> 发布应用线(使用','分割):</span>
+     	<input type="text" ng-model="group" placeholder="请输入发布应用线"/>
+     </p>-->
+     <p>
+     	<span class="label-title" style="float: left;position: relative;top: 5px;"> 发布应用线:</span>
+     	<div style="position: relative;">
+	     	<div style="border:1px solid #CCCCCC;width:250px;min-height:35px;margin-left:80px;padding-top:5px;padding-right:25px">
+	     		<span ng-repeat="item in selectedList track by $index" style="padding:0 2px;float:left;">
+					<span ng-bind="item" style="float: left;margin-left:5px"></span>
+					<span style="cursor:pointer;float:left;display:block;width:15px;height:15px;line-height:15px;font-size:12px;text-align:center;border-radius:100%;border:1px solid #CCCCCC" ng-click="deletSelect({'selected':item})">x</span>
+					<div style="clear:both;"></div>
+				</span>
+			    <div style="clear:both;"></div>
+	     	</div>
+	     	<select class="form-control" ng-model="group" placeholder="请选择应用线" style="position:absolute;left:305px;top:0;width:26px;" ng-change="selectChange({'data':group})">
+			    <option ng-repeat="val in groupList track by $index" value="/{/val/}/" ng-bind="val"></option>
+			</select>
+		</div>
+     </p>
+     <div style="clear:both;"></div>
+     <!--<p>
+     	<span class="label-title"> Build状态:</span>
+     	<input type="text" ng-model="step" placeholder="请输入Build状态"/>
+     </p>-->
+     <p style="min-height: 35px;">
+     	<span class="label-title" style="float: left;position: relative;top: 5px;"> Build状态:</span>
+     	<select class="form-control" ng-model="step" placeholder="请输入Build状态" style="float: left;">
+		    <option value="待上线">待上线</option>
+		    <option value="线上">线上</option>
+		    <option value="待下线">待下线</option>
+		    <option value="下线">下线</option>
+		    <option value="废弃">废弃</option>
+		</select>
+     </p>
+     <div style="clear: both;"></div>
+     <!--<div ng-show="isEdit">
+     	<p class="label-title"> 发布原因:</p>
+     	<textarea placeholder="请输入发布原因" ng-model="reason"></textarea>
+     </div>-->
+     <div>
+     	<textarea-field
+        	value="reason"
+            config="reason_conf"
+            action="reason_action"
+            pass="reason_pass"
+        >
+        </textarea-field>
+     </div>
+     <div>
+     	<p class="label-title"> Comments:</p>
+     	<textarea placeholder="请输入发布的Comments" ng-model="remark"></textarea>
+     </div>
+</div>
+<div class="pangu_ver modal-footer">
+    <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
+    <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+</div>

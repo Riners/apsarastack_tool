@@ -1,0 +1,25 @@
+<div class="upgrade_cfg modal-header upgrade batchDialog">
+     <p ng-bind="title">跳过</p>
+</div>
+<!--<div class="modal-body">
+	<div>
+		<div class="Multi-content">
+			<p ng-repeat="item in selectedList track by $index" style="float:left">
+				<span ng-bind="item"></span>
+				<span style="width:20px;height:20px;border-radius:100%;border:1px solid #CCCCCC" ng-click="deletSelect({'selected':item})">x</span>
+			</p>
+			<div style="clear:both;"></div>
+		</div>
+		<select class="form-control" ng-model="step"  ng-change="selectChange({'data':step})" placeholder="请输入Build状态" style="float: left;">
+		    <option value="待上线">待上线</option>
+		    <option value="线上">线上</option>
+		    <option value="待下线">待下线</option>
+		    <option value="下线">下线</option>
+		    <option value="废弃">废弃</option>
+		</select>
+	</div>
+</div>-->
+<div class="upgrade_cfg modal-footer batchDialog">
+    <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
+    <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+</div>

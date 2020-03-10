@@ -1,0 +1,62 @@
+<div>
+	<div class="pangu-steps-content" style="float: left;">
+		<div class="pangu-steps-item-content" ng-repeat="item in stepData track by $index">
+		    <div class="pangu-steps-item pangu-steps-finished" ng-if="item.status === 'finish'">
+				<div class="item-top">
+					<div class="step-line" style="width:/{/item.line_width/}/"></div>
+				    <div class="steps-icon" title="/{/item.title/}/">
+						<span class="glyphicon glyphicon-ok"></span>
+					</div>
+				    <!--<div class="step-line"></div>-->
+				    <div style="clear:both"></div>
+				</div>
+		        <div class="item-desc" ng-bind="item.title" style="width:/{/item.decs_width/}/">finished</div>
+			</div>
+			<div class="pangu-steps-item pangu-steps-process" ng-if="item.status === 'process' || item.status === 'error' || item.status === 'jump'">
+				<div class="item-top">
+					<div class="step-line" ng-if="item.status === 'process'" style="width:/{/item.line_width/}/"></div>
+					<div class="step-line-error" ng-if="item.status === 'error'" style="width:/{/item.line_width/}/"></div>
+					<div class="step-line-jump" ng-if="item.status === 'jump'" style="width:/{/item.line_width/}/"></div>
+					<div ng-class="{'steps-icon':item.status === 'process','steps-icon-error':item.status === 'error','steps-icon-jump':item.status === 'jump'}" title="/{/item.title/}/">
+						<span class="" ng-bind="$index+1" ng-if="item.status === 'process'">2</span>
+						<span class="" ng-if="item.status === 'error'">!</span>
+						<span class="" ng-if="item.status === 'jump'">s</span>
+						<a href="/{/item.maodDian/}/" class="miao-dian"></a>
+					</div>
+					<!--<div class="step-line" ng-if="item.status === 'process'"></div>
+					<div class="step-line-error" ng-if="item.status === 'error'"></div>-->
+					<div style="clear:both"></div>
+				</div>
+			    <div class="item-desc" ng-bind="item.title">in process</div>
+			</div>
+			<div class="pangu-steps-item pangu-steps-wait" ng-if="item.status === 'waiting'">
+				<div class="item-top">
+					<div class="step-line" style="width:/{/item.line_width/}/"></div>
+					<div class="steps-icon" title="/{/item.title/}/">
+						<span class="" ng-bind="$index+1"></span>
+					</div>
+					<!--<div class="step-line"></div>-->
+					<div style="clear:both"></div>
+				</div>
+		        <div class="item-desc" ng-bind="item.title">waiting</div>
+			</div>
+			<!--<div ng-class="{'pangu-steps-item pangu-steps-wait-last pangu-steps-done':item.status === 'done','pangu-steps-item pangu-steps-wait':item.status === 'last'}" ng-if="item.status === 'last' || item.status === 'done'">
+				<div class="item-top">
+					<div class="steps-icon">
+						<span class="" ng-bind="$index+1" ng-if="item.status === 'last'"></span>
+						<span class="glyphicon glyphicon-ok" ng-if="item.status === 'done'"></span>
+					</div>
+					<div style="clear:both"></div>
+				</div>
+		        <div class="item-desc" ng-bind="item.title">waiting</div>
+			</div>-->
+		</div>
+	    <div style="clear:both"></div>
+	</div>
+	<!--<div class="steps-action" style="float: left;">
+		<button class="jump" ng-click="jump()">跳过</button>
+		<button class="again" ng-click="again()">重试</button>
+		<button class="cancel" ng-click="cancel()">取消</button>
+	</div>-->
+	<div style="clear: both;"></div>
+</div>

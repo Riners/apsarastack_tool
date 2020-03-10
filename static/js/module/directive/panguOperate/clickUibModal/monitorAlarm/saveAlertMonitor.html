@@ -1,0 +1,25 @@
+<style type="text/css">
+
+</style>
+<div class="modal-header">
+  <h3>修改/添加通知</h3>
+</div>
+<div class="modal-body">
+	<div style="margin-top: 20px;">
+      <form style="margin-top: 20px;margin-left:30px;">
+        <div>
+        联系组(<span style="color: red">*</span>): <input type="text" ng-model="inputData.contactgroup" placeholder="请输入联系组" style="margin-left: 20px;"><br>
+        </div>
+        <div style="margin-top: 10px;">
+        触发场景(<span style="color: red">*</span>): <input type="text" ng-model="inputData.level" placeholder="请输入触发场景" style="margin-left: 6px;"><br>
+        </div>
+         
+      </form>
+      <div>
+      </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" ng-click="okDesc()">确定修改</button>
+    <button class="btn btn-primary" ng-click="cancelDesc()">取消修改</button>
+</div>

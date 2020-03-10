@@ -1,0 +1,20 @@
+<div class="modal-header">
+     <p ng-bind="diag_result_title"></p>
+</div>
+<div class="modal-body">
+	<label>时间段:</label>
+	<input type="date" ng-model="btime" placeholder="" />
+	--
+	<input type="date" ng-model="etime" placeholder="" />
+	<button style="background:#337ab7;border:0;color:#FFFFFF;" ng-click="commit('commit')">查询</button>
+    <table-survey 
+		table-data="diag_result_details" 
+		func-table-action="operate({'rowData':item, 'action':info, 'key':key})"
+	>
+	</table-survey>
+	<!--<p ng-repeat="item in abn_proc_details track by $index"></p>-->
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" type="button" ng-click="ok()">关闭</button>
+<!--    <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>-->
+</div>

@@ -1,0 +1,13 @@
+<div class="modal-header">
+  <h3 ng-bind="title" style="word-break: break-all;float: left"></h3>
+  <button class="btn btn-primary" ng-click="cancelDesc()" style="float: right;">关闭</button>
+</div>
+<div class="modal-body">
+    <!-- <input type="text" ng-model="copeClustersName" ng-copyable ng-click="copeFunc()"/> -->
+    <textarea type="text" ng-readonly="copeClustersName" ng-model="copeClustersName" ng-copyable ng-click="copeFunc()" style="width: -webkit-fill-available;height: 82px;" ></textarea>
+    <button ng-click="copeFunc()" class="btn btn-primary" style="margin-top: 10px;">复制</button>
+</div>
+<div class="modal-footer">
+    <!-- <button class="btn btn-primary" ng-click="okDesc()">确定修改</button> -->
+    
+</div>

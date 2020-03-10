@@ -1,0 +1,17 @@
+<div class="pangu-tab-content">
+	<div class="pangu-tab-header" style="position: relative;">
+	    <div class="btn-left" style="float: left;"  ng-show="isShowTabBtn"><span class="glyphicon glyphicon-menu-left"></span></div>
+	    <div class="chart-tab" style="float: left;">
+		    <ul class="tab-ul">
+		      <li ng-repeat='item in tabData track by $index' ng-class="{'defaultClass tab-item':$index !=chosedIndex,'chosenClass tab-item':$index ==chosedIndex}" ng-bind='item.name ? item.name : item' ng-click="tabClick({'index':$index, 'item':item})"  title="/{/item.name ? item.name : item/}/" style="position:relative;">
+		   
+		      </li>
+		    </ul>
+	    </div>
+	    <div class="btn-right" style="float:left;" ng-show="isShowTabBtn"><span class="glyphicon glyphicon-menu-right"></span></div>
+    </div>
+    <div style="clear: both;"></div>
+    <!--<div class="pangu-tab-body">
+    	
+    </div>-->
+</div>

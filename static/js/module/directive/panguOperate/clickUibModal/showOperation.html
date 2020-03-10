@@ -1,0 +1,339 @@
+<div id="operWinId" style="position:relative;">
+<oper-loading ng-show="showLoading" loading-data="loadingData"></oper-loading>
+<div class="modal-header">
+  <div ng-show="!data.dangerImg">
+    <h3 ng-bind="data.name"></h3>
+    
+  </div>
+  <!-- dangerImg:高位操作 -->
+  <div ng-show="data.dangerImg">
+    <img src='/static/img/danger.png' style="float: left;display: inline-block;"/> 
+    <h3 ng-bind="data.name" style="color: red;margin-left: 5px;"></h3>
+    <span ng-bind="buildinfoTitleId"></span>
+  </div>
+</div>
+<div class="modal-body" style="word-wrap: break-word;">
+  <!-- 公共展示部分,有这显示没有就不显示 -->
+  <div ng-show="data.Explain||data.ExplainArr||data.ExplainListArr">
+    <span ng-bind="data.Explain"></span>
+    <div>
+      <span ng-repeat="val in data.ExplainArr" style="color:/{/val.color/}/" ng-bind="val.name"></span>
+    </div>
+    <div ng-repeat="val in data.ExplainListArr" style="color:/{/val.color/}/" ng-bind="val.name">
+      
+    </div>
+    <br>
+  </div>
+  <div style="margin-bottom: 10px;">
+    <div ng-show="data.ip">
+      <label style="width: 20%;max-width: 113px;">当前Host/IP:</label>
+      <span  ng-bind="data.ip" style=""></span>
+    </div>
+    <div ng-show="data.diskid">
+      <label style="width: 20%;max-width: 113px;">当前DiskId:</label>
+      <span  ng-bind="data.diskid" style=""></span>
+    </div>
+    <div ng-show="showSourceAddress&&data.sourceAddress">
+      <label>源地址:</label>
+      <span  ng-bind="data.sourceAddress" style="width: 70%;"></span>
+    </div>
+    <div ng-show="data.fileList">
+      <label>文件列表:</label>
+      <div ng-repeat="val in data.fileList track by $index">
+        <span ng-bind="val"></span>
+      </div>
+      
+    </div>
+  </div>
+  <!-- 启动Rebalancechart图 -->
+<!--   <div ng-show="data.key=='start_bal'" style="margin-bottom: 20px;">
+    <chart-lineshennong lineconfig-data="statusConfigData1"></chart-lineshennong>
+  </div> -->
+  <!-- changesafe id -->
+  <!-- <div ng-show="data.changesafe" style="margin: 0 0 10px 0;">
+    <label style="width: 20%;max-width: 113px;">changesafe id:</label>
+    <input type="text" ng-model="inputData.changesafeId" style="width: 20%" ng-disabled="inputData.changesafeCheck">
+    <span style="color: red" ng-bind="errTip.errTipSafeId" ng-show="errTip.errTipSafeId"></span>
+    <input type="checkBox" ng-checked="inputData.changesafeCheck" ng-click="changeChangesafeCheck()">
+    <span>紧急变更</span>
+    <a href="https://changefree.alibaba-inc.com/" style="padding: 5px;" target="_target">chanagesafe 链接</a>
+  </div> -->
+  <!-- flag下拉选项数据 -->
+  <datalist id="url_list">
+   <option label="/{/val.name/}/" value="/{/val.name/}/" ng-repeat="val in flagList"/>
+  </datalist>
+  <div ng-show="data.key=='get_crb_flag'||data.key=='get_configuration_flag'||data.key=='set_configuration_flag'">
+    <!-- <label style="width: 20%;">请输入flag:</label>
+    <input type="text" ng-model="inputData.flag" style="width: 60%" list="url_list"> -->
+    <span ng-bind="get_crb_flagTip"></span>
+    <screen-table screen-table-data="get_ms_flagData" style="margin-top: 10px;"></screen-table>
+    <div  style="margin-top: 10px;text-align: center;">
+      <button class="panguButton" ng-click="cancelDesc()">关闭</button>
+    </div>
+  </div>
+  <div ng-show="data.key=='crb_restore'">
+    <input type="checkbox" ng-click="clickCrbRestore()" ng-checked="isCrbRestore" style="margin: 0px;" />
+    <label style="width: 20%;">手动输入地址:</label>
+    <input type="text" ng-model="inputData.targetAddress" style="width: 60%;" ng-disabled="!isCrbRestore">
+  </div>
+  <div ng-show="data.key=='set_crb_flag'">
+    <label style="width: 20%;">请输入flag:</label>
+    <!-- <input type="text" ng-model="inputData.flag" style="width: 60%;" list="url_list" ng-change="changeFlag()"> -->
+    <select ng-model="inputData.flag" style="width: 60%;height: 30px;">
+      <option ng-repeat="val in flagList track by $index" value="/{/val.name/}/" ng-bind="val.name"></option>
+    </select>
+    <br>
+    <label style="width: 20%;">请输入value(秒):</label>
+    <input type="text" ng-model="inputData.value" style="width: 60%;">
+    <br>
+    <!-- <span style="color: red">(注意：当前操作只是修改进程内部的flag，如果发生重启修改将失效；如果期望重启后仍然生效，请到天基上执行：配置修改的操作。)</span> -->
+    <div  style="margin-top: 10px;text-align: center;">
+      <button class="panguButton" ng-click="clickSet_crb_flag()">确定</button>
+      <button class="panguButton" ng-click="cancelDesc()">关闭</button>
+    </div>
+  </div>
+  <div ng-show="data.key=='get_sv_flag'||data.key=='get_ms_flag'||data.key=='get_msAll_flag'||data.key=='get_cs_flag'||data.key=='get_csAll_flag'||data.key=='batch_get_csAll_flag'" style="">
+    <div>
+      <label style="width: 20%;">请输入flag:</label>
+      <input type="text" ng-model="inputData.flag" style="width: 60%" list="url_list">
+      <button class="panguButton" style="margin-left: 10px;" ng-click="clickTrue('getMsFlag')">点击查询</button>
+      <span style="color: red" ng-bind="errTip.errTipFlag" ng-show="errTip.errTipFlag"></span>
+      <div style="" ng-show="flagObj[inputData.flag]">
+        <label>描述:</label>
+        <span ng-bind="flagObj[inputData.flag].explanation" style="color: blue;"></span>
+        <label>默认值:</label>
+        <span ng-bind="flagObj[inputData.flag].default" style="color: blue;"></span>
+        <label>类型:</label>
+        <span ng-bind="flagObj[inputData.flag].type" style="color: blue;"></span>
+        <div style="clear: both;"></div>
+      </div>
+    </div>
+    <screen-table screen-table-data="get_ms_flagData" style="margin-top: 10px;"></screen-table>
+    <div  style="margin-top: 10px;text-align: center;">
+      <button class="panguButton" ng-click="cancelDesc()">关闭</button>
+    </div>
+  </div>
+  <div ng-show="data.key=='set_sv_flag'||data.key=='set_ms_flag'||data.key=='set_msAll_flag'||data.key=='set_csAll_flag'||data.key=='set_cs_flag'||data.key=='batch_set_All_flag'">
+    <div style="">
+      <label style="width: 20%;">请输入flag:</label>
+      <input type="text" ng-model="inputData.flag" style="width: 60%;" list="url_list" ng-change="changeFlag()">
+      <span style="color: red" ng-bind="errTip.errTipFlag" ng-show="errTip.errTipFlag"></span>
+      <div style="margin-top: 10px;" ng-show="flagObj[inputData.flag]">
+        <label>描述:</label>
+        <span ng-bind="flagObj[inputData.flag].explanation" style="color: blue;"></span>
+        <!-- <label>默认值:</label>
+        <span ng-bind="flagObj[inputData.flag].default" style="min-width: 100px;color: blue;"></span> -->
+        <div style="clear: both;"></div>
+      </div>
+    </div>
+    <div style="margin-top: 10px;">
+      <!-- <div> -->
+        <label style="width: 20%;">请输入value:</label>
+        <input type="text" ng-model="inputData.value" style="width: 60%;">
+        <label ng-show="flagObj[inputData.flag]">类型:</label>
+        <span ng-bind="flagObj[inputData.flag].type" style="color: blue;" ng-show="flagObj[inputData.flag]"></span>
+      <div>
+        <span style="color: red" ng-show="errTip.errTipValue" ng-bind="errTip.errTipValue"></span>
+      </div>
+    </div>
+    <span style="color: red">(注意：当前操作只是修改进程内部的flag，如果发生重启修改将失效；如果期望重启后仍然生效，请到天基上执行：配置修改的操作。)</span>
+    <div  style="margin-top: 10px;text-align: center;">
+      <button class="panguButton" ng-click="clickTrue('setMsFlag')">确定</button>
+      <button class="panguButton" ng-click="cancelDesc()">关闭</button>
+    </div>
+  </div>
+  <!-- 拷贝移动 -->
+  <div ng-show="data.key=='dir_copy'||data.key=='dir_mv'||data.key=='dir_ln'||data.key=='file_copy'||data.key=='file_mv'" style="">
+    <div>
+        <label style="width: 20%;">源地址:</label>
+        <span type="text" ng-bind="data.sourceAddress" style="width: 60%;"></span>
+    </div>    
+    <div style="margin-top: 10px;">
+        <label style="width: 20%;">目标地址:</label>
+        <input type="text" ng-model="inputData.targetAddress" style="width: 60%;">
+    </div>
+    <div>
+      <span style="color: red" ng-show="errTip.errTipTarAdd" ng-bind="errTip.errTipTarAdd"></span>
+    </div>
+    <div  style="margin-top: 10px;text-align: center;">
+      <button class="panguButton" ng-click="setmvdirApi()">确定</button>
+      <button class="panguButton" ng-click="cancelDesc()">关闭</button>
+    </div>
+  </div>
+  <div ng-show="data.key=='buildinfo'||data.key=='chunk_info'||data.key=='file_info'||data.key=='cs_buildinfo'||data.key=='cs_all_buildinfo'||data.key=='ms_all_buildinfo'" style="">
+    <div ng-show="data.key=='chunk_info'">
+      <label>filename:</label>
+      <span ng-bind="abnchunkFilename" style="word-wrap: break-word;"></span>
+    </div>
+    <div ng-show="data.key=='cs_all_buildinfo'||data.key=='ms_all_buildinfo'">
+      <list-tab tab-list-data="buildinfoTiantengId" click-func="tabClickBuildInfo({'index':index})"></list-tab>
+      <div class="listPanguoperate"></div>
+      <div style="margin-top: 10px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;" ng-click="clickBuildinfoTip()">
+        <span ng-bind="buildInfolsServerStr"  title="/{/buildInfolsServerStr/}/" style="padding: 5px;" ></span>
+      </div>
+    </div>
+    
+    <screen-table screen-table-data="get_basic_buildinfo" style="margin-top: 10px;"></screen-table>
+    <screen-table ng-show="showInfoTable" screen-table-data="get_env_buildinfo" opea-click-func="opeaClickFunc({'item':item, 'info':info})" style="margin-top: 10px;"></screen-table>
+    <div  style="margin-top: 10px;text-align: center;">
+      <button class="panguButton" ng-click="cancelDesc()">关闭</button>
+    </div>
+  </div>
+  <div ng-show="data.key=='replication_chunk_meta'" >
+    <!-- <screen-table screen-table-data="get_basic_buildinfo" style="margin-top: 10px;"></screen-table> -->
+    <div style="overflow: auto;height: 310px;">
+      <table class="table table-striped screenTbody">
+        <tbody>
+          <tr ng-repeat="val in chunkMetaData track by $index">
+            <td>
+              <span ng-bind="val.metaName.name"></span>
+            </td>
+            <td>
+              <span ng-bind="val.metaValue.name"></span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div style="margin-top: 10px;text-align: center;">
+      <button class="panguButton" ng-click="cancelDesc()">关闭</button>
+    </div>
+  </div>
+  <!-- list_cs -->
+  <div ng-show="data.key=='get_csAll_safe'||data.key=='get_cs_safe'||data.key=='get_diskAll_safe'||data.key=='get_disk_safe'||data.key=='batch_get_csAll_safe'" style="">
+    <screen-table screen-table-data="get_cs_safeData" style="margin-top: 10px;"></screen-table>
+    <div  style="margin-top: 10px;text-align: center;">
+      <button class="panguButton" ng-click="cancelDesc()">关闭</button>
+    </div>
+  </div>
+  <div ng-show="data.key=='set_cs_status'||data.key=='set_disk_status'||data.key=='set_diskdown_status'" style="">
+    <label style="width: 100px;">请输入状态:</label>
+    <select  ng-model="setStatus" ng-change="changeStatus()"> <!--  -->
+      <option ng-repeat="val in statusData track by $index" value="/{/val/}/" ng-bind="val" ></option>
+    </select>
+    <span style="width: 100px;">(设置状态后, 状态的更新会有延迟)</span>
+    <!-- 当状态为SHUTDOWN时,展示图表数据 -->
+    <div ng-show="setStatus=='SHUTDOWN'||setStatus=='ERROR'" style="margin-top: 20px">
+      <div ng-show="setStatus=='ERROR'">
+        <label style="width: 100px;">0 Replica:</label>
+        <span ng-bind="abnchunkData.none.num" style="color: /{/abnchunkData.none.color/}/"></span>
+        <label style="width: 100px;">1 Replica:</label>
+        <span ng-bind="abnchunkData.onecopy.num" style="color: /{/abnchunkData.onecopy.color/}/"></span>
+        <label style="width: 100px;">Less Min:</label>
+        <span ng-bind="abnchunkData.lessmin.num" style="color: /{/abnchunkData.lessmin.color/}/"></span>
+      </div>
+      <!-- <div>
+        <label style="">集群容量:</label>
+        <span ng-bind="clusterBasic.total_size" style="color: blue;"></span>
+        <label style="margin-left: 50px;">集群使用空间百分比:</label>
+        <span ng-bind="clusterBasic.used_percent" style="color: blue;"></span>
+        <label style="margin-left: 50px;">CS个数:</label>
+        <span ng-bind="clusterBasic.cs_count" style="color: blue;"></span>
+      </div> -->
+      <!-- <div>
+        <chart-lineshennong lineconfig-data="statusConfigData"></chart-lineshennong>
+      </div> -->
+      <!-- <div style="margin-top: 30px;" >
+        <span style="color: red;" ng-bind="setStatusTip"></span>
+      </div> -->
+    </div>
+    
+    <div  style="margin-top: 10px;text-align: center;">
+      <button class="panguButton" ng-click="clickTrue('setCsStatus')">确定</button>
+      <button class="panguButton" ng-click="cancelDesc()">关闭</button>
+    </div>
+  </div>
+  <div ng-show="data.key=='get_quota'||data.key=='getquotaroot'||data.key=='get_recycle_quotaroot'" style="text-align: center;">
+    <div>
+      <label style="width: 150px;text-align: center;">限制项</label>
+      <label style="width: 150px;text-align: center;">已使用</label>
+      <label style="width: 150px;text-align: center;" ng-show="data.key!='get_recycle_quotaroot'">限制</label>
+    </div>
+    <hr>
+    <div ng-repeat="val in quotaArr track by $index">
+      <label ng-bind="val.key" style="width: 150px;text-align: center;"></label>
+      <label ng-bind="val.Used" style="width: 150px;text-align: center;"></label>
+      <label ng-bind="val.Limit" style="width: 150px;text-align: center;" ng-show="data.key!='get_recycle_quotaroot'"></label>
+    </div>
+    <div style="margin-top: 10px;text-align: center;">
+      <button class="panguButton" ng-click="cancelDesc()">关闭</button>
+    </div>
+  </div>
+  <div ng-show="data.key=='set_quota'||data.key=='setquotaroot'" style="text-align: center;">
+    <div>
+      <label style="width: 150px;text-align: center;">限制项</label>
+      <label style="width: 150px;text-align: center;">已使用</label>
+      <label style="width: 150px;text-align: center;">限制</label>
+    </div>
+    <hr>
+    <div ng-repeat="val in quotaArr track by $index">
+      <label ng-bind="val.key" style="width: 150px;text-align: center;"></label>
+      <label ng-bind="val.Used" style="width: 150px;text-align: center;"></label>
+      <input type="text" ng-model="val.Limit" style="width: 150px;text-align: center;">
+    </div>
+    <div style="margin-top: 10px;text-align: center;">
+      <button class="panguButton" ng-click="set_quota()">确定</button>
+      <button class="panguButton" ng-click="cancelDesc()">关闭</button>
+    </div>
+  </div>
+  <!-- dir_setreplica -->
+  <div ng-show="data.key=='dir_setreplica'||data.key=='batchPUTreplica'" style="">
+    <div style="margin: 5px 0 0 10%;">
+      <div style="float: left;">
+          <label style="width: 70px;float: left;padding-top: 4px;">min:</label>
+          <num-control num-data="data.min" style="float: left;"></num-control>
+      </div>
+      <div style="float: left;margin-left: 20px;">
+          <label style="width:70px;float: left;padding-top: 4px;">max:</label>
+          <num-control num-data="data.max" style="float: left;"></num-control>
+      </div>
+      <div style="float: left;margin-left: 20px;">
+        <span ng-bind="dirTip" style="color: red"></span>
+      </div>
+      <div style="clear: both;"></div>
+    </div>
+    <div style="margin-top: 10px;text-align: center;">
+      <button class="panguButton" ng-click="clickTrue()">确定</button>
+      <button class="panguButton" ng-click="cancelDesc()">关闭</button>
+    </div>
+  </div>
+  <div ng-show="data.key=='add_cs_schbs'"> 
+    <div>
+      <!-- <span style="color: red">黑名单功能让盘古不再分配新的chunk到要下线的chunkserver上。用户可以通过命令行来设置和查看黑名单。</span>
+      <br> -->
+      <span style="color: red">支持批量添加,批量添加的数量最多不超过5个,CS服务地址之间用','进行分隔。</span>
+      <br>
+      <span style="color: red">输入CS服务地址示例：tcp://100.81.246.154:10260</span>
+    </div>
+    <label ">请输入CS服务地址:</label>
+    <input type="text" ng-model="inputData.inputLocation" style="width: 60%;"><span style="color: red">*</span>
+    <div ng-bind="errTip.add_cs_schbs" style="color: red">
+      <span  ng-show="errTip.add_cs_schbs" ></span>
+    </div>
+    <div style="margin-top: 10px;text-align: center;">
+      <button class="panguButton" ng-click="clickTrue(data.key)">确定</button>
+      <button class="panguButton" ng-click="cancelDesc()">关闭</button>
+    </div>
+  </div>
+  <div ng-show="data.key=='show_opr_log_title'">
+    <h4 ng-bind="data.opr_log_reason"></h4>
+    <div style="margin-top: 30px;text-align: center;">
+      <button class="panguButton" ng-click="cancelDesc()">关闭</button>
+    </div>
+  </div>
+  <!-- tip -->
+  <div ng-show="data.tip||data.tip1" style="">
+    <h5 ng-bind="data.tip"></h5>
+    <h5 ng-bind="data.tip1" style="color: red"></h5>
+    
+    <div style="margin-top: 30px;text-align: center;">
+      <button class="panguButton" ng-click="dealOnlyTip()">确定</button>
+      <button class="panguButton" ng-click="cancelDesc()">关闭</button>
+    </div>
+  </div>
+</div>
+<!-- <div class="modal-footer">
+    <button class="panguButton" ng-click="okDesc()">确定</button>
+    <button class="panguButton" ng-click="cancelDesc()">关闭</button>
+</div> -->
+</div>

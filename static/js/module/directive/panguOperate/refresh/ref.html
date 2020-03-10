@@ -1,0 +1,17 @@
+<div style="font-size:12px;">
+  <div class="clickTimeFocus" style="height: 20px;margin :8px 50px 5px 20px;float: right;">
+    <a href ng-repeat="val in listData track by $index">
+      <span ng-bind="val.name" ng-click="clickList(val.key)" style="color: /{/val.color/}/"></span>
+      <span> | </span> 
+    </a>
+  </div>
+  <div style="float: right;">
+    <label>
+      <input class="mui-switch mui-switch-anim" type="checkbox" ng-model="selectCheckbox" ng-click="refreshChart()" checked>
+    </label>
+  </div>
+  <div style="float: right;margin-top: 8px;margin-right: 2px;">
+    <span>自动刷新:</span>
+  </div>
+  <div style="clear: both;"></div>
+</div>

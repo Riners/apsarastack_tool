@@ -1,0 +1,10 @@
+<div class="modal-header">
+     <p ng-bind="title" style="font-weight:bold;"></p>
+</div>
+<div class="modal-body" style="padding:15px 25px;height:205px;">
+	<textarea ng-bind="desc" class="modify-cluster-desc" ng-model="desc"></textarea>
+</div>
+<div class="modal-footer batchDialog">
+    <button class="btn btn-primary" type="button" ng-click="ok()">确认修改</button>
+    <button class="btn btn-warning" type="button" ng-click="cancel()">取消</button>
+</div>

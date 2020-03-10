@@ -1,0 +1,22 @@
+.access_manage.modal-body input {
+	height:30px;
+	width:200px;
+}
+.access_manage.modal-body select {
+	height:30px;
+	width:200px;
+}
+.access_manage.modal-body .has_add_roles_content {
+	float: left;
+	width: 315px;
+}
+.access_manage.modal-body .has_add_roles_content .delete-icon {
+	font-size:12px;
+	position: relative;
+    top: 2px;
+    margin-left: 3px;
+}
+.access_manage.modal-body .has_add_roles_content > p {
+	float: left;
+	padding-left:10px;
+}

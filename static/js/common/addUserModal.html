@@ -1,0 +1,74 @@
+<div class="access_manage modal-header">
+     <h4 ng-bind="modal_title" style="font-weight:bold;"></h4>
+</div>
+<div class="access_manage modal-body">
+     <div>
+     	<p>
+     		<label>工号:</label>
+     		<input type="text" ng-model="uid" />
+     	</p>
+     	<p style="margin-top:10px">
+			<label>添加角色:</label>
+				<!--<div style="float:left;">
+					<multiselect 
+						selected-list="tianji_region" 
+						check-data="" 
+						open-modal="openRegionModal({'selectKey':selectKey})" 
+						select-key="tianji_region_key"
+					>
+					</multiselect>
+				</div>
+				<div style="clear:both;"></div>-->
+			<!--<input 
+				type="text" 
+				class="search-option"
+				ng-keyup="searchKeyUp()"
+		    	ng-model="searchText"
+		    	ng-blur="inputBlur()"
+			/>-->
+			<select ng-model="checked_role" placeholder="请选择角色" ng-change="roleSelected()">
+				<option ng-repeat="val in role_list track by $index" value="/{/val/}/" ng-bind="val"></option>
+			</select>
+			<!--<div style="width:296px;min-height: 35px;border:1px solid #CCCCCC;" ng-show="show_search_box" class="access-select-ul-content">
+		    	<ul class="search-select-ul">
+		    		<li 
+		    			ng-repeat='item in searchList track by $index' 
+		    			ng-bind="item" 
+		    			ng-click="selectedItem(item)"
+		    			style="cursor: pointer;"
+		    		>
+		    		</li>
+		    	</ul>
+		    </div>-->
+			<!--<input id="myCar" list="cars" onchange="roleSelected()" />
+			<datalist ng-model="checked_role" placeholder="请选择角色" id="cars">
+                <option ng-repeat="val in role_list track by $index" value="/{/val/}/" ng-bind="val"></option>
+			</datalist>-->
+			<!--<div style="float:left;margin-bottom:12px;" class="create-page-search-select">
+				<search-select 
+					selectone="shennong_tmpl"  
+					option-list="shennong_tmpl_option_list" 
+					action="searchSelectAction" 
+					config="shennong_tmpl_conf"
+					pass="shennong_tmpl_pass"
+				>
+				</search-select>
+			</div>-->
+			<div style="clear:both;"></div>
+		</p>
+		<div style="margin-top:10px">
+			<label style="float: left;">已添加角色:</label>
+			<div class="has_add_roles_content">
+				<p ng-repeat="item in has_add_roles track by $index"><span ng-bind="item">aaa</span><span class="glyphicon glyphicon-remove delete-icon" ng-click="deleteRoles(item)"></span></p>
+				<!--<p><span>aaa</span><span class="glyphicon glyphicon-remove delete-icon"></span></p>
+				<p><span>aaa</span><span class="glyphicon glyphicon-remove delete-icon"></span></p>-->
+				<div style="clear:both;"></div>
+			</div>
+			<div style="clear:both;"></div>
+		</div>
+     </div>
+</div>
+<div class="access_manage modal-footer">
+    <button class="btn btn-primary" type="button" ng-click="ok()" ng-bind="ok_button">OK</button>
+    <button class="btn btn-warning" type="button" ng-click="cancel()" ng-bind="cancel_button">Cancel</button>
+</div>

@@ -1,0 +1,30 @@
+
+<div class="modal-body upgrade">
+	<div ng-show="abn_type === 'abnRight'" class="clearFloat">
+		<h4 style="padding:10px 0;">确定此报警项确实为异常且与检查项相符吗？</h4>
+	    <label style="float:left;">根因分析和故障处理:</label>
+	    <textarea name="" rows="" cols="" ng-model="label_info_exact" style="float:left;width:400px;height:150px;"></textarea>
+	</div>
+	<div ng-show="abn_type === 'abnErr'">
+		<div>
+			<label style="float:left;">误报类型:</label>
+			<div style="float:left;padding:0 0 10px 5px;">
+				<input type="checkbox" ng-model="err_no" />
+				<span>没有异常</span>
+				<br />
+				<input type="checkbox" ng-model="err_other" />
+				<span>确实为异常但与检查项不符</span>
+			</div>
+			<div style="clear:both;"></div>
+		</div>
+		<div class="clearFloat">
+			<label style="float:left;">误报原因:</label>
+			<textarea name="" rows="" cols="" ng-model="label_info_err" style="float:left;width:400px;height:150px;"></textarea>
+		</div>
+		<p>提示:(如有其它参考指标，请附上神农图链接)</p>
+	</div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" type="button" ng-click="ok()">确认并提交</button>
+    <button class="btn btn-warning" type="button" ng-click="cancel()">取消</button>
+</div>

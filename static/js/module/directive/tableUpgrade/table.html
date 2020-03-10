@@ -1,0 +1,176 @@
+<style type="text/css"></style>
+<div>
+    <h5 ng-bind="jsonTable.title"></h5>
+    <div style="margin-top:10px;margin-bottom:20px;" class="tableSurvey_search">
+    	<div style="float:left;" ng-show="isShowSearch">
+    		<span style="font-size:14px;margin-right:10px;background-color:#eee;padding:6px;font-size:14px;float:left;" ng-show="isShowSearch">模糊查询</span>
+	        <div  style="width: 250px;margin-right: 10px;float:left;" class="input-group" ng-show="isShowSearch">
+	            <span class="input-group-addon">
+	                <a class="glyphicon glyphicon-search" ng-click="selectName()"></a>
+	              </span>
+	            <input type="text" ng-model="inputSelectName"  class="form-control" placeholder="请输入名称进行搜索"   ng-change="selectName()">
+	        </div>
+	        <div style="clear:both;"></div>
+    	</div>
+        <div style="float: right;position:relative;top:8px;">
+            <button ng-if="tableData.showFanxuanBtn" ng-click="fanxuan()" class="base-btn">反选</button>
+            <button class="base-btn" ng-click="tableAction({'item':'button', 'info':'checked_cluster_info'})">已选集群升级信息</button>
+            <button class="base-btn operation-btn" ng-click="tableAction({'item':'button', 'info':'edit'})" >编辑</button>
+            <button class="base-btn alarm-situation" ng-click="tableAction({'item':'button', 'info':'export'})">导出集群名称</button>
+            <button class="base-btn envir-examine-report" ng-click="tableAction({'item':'button', 'info':'check'})" >环境检查报告</button>
+            <button class="base-btn alarm-situation" ng-click="tableAction({'item':'button', 'info':'alarm'})" >报警情况</button>
+        </div>
+        <div style="clear:both;"></div>
+    </div>
+    <!--<div style="">
+        <div ng-show="showSearch" style="margin-top: 20px;">
+            <div style="float: left;">
+                <button class="btn btn-primary" style="margin-left: 10px;height: 34px;" ng-click="clickSearchChange()">高级搜索</button>
+                <span style="font-size: 14px;margin-right: 10px;background-color: #eee;padding: 6px;font-size: 14px;height: 34px;">模糊查询</span>
+                </div>
+            <div  style="width: 250px;float: left;" class="input-group">
+                <span class="input-group-addon">
+                    <a class="glyphicon glyphicon-search" ng-click="selectName()"></a>
+                  </span>
+                <input  ng-model="inputSelectName" class="form-control" placeholder="请输入名称进行搜索" ng-change="selectName()">
+            </div>
+            
+            <div style="float: right;">
+              <button ng-if="tableData.showFanxuanBtn" ng-click="fanxuan()" class="base-btn">反选</button> 
+              <button class="base-btn operation-btn" ng-click="tableAction({'item':'button', 'info':'edit'})" >编辑</button>
+              <button class="base-btn alarm-situation" ng-click="tableAction({'item':'button', 'info':'export'})">导出集群名称</button>
+              <button class="base-btn envir-examine-report" ng-click="tableAction({'item':'button', 'info':'check'})" >环境检查报告</button>
+              <button class="base-btn alarm-situation" ng-click="tableAction({'item':'button', 'info':'alarm'})" >报警情况</button>
+            </div>
+        </div>
+        <div ng-show="!showSearch" style="display: flex; margin-top: 20px;">
+            <button class="btn btn-primary" style="margin-left: 10px;height: 34px;" ng-click="clickSearchChange()">模糊查询</button>
+            <span class="btn" style="margin-right: 10px;background-color: #eee;height: 34px;">高级查询</span>
+            <div style="margin-top:3px;">
+              <div ng-repeat="val in highSearchData track by $index" style="float: left;padding-right: 10px;" ng-if="val.show=='cluster'">
+                  <p ng-bind="val.name" style=""></p>
+                  <input style="width: 100px;" ng-model="val.value">
+              </div>
+              <div style="clear: both;"></div>
+            <div>
+              <div ng-repeat="val in highSearchData track by $index" style="float: left;padding-right: 10px;">
+                  
+                  <div ng-if="val.key!='cluster'">
+                    
+                    <div ng-if="val.key=='upgrade_date'">
+                        <p ng-bind="val.name" style=""></p>
+                        <input type="date" ng-model="val.value[0].date">
+                        <input type="date" ng-model="val.value[1].date">
+                        <button class="btn btn-primary" style="height: 30px;" ng-click="clickSearchData()">搜索</button>
+                    </div>
+                    <div ng-if="val.key=='cluster_status'">
+                        <p ng-bind="val.name" style=""></p>
+                        <select name="" id="" ng-model="val.value" style="width: 100px;height: 26px;">
+                            <option>全部</option>
+                            <option>F</option>
+                            <option>E</option>
+                            <option>W</option>
+                            <option>OK</option>
+                        </select>
+                    </div>
+                    <div ng-if="val.key=='upgrade_schedule'">
+                        <p ng-bind="val.name" style=""></p>
+                        <select name="" id="" ng-model="val.value" style="width: 100px;height: 26px;">
+                            <option>全部</option>
+                            <option>灰度1</option>
+                            <option>灰度2</option>
+                            <option>灰度3</option>
+                            <option>灰度4</option>
+                            <option>灰度5</option>
+                            <option>升级1</option>
+                            <option>升级2</option>
+                            <option>升级3</option>
+                            <option>升级4</option>
+                            <option>升级5</option>
+                            <option>升级6</option>
+                            <option>升级7</option>
+                            <option>升级8</option>
+                            <option>升级9</option>
+                            <option>升级10</option>
+                            <option>升级11</option>
+                        </select>
+                    </div>
+                    <div ng-if="val.key=='upgrade_status'">
+                        <p ng-bind="val.name" style=""></p>
+                        <select name="" id="" ng-model="val.value" style="width: 100px;height: 26px;">
+                            <option>全部</option>
+                            <option>已升级</option>
+                            <option>未升级</option>
+                            <option>不升级</option>
+                            <option>新增集群</option>
+                        </select>
+                    </div>
+                  </div>
+              </div>
+              <div style="float: right;margin-top: 20px;">
+                  <button ng-if="tableData.showFanxuanBtn" ng-click="fanxuan()" class="base-btn">反选</button> 
+                  <button class="base-btn operation-btn" ng-click="tableAction({'item':'button', 'info':'edit'})" >编辑</button>
+                  <button class="base-btn alarm-situation" ng-click="tableAction({'item':'button', 'info':'export'})">导出集群名称</button>
+                  <button class="base-btn envir-examine-report" ng-click="tableAction({'item':'button', 'info':'check'})" >环境检查报告</button>
+                  <button class="base-btn alarm-situation" ng-click="tableAction({'item':'button', 'info':'alarm'})" >报警情况</button>
+              </div>
+              </div>
+            </div>
+        </div> 
+    </div>-->
+    <table class="hovertable" style="width: 100%;word-break: break-all;">
+        <thead>
+        <tr>
+        	<th ng-if="checkBox" style="width:/{/checkBoxTdWidth/}/;">
+	        	<!-- <input type="checkbox" ng-click="checkBoxAction({'checkedRows':tableData.tbodyData,'index':0});checkedRows({'checkRowsData':checkRowsData})" ng-checked="isCheckedAll" /> -->
+                <input type="checkbox" ng-click="checkBoxAction({'checkedRows':jsonTable.tbodyData,'index':0});checkedRows({'checkRowsData':checkRowsData})" ng-checked="isCheckedAll" />
+	        </th>
+            <th ng-repeat="val in jsonTable.theadData track by $index"  style="width: /{/val.width/}/;"  ng-class="{true:'theadHighLight',false:'theadNotHeightLigth'}[val.tbodyKey === theadHighLight]">
+                <span ng-bind="val.showName"></span>
+                <span ng-class="{true:'glyphicon glyphicon-triangle-bottom',false:'glyphicon glyphicon-triangle-top'}[val.showSortIcon]" ng-click="singleRowSort(val.tbodyKey)" ng-if="!jsonTable.showSortIconData"></span>
+            </th>
+        </tr>
+        </thead>
+        <tbody ng-show="showTdData">
+            <tr ng-repeat="info in jsonTable.tbodyData track by $index" style="">
+                <td ng-if="checkBox">
+	        		<input type="checkbox" ng-click="checkBoxAction({'checkedRows':info});checkedRows({'checkRowsData':checkRowsData})" ng-checked="info.rowKey.checkedKey" />
+	        	</td>
+                <td ng-repeat="(key, val) in info track by $index" style="text-align:/{/val.textAlign/}/;background:/{/val.trbackground/}/;color:/{/val.color/}/;" ng-attr-title="/{/val.title/}/">
+                    <div ng-if="!val.render">
+                        <a href="/{/info[jsonTable.theadData[$index].tbodyKey].url/}/" target="_blank" ng-bind="info[jsonTable.theadData[$index].tbodyKey].name" ng-if="info[jsonTable.theadData[$index].tbodyKey].url" style="text-decoration:underline;color:/{/val.color/}/;"></a>
+	                    <span ng-bind="info[jsonTable.theadData[$index].tbodyKey].name" ng-if="!info[jsonTable.theadData[$index].tbodyKey].url"></span>
+                        <a class="/{/info[jsonTable.theadData[$index].tbodyKey].a_class/}/" ng-click="tableAction({'item':info, 'info':info[jsonTable.theadData[$index].tbodyKey].a_class})"></a>
+	                    <div>
+                        <button ng-repeat="button in info[jsonTable.theadData[$index].tbodyKey].button" ng-bind="button" class="pangu-table-action-button" ng-click="tableAction({'item':info, 'info':button})" style="height:auto"></button>
+                        </div>
+                    </div>
+                    <div ng-if="val.render">
+                		<p ng-repeat="item in val.render.data track by $index" ng-bind="item.name ? item.name : item" style="color:/{/item.color/}/"></p>
+                	</div>
+                </td>
+            </tr>
+        </tbody>
+        <tbody ng-show="!showTdData" class="tbody-no-data">
+           <!-- <tr><td colspan="{{colspanNum}}" style="font-size: 20px;color: blue;">暂时没有表格数据!</td></tr> -->
+           <tr><th colspan="{{colspanNum}}" style="font-size: 20px;color: blue;">暂时没有表格数据!</th></tr>
+        </tbody>
+    </table>
+    <!-- 分页 -->
+    <div style="float: right;">
+        <div class="pull-left" style="margin-right: 20px;margin-top: 5px;">总条数:
+          <span ng-bind="totalItems"></span>
+          <span>条</span>
+        </div>
+        <div class="pull-left" style="margin-top: 5px;">
+            每页&nbsp;
+          <select ng-model="itemsPerPage" ng-change="changePagesize()" ng-options="option for option in [2,10,20, 40, 100, 200]"></select>
+            &nbsp;条
+        </div>
+        <div style="font-size: 12px;float: left">
+            <uib-pagination items-per-page="itemsPerPage" total-items="totalItems" ng-model="currentPage" max-size="maxSize" first-text="首页" previous-text="上一页" next-text="下一页" last-text="最后页" boundary-links="true" boundary-link-numbers="true" ng-change="changePage()" style="margin-top: 0px;"></uib-pagination>
+        </div>
+        <div style="clear: both;"></div>
+    </div>
+    <div style="clear: both;"></div>
+</div>

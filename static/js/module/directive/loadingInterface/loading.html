@@ -1,0 +1,21 @@
+
+<div class="content" style="background: #8cc4c5;margin-top: 300px;">
+    
+    <h3 style="text-align: center;">登 录</h3>
+    <div style="margin: 10px 0 0 20px;">
+    	<label style="width: 50px;">用户名:</label>
+    	<input name="" id="accountName" type="text" placeholder="请输入用户名" ng-model="user">
+    </div>
+    <div style="margin: 10px 0 0 20px;">
+    	<label style="width: 50px;">密码:</label>
+    	<input name="password" id="password" type="password" placeholder="请输入密码" ng-model="pwd">
+    </div>
+    <div style="text-align: center;margin-top: 10px;color: red">
+    <span  ng-bind="errTip"></span>
+    </div>
+    <div style="text-align: center;margin: 10px 0 0 0;">
+    	<button class="panguButton" ng-click="clickLoad()">登录</button>
+    	<button class="panguButton" ng-click="cancel()">取消</button>
+    </div>
+ 
+</div>

@@ -1,0 +1,40 @@
+ <!DOCTYPE html>
+ <html ng-app="ui.bootstrap.demo" xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+      <link href="css/bootstrap.css" rel="stylesheet" />
+      <title></title>
+  
+      <script src="js/angular.js"></script>
+      <script src="js/ui-bootstrap-tpls-1.3.2.js"></script>
+     <script>
+ 
+         angular.module('ui.bootstrap.demo',['ui.bootstrap']).controller('CollapseDemoCtrl', function ($scope) {
+             $scope.isCollapsed = true;
+ 
+             $scope.coled = function () {
+                 console.log("collapsed");
+             }
+             $scope.coling = function () {
+                 console.log("collapsing");
+             }
+             $scope.exped = function () {
+                 console.log("expanded");
+             }
+             $scope.exping = function () {
+                 console.log("expanding");
+             }
+         });
+ 
+     </script>
+ 
+ </head>
+ <body>
+     <div ng-controller="CollapseDemoCtrl">
+         <button type="button" class="btn btn-default" ng-click="isCollapsed = !isCollapsed">Toggle collapse</button>
+         <div uib-collapse="isCollapsed" collapsed="coled()" collapsing="coling()" expanded="exped()" expanding="exping()">
+             <div class="well well-lg">Some content</div>
+         </div>
+     </div>
+ </body>
+ </html>

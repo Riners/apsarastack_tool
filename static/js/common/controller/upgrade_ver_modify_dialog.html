@@ -1,0 +1,145 @@
+<div class="upgrade_cfg modal-header upgrade">
+     <p ng-bind="upgrade_cfg_modify_title">修改配置升级</p>
+</div>
+<div class="upgrade_cfg modal-body modify-upgrade-cfg-dialog-body upgrade">
+	<!--<div class="tbody-sub-title">升级基础信息</div>-->
+	<div>
+	    <div>
+			<p class="upgrade-name" style="float:left">
+		     	<!--<span class="label-title"> 升级名称:</span>
+		     	<span ng-bind="tag">OOS - fdsaf</span>-->
+		     	<span class="label-title">新升级名称:</span>
+	     	    <input type="text" ng-model="tag" placeholder="" />
+		    </p>
+		    <!--<p style="min-height: 25px;" class="upgrade-group" style="float:left">
+		     	<span class="label-title" style="float: left;position: relative"> 应用线名称:</span>
+	            <span ng-bind="group">DB</span>
+		    </p>-->
+		    <div style="min-height: 25px;" class="upgrade-group">
+		     	<span class="label-title" style="float: left;position: relative;top: 5px;">应用线名称:</span>
+				<div style="float:left;">
+					<form-select 
+						selected-list="selected_group" 
+						option-list="upgradeGruopList" 
+						check-data="group"
+					>
+					</form-select>
+				</div>
+	        </div>
+	        <p style="margin-top:8px;float:left;">
+	 			<label class="label-title" style=""> 使用已有变更作为变更模板:</label>
+	 			<input type="text" ng-model="changefree_template_id" />
+	     	</p>
+		    <div style="clear: both;"></div>
+	    </div>
+	</div>
+    <div class="tbody-sub-title">各个模块的版本信息(多个版本使用逗号分隔)</div>
+    <div class="ver-info-content">
+     	<ul>
+     		<li class="ms-ver" style="padding-left:37px;">
+     			<span class="label-title"> Master:</span>
+	     	    <input type="text" ng-model="ms_ver" placeholder="" />
+     		</li>
+     	    <li class="cs-ver" style="padding-left:64px;">
+     			<span class="label-title"> CS:</span>
+	     	    <input type="text" ng-model="cs_ver" placeholder="" />
+     		</li>
+     	    <li class="mo-ver" style="padding-left:31px;">
+     			<span class="label-title"> Monitor:</span>
+	     	    <input type="text" ng-model="Mo_ver" placeholder="" />
+     		</li>
+     	    <li class="tools-ver" style="padding-left:47px;">
+     			<span class="label-title"> Tools:</span>
+	     	    <input type="text" ng-model="tools_ver" placeholder="" />
+     		</li>
+     		<li class="sv-ver" style="padding-left:9px">
+     			<span class="label-title"> Supervisor:</span>
+	     	    <input type="text" ng-model="sv_ver" placeholder="" />
+     		</li>
+     		<li class="sv-ver">
+     			<label class="label-title"> BlockMaster:</label>
+	     	    <input type="text" ng-model="PanguBlockMaster" placeholder="" />
+     		</li>
+     		<li class="sv-ver">
+     			<label class="label-title"> BlockServer:</label>
+	     	    <input type="text" ng-model="PanguBlockServer" placeholder="" />
+     		</li>
+     		<li class="sv-ver" style="padding-left:24px;">
+     			<label class="label-title"> BlockGC:</label>
+	     	    <input type="text" ng-model="PanguBlockGCWorker" placeholder="" />
+     		</li>
+     		<li class="block-snap-shot" style="padding-left:7px;">
+     			<label class="label-title"> BSnapShot:</label>
+	     	    <input type="text" ng-model="PanguSnapshotServer" placeholder="" />
+     		</li>
+     		<div style="clear: both;"></div>
+     	</ul>
+     </div>
+     <div class="tbody-sub-title time-arrange-title">排期时间安排(日期时间格式示例:2017-12-12)</div>
+     <div class="time-arrange-content">
+     	<ul>
+     		<li>
+     			<span class="label-title"> 灰度1:</span>
+	     	    <input type="date" ng-model="dstep_gray_scale_1" placeholder=""/>
+     		</li>
+     		<li class="layout-middle">
+     			<span class="label-title"> 灰度2:</span>
+	     	    <input type="date" ng-model="dstep_gray_scale_2" placeholder=""/>
+     		</li>
+     		<li>
+     			<span class="label-title"> 灰度3:</span>
+	     	    <input type="date" ng-model="dstep_gray_scale_3" placeholder=""/>
+     		</li>
+     		<li class="layout-middle">
+     			<span class="label-title"> 灰度4:</span>
+	     	    <input type="date" ng-model="dstep_gray_scale_4" placeholder=""/>
+     		</li>
+     		<li>
+     			<span class="label-title"> 升级1:</span>
+	     	    <input type="date" ng-model="dstep_upgrade_1" placeholder=""/>
+     		</li>
+     		<li class="layout-middle">
+     			<span class="label-title"> 升级2:</span>
+	     	    <input type="date" ng-model="dstep_upgrade_2" placeholder=""/>
+     		</li>
+     		<li>
+     			<span class="label-title"> 升级3:</span>
+	     	    <input type="date" ng-model="dstep_upgrade_3" placeholder=""/>
+     		</li>
+     		<li class="layout-middle">
+     			<span class="label-title"> 升级4:</span>
+	     	    <input type="date" ng-model="dstep_upgrade_4" placeholder=""/>
+     		</li>
+     		<li>
+     			<span class="label-title"> 升级5:</span>
+	     	    <input type="date" ng-model="dstep_upgrade_5" placeholder=""/>
+     		</li>
+     		<li class="layout-middle">
+     			<span class="label-title"> 升级6:</span>
+	     	    <input type="date" ng-model="dstep_upgrade_6" placeholder=""/>
+     		</li>
+     		<li>
+     			<span class="label-title"> 升级7:</span>
+	     	    <input type="date" ng-model="dstep_upgrade_7" placeholder=""/>
+     		</li>
+     		<li class="layout-middle">
+     			<span class="label-title"> 升级8:</span>
+	     	    <input type="date" ng-model="dstep_upgrade_8" placeholder=""/>
+     		</li>
+     		<li>
+     			<span class="label-title"> 升级9:</span>
+	     	    <input type="date" ng-model="dstep_upgrade_9" placeholder=""/>
+     		</li>
+     		<li class="layout-middle upgrade-ten">
+     			<span class="label-title"> 升级10:</span>
+	     	    <input type="date" ng-model="dstep_upgrade_10" placeholder=""/>
+     		</li>
+     		<div style="clear: both;"></div>
+     	</ul>
+     </div>
+</div>
+<div style="clear: both;"></div>
+<div class="upgrade_cfg modal-footer">
+    <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
+    <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+</div>

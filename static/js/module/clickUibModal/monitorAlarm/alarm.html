@@ -1,0 +1,39 @@
+<style type="text/css">
+
+</style>
+<div class="modal-header">
+  <h3>请输入预计时间</h3>
+</div>
+<div class="modal-body">
+<div>
+	<div>
+		<div>
+          <form action="" method="get"> 
+            
+            <!-- <label ng-repeat="val in radioData">
+            <input name="Fruit" type="radio" ng-value="val.value" ng-model="selectRadio" />
+            <span ng-bind="val.name"></span>
+            </label> --> 
+            <label><input name="Fruit" type="radio" ng-value="0" ng-model="selectRadio" ng-change="changeRadio(0)"/>自定义时间</label> 
+            <label><input name="Fruit" type="radio" ng-value="2" ng-model="selectRadio" ng-change="changeRadio(1)"/>2小时</label> 
+            <label><input name="Fruit" type="radio" ng-value="6" ng-model="selectRadio" ng-change="changeRadio(1)"/>6小时</label> 
+            <label><input name="Fruit" type="radio" ng-value="12" ng-model="selectRadio" ng-change="changeRadio(1)"/>12小时</label>
+            <label><input name="Fruit" type="radio" ng-value="24" ng-model="selectRadio" ng-change="changeRadio(1)"/>24小时</label> 
+            <label><input name="Fruit" type="radio" ng-value="168" ng-model="selectRadio" ng-change="changeRadio(1)"/>7天</label> 
+            <label><input name="Fruit" type="radio" ng-value="360" ng-model="selectRadio" ng-change="changeRadio(1)"/>15天</label>  
+            <label><input name="Fruit" type="radio" ng-value="720" ng-model="selectRadio" ng-change="changeRadio(1)"/>30天</label> 
+	
+          </form> 
+        </div>
+        <div>
+        	<!-- <span>请输入预计时间</span> -->
+			<input type="datetime-local" ng-model="noAlertBeforeTime" ng-disabled="showInput">
+        </div>
+	</div>
+
+</div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" ng-click="okDesc()">确定修改</button>
+    <button class="btn btn-primary" ng-click="cancelDesc()">取消修改</button>
+</div>

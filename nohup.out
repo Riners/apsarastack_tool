@@ -1,0 +1,30 @@
+Performing system checks...
+
+System check identified no issues (0 silenced).
+
+You have 13 unapplied migration(s). Your project may not work properly until you apply the migrations for app(s): admin, auth, contenttypes, sessions.
+Run 'python manage.py migrate' to apply them.
+March 07, 2020 - 14:29:29
+Django version 1.11, using settings 'apsarastack_tool.settings'
+Starting development server at http://0.0.0.0:8989/
+Quit the server with CONTROL-C.
+[07/Mar/2020 14:29:59] "GET / HTTP/1.1" 200 1716
+Not Found: /favicon.ico
+[07/Mar/2020 14:29:59] "GET /favicon.ico HTTP/1.1" 404 1972
+[07/Mar/2020 14:29:59] "GET / HTTP/1.1" 200 1716
+[07/Mar/2020 14:30:00] "GET / HTTP/1.1" 200 1716
+[07/Mar/2020 14:30:00] "GET / HTTP/1.1" 200 1716
+[07/Mar/2020 14:30:00] "GET / HTTP/1.1" 200 1716
+[07/Mar/2020 14:30:01] "GET / HTTP/1.1" 200 1716
+[07/Mar/2020 14:30:01] "GET / HTTP/1.1" 200 1716
+[07/Mar/2020 14:30:01] "GET / HTTP/1.1" 200 1716
+Performing system checks...
+
+System check identified no issues (0 silenced).
+
+You have 13 unapplied migration(s). Your project may not work properly until you apply the migrations for app(s): admin, auth, contenttypes, sessions.
+Run 'python manage.py migrate' to apply them.
+March 07, 2020 - 14:29:53
+Django version 1.11, using settings 'apsarastack_tool.settings'
+Starting development server at http://0.0.0.0:8989/
+Quit the server with CONTROL-C.

@@ -1,0 +1,15 @@
+<div class="modal-header">
+     <p ng-bind="abn_proc_title"></p>
+</div>
+<div class="modal-body">
+    <table-survey 
+		table-data="abn_proc_details" 
+		func-table-action="operate({'rowData':item, 'action':info, 'key':key})"
+	>
+	</table-survey>
+	<!--<p ng-repeat="item in abn_proc_details track by $index"></p>-->
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
+<!--    <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>-->
+</div>

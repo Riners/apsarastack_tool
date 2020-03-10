@@ -1,0 +1,174 @@
+ngrouptable th{
+text-align: center;background-color:white;}
+table.hovertable {font-family: verdana,arial,sans-serif;  font-size:11px;  
+color:#333333;  border-width: 1px;  border-color: #999999;  
+border-collapse: collapse;}  
+table.hovertable th {text-align: center;background-color:#f3f3f3;  
+border-width: 1px;  padding: 8px;  border-style: solid;  
+border-color: #ccc;  }  
+table.hovertable tr {text-align: center;background-color:white;}  
+table.hovertable td {border-width: 1px;  padding: 2px;  border-style: solid;  border-color: #a9c6c9;  }
+.pangu-table-action-button {height: 20px;background: #337ab7;color: #FFFFFF;border: none;outline: none;line-height: 20px;margin: 0 5px;font-size: 10px;}
+.groupClusterul {text-align: left;list-style:none;padding: 0;}
+.groupClusterulsss li{ white-space: nowrap;}
+.doc-page-nav{position: fixed;top: 100px;left: calc(91%);width: 113px;z-index: 300;font-size: 12px;display: block;overflow: auto;}
+.doc-page-nav ul{}
+.doc-page-nav li a{padding:5px;}
+.doc-page-navd li{border-left: 2px solid #e9e9e9;}
+.testaddclass {background-color:blue}
+.rightTopColor1 {border-left: 2px solid #51b063;}
+.rightTopColor2 {border-left: 2px solid #e9e9e9;}
+.bottomVerColor1 {border-bottom: 2px solid #51b063;border-radius: 0px;}
+.bottomVerColor2 {border-bottom: 2px solid #e9e9e9;border-radius: 0px;}
+.showColorGroBasic1 {color:#b7b725}
+.showColorGroBasic2 {color:black}
+.showColorGroBasic3 {color:#FF00FF}
+.showColorGroBasic4 {color:#FF0000}
+.showNavBackgroundCol1 {background-color:#0bb7ea !important}
+.showNavBackgroundCol2 {background-color:none}
+.chartDetailyHealth {border:1px solid #b8cdce;padding-top: 70px;width:31%;height: 300px;float: left;margin-right: 10px;}
+.clusterChartTotalColor { border:1px solid;width: 15px;height: 15px;margin-top: 2px;}
+.diag-showlog-wrap {}
+.diag-showlog-main {float:left;width:100%;}
+.diag-showlog-left {float:left;width:20%; margin-left:-100%;}
+.diag-showlog-main-in {margin:0 0 0 20%;}
+.diag-showlog-list1 {background: #eaf0f1;}
+.diag-showlog-list2 {background: #51b063;}
+.modal-maxlg{width: 1200px;}
+.backgroundTH1 {background: #65d1d6 !important;}
+.backgroundTH2 {background: #e3eaea !important;}
+.color-default{color:#333333}
+.color-gray{color:#999}
+.color-blue{color:#09C}
+.color-green{color:#090}
+.background-color-green{background-color:#090}
+.color-orange{color:#F90}
+.background-color-orange{background-color:#F90}
+.color-red{color:#F00}
+.background-color-red{background-color:#F00}
+.color-pink{color:#f4f}
+.background-color-pink{background-color:#f4f}
+.background-color-gray{background-color:#999}
+.color-gray{color:#999}
+.mui-switch { width: 44px;height: 22px;position: relative;border: 1px solid #dfdfdf;background-color: #fdfdfd;
+  box-shadow: #dfdfdf 0 0 0 0 inset;border-radius: 20px;border-top-left-radius: 20px;
+  border-top-right-radius: 20px;border-bottom-left-radius: 20px;border-bottom-right-radius: 20px;
+ background-clip: content-box;display: inline-block;-webkit-appearance: none;user-select: none;outline: none; }
+.mui-switch:before {content: '';width: 22px;height: 20px;position: absolute;top: 0px;left: 0;border-radius: 20px;border-top-left-radius: 20px;border-top-right-radius: 20px; border-bottom-left-radius: 20px;border-bottom-right-radius: 20px;background-color: #fff;box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4); }
+.mui-switch:checked {border-color: #64bd63;box-shadow: #64bd63 0 0 0 16px inset;background-color: #64bd63; }
+.mui-switch:checked:before {left: 21px; }
+.mui-switch.mui-switch-animbg {transition: background-color ease 0.4s; }
+.mui-switch.mui-switch-animbg:before {transition: left 0.3s; }
+.mui-switch.mui-switch-animbg:checked {box-shadow: #dfdfdf 0 0 0 0 inset;background-color: #64bd63;transition: border-color 0.4s, background-color ease 0.4s; }
+.mui-switch.mui-switch-animbg:checked:before {transition: left 0.3s; }
+.mui-switch.mui-switch-anim {transition: border cubic-bezier(0, 0, 0, 1) 0.4s, box-shadow cubic-bezier(0, 0, 0, 1) 0.4s; }
+.mui-switch.mui-switch-anim:before {transition: left 0.3s; }
+.mui-switch.mui-switch-anim:checked {box-shadow: #64bd63 0 0 0 16px inset;background-color: #64bd63;transition: border ease 0.4s, box-shadow ease 0.4s, background-color ease 1.2s; }
+.mui-switch.mui-switch-anim:checked:before {transition: left 0.3s; }
+.tableFloat{float: left;margin-top: 10px;margin-left: 10px;}
+.tableFloat1{float: left;margin-left: 100px;margin-top: 10px;} 
+.clickTimeFocus a{color:#333333}  
+/*.clickTimeFocus a:focus{color:#551a8b;}*/
+.clickTimeFocus a.active{
+	color: #005CC5;
+} 
+.slsTable {width:30%;float: left;margin:10px 0 0 20px;}
+.slsTable td {height: 51px;word-break: break-all;}
+.slsTable th {height: 51px;}
+.group-dashboard-Chart{float: left;margin:0 10px 0 10px;height: 202px;}
+.group-dashboard-Chart1 {height: 25px;text-align: center;margin-bottom: -10px;}
+.group-dashboard-Chart1 > b {float: left;font-size: 12px;margin-left:71px;width: 200px;overflow: hidden;display: block;white-space: nowrap;text-overflow: ellipsis;}
+.group-dashboard-title-h5 {/*border-left: 2px solid #88B7E0;text-indent: 8px;*/font-weight: bold;cursor: pointer;margin-left: 8px;}
+.group-dashboard-title-h5.hideHealthChart{
+	margin-bottom: 10px;
+}
+.group-dashboard-title-h5.hideRealTimeData{
+	margin-bottom: 10px;
+}
+.group-dashboard-title-h5.hideTable{
+	margin-bottom: 10px;
+}
+.group-dashboard-title-h5.hideBaseInfo{
+	/*margin-bottom: 10px;*/
+}
+.baseInfoTable{
+	width: 94%;
+	margin-left: 20px;
+	margin-top: 20px;
+	margin-bottom: 15px;
+}
+.baseInfoTable th{
+	padding-left: 10px !important;
+	border: 1px solid #ccc;
+  text-align: center !important;
+  height: 30px;
+  background: #f3f3f3;
+}
+.baseInfoTable td{
+	width: 16.6%;
+  border: 1px solid #ccc;
+  background: #f9f9f9;
+  height: 25px;
+  line-height: 25px;
+  padding-left: 10px;
+}
+
+.cutLine {
+    width: 100%;
+   /* background: #d9e4ec;*/
+    position: relative;
+    top: -18px;
+    border-bottom: 1px dotted #bcc5c5;
+}
+.baseInfo{
+	padding-left: 10px !important;
+	overflow: hidden;
+}
+.baseInfo-content th{
+	font-size: 14px;
+}
+/*可收起css动画*/
+@keyframes myChange {
+  from {
+      height: 320px;
+  } to {
+      height: 0;
+  }
+}
+/*.healthChart.ng-hide {
+  animation: 0.5s myChange;
+}*/
+.chart-loading{position:absolute;background-color:white;width: 100%;height: 100%}
+.chart-loading-div1{text-align:center;margin-top: 20%;}
+.chart-loading-div2{text-align:center;height:40px;}
+.treemap_Chart_loading{position:absolute;background-color:white;width: 80%;height: 300px;}
+.treemap_Chart_loading_div1{text-align:center;margin-top: 9%;}
+.panguOverviewBlue{color:#09c;font-size: 16px;}
+.panguOverviewRed{color:#f00;font-size: 16px;}
+.panguOverviewPink{color:#FF00FF;font-size: 16px;}
+.panguOverviewOrange{color:#F90;font-size: 16px;}
+.panguOverviewBlack{color:#0c0c0c;font-size: 16px;}
+.select_time_button{float: left;}
+.tabTableClick{border-bottom: 2px solid #ffffff !important;border: 2px solid #9e9e9e;}
+.tabTable{border-bottom: 0px solid #9e9e9e;}
+.boxibaseline_test{ animation: change 1s  ease-in  infinite ; color:#f00; font-weight: bold}
+.boxibaseline{ color:red}
+.listPanguoperate{border-top: 2px solid #9e9e9e;margin-top: -2px;width: 100%;}
+@keyframes change {
+                0%{ text-shadow: 0 0 4px #f00}
+                            50%{ text-shadow: 0 0 40px #f00}
+                                        100%{ text-shadow: 0 0 4px #f00}
+                                                }
+.showTableMore{margin-left: 0px;min-width: 100px;box-shadow: 2px 2px 8px rgba(0,0,0,0.2);padding: 0px;border-radius: 0px;font-size: 12px;position: absolute;z-index: 9;background: aliceblue;border: 1px solid #a09999;}
+.fontDeleteColor{color: #d21010;}
+.screenTbody td {text-align: center;word-break: break-word;}
+.screenTbody th {text-align: center;word-break: break-word;}
+.textAlignLeft{text-align: left !important;}
+.panguButton{color: #fff;border: 1px solid #428bca;background-color: #428bca;font-size: 12px;border-radius: 0px;padding: 8px 16px;height: 32px;line-height: 14px;}
+.backFileNameBlue{background: #8cc0e6 !important;}
+.backFileNameRed{background: #e06565 !important;}
+.delTableTd table thead tr th: last-child {display: none;}
+.delTableTd table tbody tr td: last-child {display: none;}
+.delTableTd table tbody.tbody-no-data tr td:last-child { display: none;}
+.hiddleOverY::-webkit-scrollbar {
+        }

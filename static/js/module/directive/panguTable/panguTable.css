@@ -1,0 +1,29 @@
+.new-pangu-table{
+	width: 100%;
+}
+.new-pangu-table thead tr{
+	background: #F3F3F3;
+	height: 34px;
+	text-align: center;
+	line-height: 34px;
+	font-weight: bold;
+}
+.new-pangu-table td{
+	border: 1px solid #CCCCCC;
+}
+.new-pangu-table tbody tr{
+	height: 34px;
+	text-align: center;
+	line-height: 34px;
+}
+.new-pangu-table .pangu-table-action-button {
+   min-height: 28px;
+   background: #337ab7;
+   color: #FFFFFF;
+   border: none;
+   outline: none;
+   line-height: 28px;
+   margin: 0 5px;
+   font-size: 10px;
+   margin-top: 10px;
+}

@@ -1,0 +1,213 @@
+{% extends 'cluster_base.html' %}
+{% block body_content %}
+   <script type="text/javascript" src="/static/echarts/echarts.min.js"></script>
+       <script type="text/javascript" src="/static/echarts/echarts-gl.min.js"></script>
+       <script type="text/javascript" src="/static/echarts/ecStat.min.js"></script>
+       <script type="text/javascript" src="/static/echarts/dataTool.min.js"></script>
+       <script type="text/javascript" src="/static/echarts/china.js"></script>
+       <script type="text/javascript" src="/static/echarts/world.js"></script>
+       <script type="text/javascript" src="/static/echarts/bmap.min.js"></script>
+        <div class="panel panel-primary">
+        <div class="panel-heading" style="text-align: center"><b><h3>集群资源水位</h3></b></div>
+        <div class="col-md-6">
+            <div class="card card-primary">
+            <div id="container" style="height: 300px; width: 350px;margin-top: 50px">
+            </div>
+            </div>
+            <div id="container2" style="height: 300px; width: 350px;">
+                 <div class="card card-info">
+                      </div>
+                    </div>
+            </div>
+               <div class="col-md-6">
+    <div id="container3" style="height: 300px; width: 350px;margin-top: 50px">
+                 <div class="card card-danger">
+                      </div>
+                    </div>
+    <div id="container4" style="height: 300px; width: 350px;">
+                 <div class="card card-success">
+                      </div>
+                    </div>
+               </div>
+{#    </div>#}
+        </div>
+       <script type="text/javascript">
+$(function () {
+    var dom1 = document.getElementById("container");
+var myChart1 = echarts.init(dom1);
+var app1 = {};
+option = null;
+option = {
+    title: {
+        text: 'ECS CPU资源',
+        {#subtext: '',#}
+        left: 'center'
+    },
+    tooltip: {
+        trigger: 'item',
+        formatter: '{a} <br/>{b} : {c} ({d}%)'
+    },
+    legend: {
+        orient: 'vertical',
+        left: 'right',
+        data: [ 'used', 'aviliable']
+    },
+    series: [
+        {
+            name: 'ECS CPU资源库存',
+            type: 'pie',
+            radius: '50%',
+            center: ['60%', '50%'],
+            data: [
+                {#{value: 120000, name: 'nc_cpu'},#}
+                {value: 40000, name: 'used'},
+                {value: 80000, name: 'aviliable'},
+            ],
+            emphasis: {
+                itemStyle: {
+                    shadowBlur: 10,
+                    shadowOffsetX: 0,
+                    shadowColor: 'rgba(0, 0, 0, 0.5)'
+                }
+            }
+        }
+    ]
+};
+var dom2 = document.getElementById("container2");
+var myChart2 = echarts.init(dom2);
+var app2 = {};
+option2 = null;
+option2 = {
+    title: {
+        text: 'ECS 内存资源',
+        {#subtext: '',#}
+        left: 'center'
+    },
+    tooltip: {
+        trigger: 'item',
+        formatter: '{a} <br/>{b} : {c} ({d}%)'
+    },
+    legend: {
+        orient: 'vertical',
+        left: 'right',
+        data: [ 'used', 'aviliable']
+    },
+    series: [
+        {
+            name: 'ECS 内存资源库存',
+            type: 'pie',
+            radius: '50%',
+            center: ['60%', '50%'],
+            data: [
+                {#{value: 120000, name: 'nc_cpu'},#}
+                {value: 40000, name: 'used'},
+                {value: 80000, name: 'aviliable'},
+            ],
+            emphasis: {
+                itemStyle: {
+                    shadowBlur: 10,
+                    shadowOffsetX: 0,
+                    shadowColor: 'rgba(0, 0, 0, 0.5)'
+                }
+            }
+        }
+    ]
+};
+var dom3 = document.getElementById("container3");
+var myChart3 = echarts.init(dom3);
+var app3 = {};
+option3 = null;
+option3 = {
+    title: {
+        text: 'OSS 盘古水位',
+        {#subtext: '',#}
+        left: 'center'
+    },
+    tooltip: {
+        trigger: 'item',
+        formatter: '{a} <br/>{b} : {c} ({d}%)'
+    },
+    legend: {
+        orient: 'vertical',
+        left: 'right',
+        data: [ 'used', 'aviliable']
+    },
+    series: [
+        {
+            name: 'OSS 盘古资源库存',
+            type: 'pie',
+            radius: '50%',
+            center: ['60%', '50%'],
+            data: [
+                {#{value: 120000, name: 'nc_cpu'},#}
+                {value: 40000, name: 'used'},
+                {value: 80000, name: 'aviliable'},
+            ],
+            emphasis: {
+                itemStyle: {
+                    shadowBlur: 10,
+                    shadowOffsetX: 0,
+                    shadowColor: 'rgba(0, 0, 0, 0.5)'
+                }
+            }
+        }
+    ]
+};
+
+
+var dom4 = document.getElementById("container4");
+var myChart4 = echarts.init(dom4);
+var app4 = {};
+option4 = null;
+option4 = {
+    title: {
+        text: 'ODPS 盘古水位',
+        {#subtext: '',#}
+        left: 'center'
+    },
+    tooltip: {
+        trigger: 'item',
+        formatter: '{a} <br/>{b} : {c} ({d}%)'
+    },
+    legend: {
+        orient: 'vertical',
+        left: 'right',
+        data: [ 'used', 'aviliable']
+    },
+    series: [
+        {
+            name: 'ODPS 盘古资源库存',
+            type: 'pie',
+            radius: '50%',
+            center: ['60%', '50%'],
+            data: [
+                {#{value: 120000, name: 'nc_cpu'},#}
+                {value: 40000, name: 'used'},
+                {value: 80000, name: 'aviliable'},
+            ],
+            emphasis: {
+                itemStyle: {
+                    shadowBlur: 10,
+                    shadowOffsetX: 0,
+                    shadowColor: 'rgba(0, 0, 0, 0.5)'
+                }
+            }
+        }
+    ]
+};
+
+
+
+if (option && typeof option === "object") {
+    myChart1.setOption(option, true);
+    myChart2.setOption(option2, true);
+    myChart3.setOption(option3, true);
+    myChart4.setOption(option4, true)
+}
+})
+
+       </script>
+
+
+
+{% endblock %}

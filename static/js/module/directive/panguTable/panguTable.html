@@ -1,0 +1,66 @@
+<div>
+    <h5 ng-bind="jsonTable.title"></h5>
+    <div style="display: flex;margin-top: 20px;">
+        <span style="font-size: 14px;margin-right: 10px;background-color: #eee;padding: 6px;font-size: 14px;">模糊查询</span>
+        <div  style="width: 250px;" class="input-group">
+            <span class="input-group-addon">
+                <a class="glyphicon glyphicon-search" ng-click="selectName()"></a>
+              </span>
+            <input type="text" ng-model="inputSelectName"  class="form-control" placeholder="请输入名称进行搜索"   ng-change="selectName()">
+        </div>
+        <button ng-if="tableData.showFanxuanBtn" ng-click="fanxuan()" class="fanxuan">反选</button>
+    </div>
+    <table class="hovertable" style="width: 100%;margin-top: 20px;word-break: break-all;">
+        <thead>
+        <tr>
+        	<th ng-if="checkBox" style="width:/{/checkBoxTdWidth/}/;">
+	        	<input type="checkbox" ng-click="checkBoxAction({'checkedRows':tableData.tbodyData,'index':0});checkedRows({'checkRowsData':checkRowsData})" ng-checked="isCheckedAll" />
+	        </th>
+            <th ng-repeat="val in jsonTable.theadData track by $index"  style="width: /{/val.width/}/">
+                <span ng-bind="val.showName"></span>
+                <span ng-class="{true:'glyphicon glyphicon-triangle-bottom',false:'glyphicon glyphicon-triangle-top'}[val.showSortIcon]" ng-click="singleRowSort(val.tbodyKey)" ng-if="!jsonTable.showSortIconData"></span>
+            </th>
+        </tr>
+        </thead>
+        <tbody ng-show="showTdData">
+            <tr ng-repeat="info in jsonTable.tbodyData track by $index" style="">
+                <td ng-if="checkBox">
+	        		<input type="checkbox" ng-click="checkBoxAction({'checkedRows':info});checkedRows({'checkRowsData':checkRowsData})" ng-checked="info.rowKey.checkedKey" />
+	        	</td>
+                <td ng-repeat="(key, val) in info track by $index" style="text-align:/{/val.textAlign/}/;background:/{/val.trbackground/}/;color:/{/val.color/}/;">
+                	<div ng-if="!val.render">
+                	    <a href="/{/info[jsonTable.theadData[$index].tbodyKey].url/}/" target="_blank" ng-bind="info[jsonTable.theadData[$index].tbodyKey].name" ng-if="info[jsonTable.theadData[$index].tbodyKey].url"></a>
+                        <span ng-bind="info[jsonTable.theadData[$index].tbodyKey].name" ng-if="!info[jsonTable.theadData[$index].tbodyKey].url"></span>
+                        <button ng-repeat="button in info[jsonTable.theadData[$index].tbodyKey].button" ng-bind="button" class="pangu-table-action-button" ng-click="tableAction({'item':info, 'info':button})" style="height:auto"></button>
+                	</div>
+                	<div ng-if="val.render">
+                		<p ng-repeat="item in val.render" ng-bind="item"></p>
+                	</div>
+                </td>
+                <!--<td ng-repeat="(key, val) in info track by $index" ng-if="val.render">
+                	<p ng-repeat="item in val.render" ng-bind="item"></p>
+                </td>-->
+            </tr>
+        </tbody>
+        <tbody ng-show="!showTdData">
+            <tr><td colspan="{{colspanNum}}" style="font-size: 20px;color: blue;">暂时没有表格数据!</td></tr>   
+        </tbody>
+    </table>
+    <!-- 分页 -->
+    <div style="float: right;">
+        <div class="pull-left" style="margin-right: 20px;margin-top: 5px;">总条数:
+          <span ng-bind="totalItems"></span>
+          <span>条</span>
+        </div>
+        <div class="pull-left" style="margin-top: 5px;">
+            每页&nbsp;
+          <select ng-model="itemsPerPage" ng-change="changePagesize()" ng-options="option for option in [2,10,20, 40, 100, 200]"></select>
+            &nbsp;条
+        </div>
+        <div style="font-size: 12px;float: left">
+            <uib-pagination items-per-page="itemsPerPage" total-items="totalItems" ng-model="currentPage" max-size="maxSize" first-text="首页" previous-text="上一页" next-text="下一页" last-text="最后页" boundary-links="true" boundary-link-numbers="true" ng-change="changePage()" style="margin-top: 0px;"></uib-pagination>
+        </div>
+        <div style="clear: both;"></div>
+    </div>
+    <div style="clear: both;"></div>
+</div>

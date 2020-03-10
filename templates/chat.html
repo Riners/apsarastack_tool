@@ -1,0 +1,54 @@
+{% extends 'base_old.html' %}
+{% block book_ac %}
+    active
+{% endblock %}
+{% block pane-main %}
+    {#    <h1 class="page-header">书籍列表</h1>#}
+    <div class="panel panel-primary">
+        <!-- Default panel contents -->
+        <div class="panel-heading">主机列表 <i class="fa fa-thumb-tack pull-right"></i></div>
+        <div class="panel-body">
+            <div class="row" style="margin-bottom: 15px">
+                <div class="col-md-4">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search for...">
+                        <span class="input-group-btn">
+                                    <button class="btn btn-default" type="button">搜索</button>
+                                </span>
+                    </div><!-- /input-group -->
+                </div><!-- /.col-md-4 -->
+                <div class="col-md-3 pull-right">
+                    <a class="btn btn-success pull-right" href="/add_host/"><i class="fa fa-plus fa-fw"></i>添加主机</a>
+                    {#                            <button class="btn btn-success pull-right" data-toggle="modal" data-target="#myModal">新增</button>#}
+                </div>
+
+            </div><!-- /.row -->
+
+            <textarea class="form-control" id="chat-log" disabled rows="20"></textarea><br/>
+            <input class="form-control" id="chat-message-input" type="text"/><br/>
+            <input class="btn btn-success btn-block" id="chat-message-submit" type="button" value="Send"/>
+
+            <nav aria-label="Page navigation" class="text-right">
+                <ul class="pagination">
+                    <li>
+                        <a href="#" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    <li><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">5</a></li>
+                    <li>
+                        <a href="#" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+    </div>
+
+{% endblock %}

@@ -1,0 +1,240 @@
+<div class="upgrade_cfg modal-header upgrade">
+     <p>创建新的升级</p>
+</div>
+<div class="upgrade_cfg modal-body upgrade">
+	<div class="tbody-sub-title">升级基础信息:</div>
+	<div>
+		<p class="upgrade-name">
+	     	<span class="label-title"> 升级名称:</span>
+	     	<input type="text" ng-model="tag" placeholder="请输入升级名称"/>
+		</p>
+	    <div style="min-height: 35px;" class="upgrade-group">
+	     	<span class="label-title" style="float: left;position: relative;top: 5px;"> 升级应用线:</span>
+			<div style="float:left;">
+				<form-select 
+					selected-list="selected_group" 
+					option-list="upgradeGruopList" 
+					check-data="group"
+				>
+				</form-select>
+			</div>
+	    </div>
+	    <p style="margin-top:8px;float:left;">
+ 			<label class="label-title" style=""> 使用已有变更作为变更模板:</label>
+ 			<input type="text" ng-model="old_changefree_id" />
+     	</p>
+        <div style="clear:both;"></div>
+	    <!--<div>
+	     	<p class="label-title"> 配置升级描述:</p>
+	     	<textarea placeholder="请输入配置升级描述" ng-model="upgrade_cfg_des"></textarea>
+	    </div>-->
+	</div>
+     <div class="tbody-sub-title">各个模块的版本信息(多个版本使用逗号分隔)</div>
+     <div class="ver-info-content">
+     	<ul>
+     		<li class="ms-ver" style="padding-left:57px">
+     			<span class="label-title" style="float:left;margin-top:4px;"> Master:</span>
+	     	    <!--<input type="text" ng-model="ms_ver" placeholder="" />-->
+	     	    <div style="float:left" class="create-page-search-select">
+					<search-select 
+						selectone="ms_ver"  
+						option-list="pangu_ver_list" 
+						action="searchSelectAction" 
+						config="shennong_tmpl_conf"
+						pass="shennong_tmpl_pass"
+					>
+					</search-select>
+				</div>
+				<div style="clear:both;"></div>
+     		</li>
+     	    <li class="cs-ver" style="padding-left:63px">
+     			<span class="label-title" style="float:left;margin-top:4px;"> CS:</span>
+	     	    <!--<input type="text" ng-model="cs_ver" placeholder="" />-->
+	     	    <div style="float:left" class="create-page-search-select">
+					<search-select 
+						selectone="cs_ver"  
+						option-list="pangu_ver_list" 
+						action="searchSelectAction" 
+						config="shennong_tmpl_conf"
+						pass="shennong_tmpl_pass"
+					>
+					</search-select>
+				</div>
+				<div style="clear:both;"></div>
+     		</li>
+     	    <li class="mo-ver" style="padding-left:52px">
+     			<span class="label-title" style="float:left;margin-top:4px;"> Monitor:</span>
+	     	    <!--<input type="text" ng-model="Mo_ver" placeholder="" />-->
+	     	    <div style="float:left" class="create-page-search-select">
+					<search-select 
+						selectone="Mo_ver"  
+						option-list="pangu_ver_list" 
+						action="searchSelectAction" 
+						config="shennong_tmpl_conf"
+						pass="shennong_tmpl_pass"
+					>
+					</search-select>
+				</div>
+				<div style="clear:both;"></div>
+     		</li>
+     	    <li class="tools-ver" style="padding-left:47px">
+     			<span class="label-title" style="float:left;margin-top:4px;"> Tools:</span>
+	     	    <!--<input type="text" ng-model="tools_ver" placeholder="" />-->
+	     	    <div style="float:left" class="create-page-search-select">
+					<search-select 
+						selectone="tools_ver"  
+						option-list="pangu_ver_list" 
+						action="searchSelectAction" 
+						config="shennong_tmpl_conf"
+						pass="shennong_tmpl_pass"
+					>
+					</search-select>
+				</div>
+				<div style="clear:both;"></div>
+     		</li>
+     		<li class="sv-ver" style="padding-left:30px">
+     			<span class="label-title" style="float:left;margin-top:4px;"> Supervisor:</span>
+	     	    <!--<input type="text" ng-model="sv_ver" placeholder="" />-->
+	     	    <div style="float:left" class="create-page-search-select">
+					<search-select 
+						selectone="sv_ver"  
+						option-list="pangu_ver_list" 
+						action="searchSelectAction" 
+						config="shennong_tmpl_conf"
+						pass="shennong_tmpl_pass"
+					>
+					</search-select>
+				</div>
+				<div style="clear:both;"></div>
+     		</li>
+     		<li class="sv-ver">
+     			<label class="label-title" style="float:left;margin-top:4px;"> BlockMaster:</label>
+	     	    <!--<input type="text" ng-model="PanguBlockMaster" placeholder="" />-->
+	     	    <div style="float:left" class="create-page-search-select">
+					<search-select 
+						selectone="PanguBlockMaster"  
+						option-list="pangu_ver_list" 
+						action="searchSelectAction" 
+						config="shennong_tmpl_conf"
+						pass="shennong_tmpl_pass"
+					>
+					</search-select>
+				</div>
+				<div style="clear:both;"></div>
+     		</li>
+     		<li class="sv-ver" style="padding-left:22px">
+     			<label class="label-title" style="float:left;margin-top:4px;"> BlockServer:</label>
+	     	    <!--<input type="text" ng-model="PanguBlockServer" placeholder="" />-->
+	     	    <div style="float:left" class="create-page-search-select">
+					<search-select 
+						selectone="PanguBlockServer"  
+						option-list="pangu_ver_list" 
+						action="searchSelectAction" 
+						config="shennong_tmpl_conf"
+						pass="shennong_tmpl_pass"
+					>
+					</search-select>
+				</div>
+				<div style="clear:both;"></div>
+     		</li>
+     		<li class="sv-ver" style="padding-left:24px">
+     			<label class="label-title" style="float:left;margin-top:4px;"> BlockGC:</label>
+	     	    <!--<input type="text" ng-model="PanguBlockGCWorker" placeholder="" />-->
+	     	    <div style="float:left" class="create-page-search-select">
+					<search-select 
+						selectone="PanguBlockGCWorker"  
+						option-list="pangu_ver_list" 
+						action="searchSelectAction" 
+						config="shennong_tmpl_conf"
+						pass="shennong_tmpl_pass"
+					>
+					</search-select>
+				</div>
+				<div style="clear:both;"></div>
+     		</li>
+     		<li class="block-snap-shot">
+     			<label class="label-title" style="float:left;margin-top:4px;"> BlockSnapShot:</label>
+	     	    <!--<input type="text" ng-model="PanguSnapshotServer" placeholder="" />-->
+	     	    <div style="float:left" class="create-page-search-select">
+					<search-select 
+						selectone="PanguSnapshotServer"  
+						option-list="pangu_ver_list" 
+						action="searchSelectAction" 
+						config="shennong_tmpl_conf"
+						pass="shennong_tmpl_pass"
+					>
+					</search-select>
+				</div>
+				<div style="clear:both;"></div>
+     		</li>
+     		<div style="clear: both;"></div>
+     	</ul>
+     </div>
+     <div class="tbody-sub-title time-arrange-title">排期时间安排(日期时间格式示例:2017-12-12)</div>
+     <div class="time-arrange-content">
+     	<ul>
+     		<li>
+     			<span class="label-title"> 灰度1:</span>
+	     	    <input type="date" ng-model="dstep_gray_scale_1" placeholder=""/>
+     		</li>
+     		<li class="layout-middle">
+     			<span class="label-title"> 灰度2:</span>
+	     	    <input type="date" ng-model="dstep_gray_scale_2" placeholder=""/>
+     		</li>
+     		<li>
+     			<span class="label-title"> 灰度3:</span>
+	     	    <input type="date" ng-model="dstep_gray_scale_3" placeholder=""/>
+     		</li>
+     		<li class="layout-middle">
+     			<span class="label-title"> 灰度4:</span>
+	     	    <input type="date" ng-model="dstep_gray_scale_4" placeholder=""/>
+     		</li>
+     		<li>
+     			<span class="label-title"> 升级1:</span>
+	     	    <input type="date" ng-model="dstep_upgrade_1" placeholder=""/>
+     		</li>
+     		<li class="layout-middle">
+     			<span class="label-title"> 升级2:</span>
+	     	    <input type="date" ng-model="dstep_upgrade_2" placeholder=""/>
+     		</li>
+     		<li>
+     			<span class="label-title"> 升级3:</span>
+	     	    <input type="date" ng-model="dstep_upgrade_3" placeholder=""/>
+     		</li>
+     		<li class="layout-middle">
+     			<span class="label-title"> 升级4:</span>
+	     	    <input type="date" ng-model="dstep_upgrade_4" placeholder=""/>
+     		</li>
+     		<li>
+     			<span class="label-title"> 升级5:</span>
+	     	    <input type="date" ng-model="dstep_upgrade_5" placeholder=""/>
+     		</li>
+     		<li class="layout-middle">
+     			<span class="label-title"> 升级6:</span>
+	     	    <input type="date" ng-model="dstep_upgrade_6" placeholder=""/>
+     		</li>
+     		<li>
+     			<span class="label-title"> 升级7:</span>
+	     	    <input type="date" ng-model="dstep_upgrade_7" placeholder=""/>
+     		</li>
+     		<li class="layout-middle">
+     			<span class="label-title"> 升级8:</span>
+	     	    <input type="date" ng-model="dstep_upgrade_8" placeholder=""/>
+     		</li>
+     		<li>
+     			<span class="label-title"> 升级9:</span>
+	     	    <input type="date" ng-model="dstep_upgrade_9" placeholder=""/>
+     		</li>
+     		<li class="layout-middle upgrade-ten">
+     			<span class="label-title"> 升级10:</span>
+	     	    <input type="date" ng-model="dstep_upgrade_10" placeholder=""/>
+     		</li>
+     		<div style="clear: both;"></div>
+     	</ul>
+     </div>
+</div>
+<div style="clear: both;"></div>
+<div class="upgrade_cfg modal-footer">
+    <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
+    <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+</div>

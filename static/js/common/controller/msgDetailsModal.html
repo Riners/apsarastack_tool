@@ -1,0 +1,9 @@
+
+<div class="modal-body upgrade">
+    <!--<div ng-bind="msgDetails"></div>-->
+    <p ng-repeat="item in msgDetails track by $index" ng-bind="item" style="margin-bottom:0 !important;"></p>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
+<!--    <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>-->
+</div>

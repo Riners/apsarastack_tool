@@ -1,0 +1,138 @@
+.pangu-steps-content .pangu-steps-item-content {
+	float: left;
+	/*width: 160px;*/
+}
+.pangu-steps-content .pangu-steps-item > div.item-top{
+	overflow: hidden;
+	margin-bottom: 5px;
+}
+.pangu-steps-content .pangu-steps-item > div.item-top > div{
+	float: left;
+}
+.pangu-steps-content .pangu-steps-item .steps-icon{
+	width:30px;
+	height: 30px;
+	border-radius: 100%;
+	line-height: 30px;
+	text-align: center;
+	cursor:pointer;
+}
+.pangu-steps-content .pangu-steps-item .steps-icon .glyphicon-ok {
+	color:#1890ff;
+}
+.pangu-steps-content .pangu-steps-item .item-desc {
+	position: relative;
+	height: 30px;
+   /* line-height: 30px;*/
+    text-align: right;
+    width:100%;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    display:block;
+    white-space: nowrap;
+    left: 30px;
+    padding-right: 5px;
+    text-align: center;
+    max-width:100px;
+    /*word-break:break-all;*/
+    /*padding-left: 10px;*/
+}
+/*已完成步骤*/
+.pangu-steps-content .pangu-steps-item.pangu-steps-finished .steps-icon{
+	border: 1px solid #1890ff;
+}
+/*.pangu-steps-content .pangu-steps-item.pangu-steps-finished .step-line:before {
+	content:''; background:#1890ff; width:100px; height:1px; position:absolute; top: 10px;left: 30px;
+}*/
+.pangu-steps-content .pangu-steps-item.pangu-steps-finished .step-line {
+	background:#1890ff; width:100px; height:1px;margin-top: 14px;
+}
+/*进行中*/
+.pangu-steps-content .pangu-steps-item.pangu-steps-process .steps-icon{
+	border: 1px solid #1890ff;
+	background: #1890ff;
+	color: #fff;
+}
+.pangu-steps-content .pangu-steps-item.pangu-steps-process .steps-icon-error{
+	border: 1px solid red;
+	background: #fff;
+	color: red;
+    width:30px;
+	height: 30px;
+	border-radius: 100%;
+	line-height: 30px;
+	text-align: center;
+}
+.pangu-steps-content .pangu-steps-item.pangu-steps-process .steps-icon-jump {
+	border: 1px solid #ec8840;
+	background: #fff;
+	color: #ec8840;
+    width:30px;
+	height: 30px;
+	border-radius: 100%;
+	line-height: 30px;
+	text-align: center;
+}
+.pangu-steps-content .pangu-steps-item.pangu-steps-process .item-desc {
+	font-weight: bold;
+}
+
+/*.pangu-steps-content .pangu-steps-item.pangu-steps-process .step-line:before {
+	content:''; background:#CCCCCC; width:100px; height:1px; position:absolute; top: 10px;left: 30px;
+}*/
+.pangu-steps-content .pangu-steps-item.pangu-steps-process .step-line {
+	background:#1890ff; width:100px; height:1px;margin-top: 14px;
+}
+.pangu-steps-content .pangu-steps-item.pangu-steps-process .step-line-error {
+	background:red; width:100px; height:1px;margin-top: 14px;
+}
+.pangu-steps-content .pangu-steps-item.pangu-steps-process .step-line-jump {
+	background:#fbd40a; width:100px; height:1px;margin-top: 14px;
+}
+/*等待*/
+.pangu-steps-content .pangu-steps-item.pangu-steps-wait .steps-icon{
+	border: 1px solid #CCCCCC;
+}
+.pangu-steps-content .pangu-steps-item.pangu-steps-wait .item-desc{
+	color: #CCCCCC;
+}
+/*.pangu-steps-content .pangu-steps-item.pangu-steps-wait .step-line:before {
+	content:''; background:#CCCCCC; width:100px; height:1px; position:absolute; top: 10px;left: 30px;
+}*/
+.pangu-steps-content .pangu-steps-item.pangu-steps-wait .step-line {
+	 background:#CCCCCC; width:100px; height:1px;margin-top: 14px;
+}
+/*最后一步，等待和完成*/
+.pangu-steps-content .pangu-steps-item.pangu-steps-done .steps-icon{
+	border: 1px solid #1890ff;
+}
+.pangu-steps-content .pangu-steps-item.pangu-steps-done .item-desc{
+	color: #000;
+}
+/*步骤条操作*/
+.steps-action{
+	padding-left: 60px;
+}
+.steps-action button {
+	padding: 5px 10px;
+	border-radius: 4px;
+	outline: none;
+	border: 0;
+	color: #FFFFFF;
+}
+.steps-action button.jump {
+	background: #ec8840;
+}
+.steps-action button.again {
+	background: #337AB7;
+}
+.steps-action button.cancel {
+	background: red;
+}
+a.miao-dian {
+    width: 30px;
+    height: 30px;
+    display: block;
+    top:-30px;
+    position:relative;
+}

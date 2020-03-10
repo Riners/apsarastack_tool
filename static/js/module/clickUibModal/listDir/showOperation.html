@@ -1,0 +1,188 @@
+<style type="text/css">
+.csChunkReplicationDatacss td{padding: 8px 2px 8px 2px !important;}
+.chunkCenterWork td{text-align: center;word-break: break-word;width: 10%;}
+</style>
+<div class="modal-header">
+  <h3 ng-bind="data.name"></h3>
+</div>
+<div class="modal-body">
+    <div style="">
+        <div ng-show="data.name=='删除'" style="text-align: center;">
+            <div>
+                <label>源地址:</label>
+                <input type="text" ng-model="data.add.source" ng-disabled="true" style="width: 480px;">
+            </div>
+            <span>是否确认删除</span>
+        </div>
+        <div ng-show="data.name=='恢复'" style="text-align: center;">
+            <div>
+                <label style="width: 70px;">源地址:</label>
+                <input type="text" ng-model="data.add.source" ng-disabled="true" style="width: 480px;">
+            </div>
+            <span>是否确认恢复</span>
+        </div>
+        <div ng-show="data.name=='清空回收站'" style="text-align: center;">
+            <span>你确定要永久抹除回收站中的项目吗</span>
+            <span>你不能撤销此操作。</span>
+        </div>
+
+        <div ng-show="data.name=='Pin'||data.name=='解Pin'" style="text-align: center;">
+            <div>
+                <label style="width: 70px;">源地址:</label>
+                <input type="text" ng-model="data.add.source" ng-disabled="true" style="width: 480px;">
+            </div>
+            <span>是否确认</span><span ng-bind="data.name"></span>
+        </div>
+
+        <div ng-show="data.name=='移动'||data.name=='拷贝'||data.name=='创建链接'">
+            <div>
+                <span>当前volume:</span><span ng-bind="data.volume"></span>
+            </div>
+            <div>
+                <label style="width: 70px;">源地址:</label>
+                <input type="text" ng-model="data.add.source" ng-disabled="true" style="width: 480px;">
+            </div>    
+            <div>
+                <!-- <span>目标地址:pangu://</span><span ng-bind="data.volume"></span><span>@localcluster/</span> -->
+                <label style="width: 70px;">目标地址:</label>
+                <input type="text" ng-model="data.add.target" style="width: 480px;">
+            </div>
+        </div>
+
+        <div ng-show="data.name=='修改replica'">
+            <div>
+                <label style="width: 70px;">源地址:</label>
+                <input type="text" ng-model="data.add.source" ng-disabled="true" style="width: 480px;">
+            </div> 
+            <div style="margin-top:10px;">
+                <div style="float: left;">
+                    <label style="width: 70px;">min:</label>
+                    <input type="text" ng-model="data.add.min" style="width: 70px;">
+                </div>
+                <div style="float: left;margin-left: 20px;">
+                    <label style="width: 70px;">max:</label>
+                    <input type="text" ng-model="data.add.max" style="width: 70px">
+                </div>
+            </div>
+        </div>
+        <div ng-show="data.name=='设置quota'">
+            <div style="margin-top:10px;">
+                <div>
+                    <label style="width: 150px;text-align: center;">key</label>
+                    <label style="width: 150px;text-align: center;">Used</label>
+                    <label style="width: 150px;text-align: center;">Limit</label>
+                </div>
+                <hr>
+                <div ng-repeat="val in quotaArr track by $index">
+                    <label ng-bind="val.key" style="width: 150px;text-align: center;"></label>
+                    <label ng-bind="val.Used" style="width: 150px;text-align: center;"></label>
+                    <input type="text" ng-model="val.Limit" style="width: 150px;text-align: center;">
+                </div>
+            </div>
+        </div>
+        <div ng-show="data.name=='查看Chunk信息'">
+          <table class="table table-striped" style="width: 100%;">
+            <thead>
+              <tr>
+                <th style="text-align: center;">FileId</th>
+                <th style="text-align: center;">FileType</th>
+                <th style="text-align: center;">ChunkNumber</th>
+                <th style="text-align: center;">AppName</th>
+                <th style="text-align: center;">PartName</th>
+                <th style="text-align: center;">CompressType</th>    
+                <th style="text-align: center;">MinCopy</th>
+                <th style="text-align: center;">MaxCopy</th>
+                <th style="text-align: center;">FileLength</th>
+                <th style="text-align: center;">CreateTime</th>
+                <th style="text-align: center;">LastModifyTime</th>
+              </tr>
+            </thead>
+            <tbody class="csChunkReplicationDatacss">
+              <tr class="chunkCenterWork">
+                <td ng-bind="csChunkReplicationData.FileId"></td>
+                <td ng-bind="csChunkReplicationData.FileType"></td>
+                <td ng-bind="csChunkReplicationData.ChunkNumber"></td>
+                <td ng-bind="csChunkReplicationData.AppName"></td>
+                <td ng-bind="csChunkReplicationData.PartName"></td>
+                <td ng-bind="csChunkReplicationData.CompressType"></td>
+                <td ng-bind="csChunkReplicationData.MinCopy"></td>
+                <td ng-bind="csChunkReplicationData.MaxCopy"></td>
+                <td ng-bind="csChunkReplicationData.FileLength"></td>
+                <td ng-bind="csChunkReplicationData.CreateTime"></td>
+                <td ng-bind="csChunkReplicationData.LastModifyTime"></td>
+                
+                
+              </tr>
+            </tbody>
+          </table>
+          <hr>
+          <h3>所有Chunk信息</h3>
+          <table class="table table-striped" style="width: 100%;">
+            <thead>
+              <tr>
+                <th style="text-align: center;">ChunkId</th>
+                <th style="text-align: center;">Status</th>
+                <th style="text-align: center;">Location</th>
+                <th style="text-align: center;">DiskId</th>
+                <!-- <th style="text-align: center;">lsReplicaInfo</th> -->
+                <th style="text-align: center;">Version</th>
+                <th style="text-align: center;">ChunkFlag</th>
+                <th style="text-align: center;">ReplicaNum</th>
+                
+              </tr>
+            </thead>
+            <tbody class="csChunkReplicationDatacss">
+              <tr ng-repeat="val in csChunkReplicationData.lsChunkInfo">
+                <td ng-bind="val.ChunkId" style="text-align: center;"></td>
+                <td style="text-align: center;">
+                    <ul style="list-style:none;">
+                        <li ng-repeat="info in val.lsReplicaInfo" >
+                            <span ng-bind="info.Status"></span>
+                        </li>
+                    </ul>
+                </td>
+                <td style="text-align: center;">
+                    <ul style="list-style:none;">
+                        <li ng-repeat="info in val.lsReplicaInfo" >
+                            <span ng-bind="info.Location"></span>
+                        </li>
+                    </ul>
+                </td>
+                <td style="text-align: center;">
+                    <ul style="list-style:none;">
+                        <li ng-repeat="info in val.lsReplicaInfo" >
+                            <span ng-bind="info.DiskId"></span>
+                        </li>
+                    </ul>
+                </td>
+                <!-- <td style="text-align: center;">
+                    <ul style="list-style:none;">
+                        <li ng-repeat="info in val.lsReplicaInfo" >
+                            <label>Status:</label>
+                            <span ng-bind="info.Status"></span>
+                            <label>Location:</label>
+                            <span ng-bind="info.Location"></span>
+                            <label>DiskId:</label>
+                            <span ng-bind="info.DiskId"></span>
+                        </li>
+                    </ul>
+                </td> -->
+                <td ng-bind="val.Version" style="text-align: center;"></td>
+                <td ng-bind="val.ChunkFlag" style="text-align: center;"></td>
+                <td ng-bind="val.ReplicaNum" style="text-align: center;"></td>
+                
+
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        
+         
+      
+      
+    </div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" ng-click="okDesc()">确定</button>
+    <button class="btn btn-primary" ng-click="cancelDesc()">取消</button>
+</div>

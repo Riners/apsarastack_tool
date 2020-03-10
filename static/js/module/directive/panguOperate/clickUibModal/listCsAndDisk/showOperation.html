@@ -1,0 +1,129 @@
+<style type="text/css">
+.thcenter th{text-align: center;}
+.thcenter td{text-align: center;}
+</style>
+<div class="modal-header">
+  <span ng-bind="data.name"></span>
+</div>
+<div class="modal-body">
+    <div style="">
+      <div ng-show="data.ip">
+        <label style="width: 100px;">当前hostIP:</label>
+        <label style="width: 100px;" ng-bind="data.ip"></label>
+      </div>
+      <div ng-show="data.diskid">
+        <label style="width: 100px;">当前diskID:</label>
+        <label style="width: 100px;" ng-bind="data.diskid"></label>
+      </div>  
+    	<!-- 获取flag -->
+      <div ng-show="data.cmd=='get_flag'||data.key=='get_all_flag'" style="text-align: center;">
+        <div>
+          <label>请输入flag:</label>
+          <input type="text" ng-model="inputData.getFlag" style="width: 380px;">
+          <button class="btn btn-primary" ng-click="getFlag()">获取flag数据</button>
+			  </div>
+  			<div style="margin-top:20px;">
+  				<table class="table table-striped" style="width: 100%;">
+  					<thead>
+      				<tr>
+      					<th style="text-align: center;">Status</th>
+      					<th style="text-align: center;">Value</th>
+      					<th style="text-align: center;">Server</th>
+      				</tr>
+      			</thead>
+      			<tbody>
+      				<tr ng-repeat="val in getDlagData track by $index" >
+      					<td ng-bind="val.Status"></td>
+      					<td ng-bind="val.Value"></td>
+      					<td ng-bind="val.Server"></td>
+      				</tr>
+      			</tbody>
+  				</table>
+  			</div>
+      </div>
+        <!-- 设置 flag -->
+        <div ng-show="data.cmd=='set_flag'">
+          <div>
+	            <label style="width: 100px;">请输入flag:</label>
+	            <input type="text" ng-model="inputData.getFlag" style="width: 380px;">
+			   </div>
+			<div>
+	            <label style="width: 100px;">请输入value:</label>
+	            <input type="text" ng-model="inputData.flagValue" style="width: 380px;">
+			</div>
+        </div>
+        <!-- 设置 状态 -->
+        <div ng-show="data.name=='设置状态'">
+            <div>
+	            <label style="width: 100px;">请输入状态:</label>
+              <select  ng-model="disksStatus">
+                <option ng-repeat="val in getCSStatusData track by $index" value="/{/val/}/" ng-bind="val"></option>
+              </select>
+              <span style="width: 100px;">(设置状态后, 状态的更新会有延迟)</span>
+			</div>
+        </div>
+        <!-- 重启 -->
+        <div ng-show="data.cmd=='reboot'">
+            <span style="text-align: center;">是否确认重启</span>
+        </div>
+       	<!-- 设置 disk 状态 -->
+        <div ng-show="data.name=='设置磁盘状态'">
+          <div>
+	          <label style="width: 150px;">请选择DISK状态:</label>
+            <select  ng-model="disksStatus">
+	          <option ng-repeat="val in getDiskStatusData track by $index" value="/{/val/}/" ng-bind="val"></option>
+	          </select>
+            <span style="width: 100px;">(设置状态后, 状态的更新会有延迟)</span>
+			    </div>
+        </div>
+        <!-- 设置 flag -->
+        <div ng-show="data.key=='get_disk_safe'||data.key=='get_cs_safe'">
+          <div>
+	          <span style="text-align: center;" ng-bind="safeStr"></span>   
+			    </div>
+			     
+        </div>
+        <div style="margin-top:20px;" ng-show="data.key=='get_alldisk_safe'">
+            <table class="table table-striped" style="width: 100%;">
+              <thead>
+                <tr class="thcenter">
+                  <th style="text-align: center;">CS</th>
+                  <th style="text-align: center;">status</th>
+                  <th style="text-align: center;">DiskId</th>
+                  
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="val in getDlagData track by $index" class="thcenter">
+                  <td ng-bind="val.cs"></td>
+                  <td ng-bind="val.status"></td>
+                  <td ng-bind="val.disk"></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div style="margin-top:20px;" ng-show="data.key=='get_allcs_safe'">
+            <table class="table table-striped" style="width: 100%;">
+              <thead>
+                <tr class="thcenter">
+                  <th style="text-align: center;">CS</th>
+                  
+                  <th style="text-align: center;">status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="val in getDlagData track by $index" class="thcenter">
+                  <td ng-bind="val.cs"></td>
+          
+                  <td ng-bind="val.status"></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+    </div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" ng-click="okDesc()">确定</button>
+    <button class="btn btn-primary" ng-click="cancelDesc()">取消</button>
+</div>

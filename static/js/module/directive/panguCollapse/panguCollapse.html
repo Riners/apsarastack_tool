@@ -1,0 +1,8 @@
+<div ng-click="collapseClick();showGroupTitle()"  style="padding: 0;">
+  <span ng-class="{'glyphicon glyphicon-chevron-right':showCollapse == true,'glyphicon glyphicon-chevron-down':showCollapse == false}" style="float:left;font-size:10px;padding-bottom:5px;padding-left:10px;"></span>
+  <h5 style="float:left;" ng-class="{'group-dashboard-title-h5 hideCollapse':showCollapse == true,'group-dashboard-title-h5':showCollapse == false}">
+  	<a href="/{/collapseUrl/}/" ng-bind="collapseTitle" ng-if="collapseUrl"></a>
+  	<span ng-bind="collapseTitle" ng-if="!collapseUrl"></span>
+  </h5>
+  <div style="clear: both;"></div>
+</div>

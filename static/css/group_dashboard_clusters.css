@@ -1,0 +1,73 @@
+.body_content{
+	border-top: 2px solid #E2E3E5;
+    position: relative;
+    top: -2px;
+}
+.chart-tab{
+	width: 100%;
+	height: auto;
+	margin-top: 30px;
+	overflow:hidden;
+	z-index: 10;
+}
+.chart-tab .tab-ul{
+	/*overflow: hidden;*/
+	position: relative;
+}
+.chart-tab {
+	width: 1064px;
+	position: relative;
+	/*border-bottom: 2px solid #e9e9e9;*/
+}
+.chart-tab .tab-ul .tab-item{
+	float: left;
+	list-style: none;
+	/*padding: 0 20px;*/
+	height: 25px;
+	line-height: 25px;
+	/*min-width: 100px;*/
+	text-align: center;
+	color: #337ab7;
+	border-bottom: 2px solid #e9e9e9;
+	padding: 0 2px;
+	width: 152px;
+	white-space:nowrap;
+	overflow:hidden;
+	text-overflow:ellipsis;
+}
+.chart-tab .tab-ul .tab-item.chosenClass{
+	/*border-bottom: 2px solid #51B063;*/
+	border-bottom: 2px solid #FFFFFF;
+	border-right: 2px solid #e9e9e9;
+	border-top: 2px solid #e9e9e9;
+	border-left: 2px solid #e9e9e9;
+	/*width: 156px;*/
+	background: #fbfbfb;
+}
+.chart-tab .tab-ul .tab-item:hover{
+	background: #dde7ef;
+}
+.chart-tab .tab-ul .tab-item .tab-content {
+	clear: both;
+	width: 100%;
+}
+.btn-left {
+	margin-top: 30px;
+    font-size: 16px;
+    padding: 0 11px;
+    background: #E2E3E5;
+    height: 25px;
+    text-align: center;
+    line-height: 25px;
+    cursor: pointer;
+}
+.btn-right{
+	margin-top: 30px;
+    font-size: 16px;
+    padding: 0 11px;
+    background: #E2E3E5;
+    height: 25px;
+    text-align: center;
+    line-height: 25px;
+    cursor: pointer;
+}

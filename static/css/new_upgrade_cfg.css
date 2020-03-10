@@ -1,0 +1,205 @@
+.new_upgrade_cfg .publish-new-version-btn {
+    /*position: absolute;
+    right: 0px;
+    top: 60px;*/
+    border-color: #337ab7;
+	background: #337AB7;
+	color: #FFFFFF;
+	outline: none;
+	border-radius: 5px;
+    height: 30px;
+}
+.new_upgrade_cfg .exact-search-content button {
+	border-color: #337ab7;
+	background: #337AB7;
+	color: #FFFFFF;
+	outline: none;
+	/*border-radius: 5px;*/
+    height: 30px;
+}
+.new_upgrade_cfg .exact-search-content .input-common-style {
+	float:left;
+	margin-right:10px;
+}
+.new_upgrade_cfg .exact-search-content .input-common-style .label-title {
+	font-weight:bold;
+}
+.new_upgrade_cfg .exact-search-content .search-submit {
+	position:relative;
+	top:15px;
+	border-radius:5px;
+}
+.new_upgrade_cfg .exact-search-content .input-common-style input {
+	width:150px;
+}
+.new_pangu_ver table thead tr {
+	height: 35px;
+}
+.new_pangu_ver table tbody tr td{
+	height: 35px;
+}
+.new_upgrade_cfg table tbody button {
+	font-size: 12px;
+	transform: scale(1) !important;
+	line-height: 100%;
+    padding: 4px 8px;
+    border-radius: 4px;
+}
+.upgrade_cfg.modal-header{
+	background: #F3F3F3;
+}
+.upgrade_cfg.modal-header p{
+	font-weight: bold;
+	color: #000000;
+}
+.upgrade_cfg.modal-body {
+	padding: 10px 25px;
+}
+.upgrade_cfg.modal-body .label-title{
+	color: #525050;
+	padding-right: 5px;
+	font-weight: bold;
+}
+.upgrade_cfg.modal-body .buildId {
+	
+}
+.upgrade_cfg.modal-body > p{
+	padding: 4px 0;
+}
+.upgrade_cfg.modal-body input{
+	width: 300px;
+	height: 35px;
+    line-height: 35px;
+    outline: none;
+}
+.upgrade_cfg.modal-body .upgrade-name {
+	/*padding-left: 28px;*/
+	padding-left:13px;
+}
+.upgrade_cfg.modal-body .upgrade-group {
+  /* padding-left: 14px;*/
+   padding-top: 7px;
+}
+.upgrade_cfg.modal-body .upgrade-group span{
+	padding-right: 9px;
+}
+.upgrade_cfg.modal-body select {
+	width: 300px;
+	outline: none !important;
+	border-radius: 0 !important;
+}
+.upgrade_cfg.modal-body textarea{
+	width: 543px;
+	outline: none;
+	height: 80px;
+}
+.upgrade_cfg.modal-body .time-arrange-title {
+	padding-top: 5px;
+}
+.upgrade_cfg.modal-footer {
+	background: #F3F3F3;
+}
+.upgrade_cfg.modal-body .time-arrange-content > ul > li{
+	float: left;
+	list-style: none;
+	/*width: 162px;*/
+	width: 259px;
+	padding: 3px 0;
+}
+.upgrade_cfg.modal-body .time-arrange-content > ul > li input{
+	/*width: 112px;*/
+	width: 205px;
+}
+.upgrade_cfg.modal-body .time-arrange-content > ul > li.layout-middle{
+	margin-left: 30px;
+	/*margin-right: 30px;*/
+}
+.upgrade_cfg.modal-body .time-arrange-content > ul > li.upgrade-ten {
+	width: 267px;
+    margin-left: 22px;
+}
+.all-group-upgrade-cfg-content{
+	position: relative;
+	height: 45px;
+}
+.all-group-upgrade-cfg-content .all-group-upgrade-cfg {
+	position: absolute;
+    right: 0px;
+    top: 15px;
+	border-color: #337ab7;
+	background: #337AB7;
+	color: #FFFFFF;
+	outline: none;
+	border-radius: 5px;
+    height: 30px;
+}
+.all_clusters_status_cfg .base-btn {
+	border-color: #337ab7;
+	background: #337AB7;
+	color: #FFFFFF;
+	outline: none;
+	border-radius: 5px;
+    height: 30px;
+}
+.all_clusters_status_cfg .table-btn-content {
+	position: absolute;
+	right: 0;
+	top: 5px;
+}
+.modal-body.modify-upgrade-cfg-dialog-body .upgrade-name{
+	padding-left: 0;
+	margin-right: 20px;
+}
+.modify-upgrade-cfg-dialog-body.upgrade_cfg.modal-body .upgrade-group {
+	padding-top: 0;
+}
+.new_upgrade_cfg .all_clusters_status_cfg table tbody tr td:last-child {
+	display: none;
+}
+.new_upgrade_cfg .all_clusters_status_cfg table tbody.tbody-no-data tr td:last-child {
+	display: block;
+}
+.new_upgrade_cfg .all_clusters_status_cfg table thead tr th:last-child{
+	display: none;
+}
+.new_upgrade_cfg .all_clusters_status_cfg table .fanxuan{
+	margin-left: 538px;
+    height: 30px;
+    border-radius: 5px;
+    background: #337AB7;
+    color: #fff;
+    margin-top: 5px;
+    outline: none;
+}
+button.fanxuan.ng-scope {
+	height: 30px;
+    border-radius: 5px;
+    background: #337AB7;
+    color: #fff;
+    outline: none;
+}
+.new_upgrade_cfg button.fanxuan.ng-scope {
+    margin-left: 538px;
+    height: 30px;
+    border-radius: 5px;
+    background: #337AB7;
+    color: #fff;
+    margin-top: 5px;
+    outline: none;
+    position: absolute;
+    right: 218px;
+}
+.new_upgrade_ver .button.fanxuan.ng-scope{
+    margin-left: 538px;
+    height: 30px;
+    border-radius: 5px;
+    background: #337AB7;
+    color: #fff;
+    margin-top: 5px;
+    outline: none;
+    position: absolute;
+    right: 218px;
+}
+.new_upgrade_cfg button {
+	border: 0 !important;
+}

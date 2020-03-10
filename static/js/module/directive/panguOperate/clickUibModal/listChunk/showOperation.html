@@ -1,0 +1,65 @@
+<style type="text/css">
+
+</style>
+<div class="modal-header">
+  <h3 ng-bind="data.name"></h3>
+</div>
+<div class="modal-body">
+  <div style="">
+  	<!-- 获取flag -->
+    <div ng-show="data.key=='chunk_info'" style="text-align: center;">
+      <h3>文件信息</h3>
+      <table class="table table-striped" style="width: 100%;">
+        <thead>
+          <tr>
+            <th style="text-align: center;">FileType</th>
+            <th style="text-align: center;">MinCopy</th>
+            <th style="text-align: center;">MaxCopy</th>
+          </tr>
+        </thead>
+        <tbody class="csChunkReplicationDatacss">
+          <tr class="chunkCenterWork">
+            <td ng-bind="csChunkReplicationData.FileType"></td>
+            <td ng-bind="csChunkReplicationData.MinCopy"></td>
+            <td ng-bind="csChunkReplicationData.MaxCopy"></td>
+          </tr>
+        </tbody>
+      </table>
+      <hr>
+      <h3>Replica信息</h3>
+      <table class="table table-striped" style="width: 100%;">
+        <thead>
+          <tr>
+            <th style="text-align: center;">Replica位置</th>
+            <th style="text-align: center;">Replica状态</th>
+            
+          </tr>
+        </thead>
+        <tbody class="csChunkReplicationDatacss">
+          <tr ng-repeat="val in csChunkReplicationData.ChunkInfo.lsReplicaInfo track by $index">
+          <td style="text-align: center;">
+                <div>
+                <label>Status:</label>
+                <span ng-bind="val.Status"></span>
+                </div>
+                <div>
+                <label>Location:</label>
+                <span ng-bind="val.Location"></span>
+                </div>
+                <div>
+                <label>DiskId:</label>
+                <span ng-bind="val.DiskId"></span>
+                </div>
+          </td>
+            <td ng-bind="csChunkReplicationData.statusData[val.ip]" style="text-align: center;"></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+  </div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" ng-click="okDesc()">确定</button>
+    <button class="btn btn-primary" ng-click="cancelDesc()">取消</button>
+</div>

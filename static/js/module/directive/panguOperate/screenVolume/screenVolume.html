@@ -1,0 +1,11 @@
+<div>
+  <div style="float: left;">
+    <label>当前volume:</label>
+  </div>
+  <div style="float: left;">
+    <select  ng-model="selectindex" ng-change="selectDir({'value':selectindex})" style="max-width: 200px;">     
+      <option ng-repeat="val in getDirSelectListData track by $index" value="/{/val/}/" ng-bind="val"></option>
+    </select>
+  </div>
+  <div style="clear: both;"></div>  
+</div>

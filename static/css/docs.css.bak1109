@@ -1,0 +1,513 @@
+/*docs二级菜单*/
+.subMenu.docsSubMenu .projectSelected{
+	width: 100%;
+    height: 3px;
+    background: red;
+    position: relative;
+    top: 17px;
+}
+/*888888888*/
+.markdownEditor{
+	width: 100%;
+	background:#f9f9f9 ;
+}
+.action-Bar .preView-button{
+	margin-left:30px;
+	cursor: pointer;
+}
+.action-Bar .action-Bar-content > span{
+	cursor: pointer;
+	font-size: 12px;
+	color: #666666;
+	float: right;
+}
+.action-Bar .action-Bar-content > button {
+	cursor: pointer;
+	font-size: 12px;
+	color: #FFFFFF;
+	float: right;
+	height: 28px;
+    line-height: 26px;
+    margin-top: 7px;
+    background: #51b063;
+    outline: none;
+    border:0;
+}
+.action-Bar .action-Bar-content > button[disabled] {
+	background: #ccc;
+    cursor: not-allowed;
+    color: #000000;
+    opacity: 0.6;
+}
+.action-Bar .action-Bar-content > span:hover{
+	color: #1c93ea;
+}
+.action-Bar .action-Bar-content .addNewDoc{
+    margin: 7px 0 0 30px;
+}
+.action-Bar .action-Bar-content .addNewDoc[disabled] {
+	background: #ccc;
+    cursor: not-allowed;
+}
+.action-Bar .action-Bar-content .publishDoc{
+	margin: 6px 40px 0 30px;
+    width: 50px;
+    background: #51b063;
+    text-align: center;
+    height: 30px;
+    line-height: 30px;
+    font-size: 14px;
+    color: #FFFFFF;
+    outline: none;
+    border: 0;
+}
+.action-Bar .action-Bar-content .publishDoc:hover{
+	/*border: 1px solid #666;
+	color: #FFFFFF;*/
+}
+.preview-box{
+	width: 500px;
+	min-height: 300px;
+	border: 1px solid #666;
+}
+.preview-box img {
+	max-width: 678px;
+}
+.markdownCtrl {
+	width: 1182px;
+	margin: 0 auto;
+}
+.markdownCtrl .main {
+	display: flex;
+	display: -webkit-flex;
+	/*display: box;              
+    display: -webkit-box;      
+    display: -moz-box;         
+    display: -ms-flexbox;      */
+    display: -webkit-box;
+	
+	flex-direction: row;
+	-webkit-flex-direction: row;
+	
+	/*-moz-flex-direction: row;
+	-ms-flex-direction: row;
+	-o-flex-direction: row;*/
+	width: 100%;
+}
+.markdownCtrl .main .doc-list-content{
+	width: 250px;
+	min-height: 800px;
+	/*float: left;*/
+	background: #FFFFFF;
+	margin-right:40px;
+	margin-top: 35px;
+}
+.markdownCtrl .main .edit-section{
+	flex: 1;
+	-webkit-flex: 1;
+	flex-grow:1;
+    flex-shrink:1;
+    flex-basis:0;
+	/*-webkit-box-flex: 1;      
+    -moz-box-flex: 1;         
+    -webkit-flex: 1;          
+    -ms-flex: 1;             
+    flex: 1;                 */
+	
+	background: #f9f9f9;
+}
+.markdownEditor .action-Bar{
+	width: 100%;
+	height: 42px;
+	background: #f6f6f6;
+	border-bottom: 1px solid #e9e9e9;
+}
+.markdownEditor .action-Bar .action-Bar-content{
+	width: 1140px;
+	margin: 0 auto;
+	line-height: 42px;
+	padding-right: 120px;
+}
+.markdownEditor .action-Bar .action-Bar-content .addNew-box {
+	position: relative;
+}
+.markdownEditor .action-Bar .action-Bar-content .addNew-box .addBtnDisable {
+	width: 78px;
+    height: 30px;
+    position: absolute;
+    display: block;
+    left: 20px;
+    top: 5px;
+    background: #ccc;
+    z-index: 100;
+    opacity: 0.6;
+}
+.markdownCtrl .main .edit-section .text-input{
+	background: #FFFFFF;
+	/*min-height: 750px;*/
+	height: 680px;
+	margin: 0 auto;
+	border: none;
+	display: block;
+	outline: none;
+	width: 688px;
+	padding-top:25px;
+	overflow-y: auto;
+	overflow-x: hidden;
+	padding-right: 30px;
+}
+.markdownCtrl .main .edit-section .preview-box {
+	background: #FFFFFF;
+	/*min-height: 750px;*/
+	height: 680px;
+	margin: 0 auto;
+	border: none;
+	display: block;
+	outline: none;
+	/*width: 684px;*/
+	width: 634px;
+	padding-top:25px;
+}
+.markdownCtrl .main .edit-section .wrap{
+	/*width: 800px;*/
+	width:712px;
+	/*height: 750px;*/
+	height: 835px;
+	overflow: hidden;
+	float: left;
+}
+.markdownCtrl .main .edit-section .textarea-content{
+	/*width: 800px;*/
+	width: 734px;
+	background: #FFFFFF;
+	/*height: 750px;*/
+	/*margin: 0 auto;*/
+	height: 800px;
+	border: 1px solid #F6F6F6;
+	display: block;
+	outline: none;
+	margin-top: 35px;
+	padding: 58px 40px;
+	float: left;
+	overflow-x: auto;
+	padding-bottom: 0;
+	position: relative;
+}
+.markdownCtrl .main .edit-section .textarea-content .title-content{
+    border-bottom: 1px solid #e9e9e9;
+    padding-bottom: 15px;
+    min-height: 56px;
+}
+.markdownCtrl .main .edit-section .textarea-content .title-content > p{
+	position: relative;
+	margin: 0;
+    width: 620px;
+}
+.markdownCtrl .main .edit-section .textarea-content .title-content .path-content{
+	margin:10px 0 22px 0;
+}
+.markdownCtrl .main .edit-section .textarea-content .title-content .path-content .path{
+	top: 4px;
+}
+.markdownCtrl .main .edit-section .textarea-content .title-content .path-content > input{
+	outline: none;
+	border: none;
+	color: #666;
+	opacity: 0.8;
+}
+.markdownCtrl .main .edit-section .textarea-content .title-content > p .title{
+	position: absolute;
+	left: -35px;
+	font-size: 12px;
+	color: #666666;
+	opacity: 0.6;
+}
+.markdownCtrl .main .edit-section .textarea-content .title-content > p .title{
+	top: 15px;
+}
+.markdownCtrl .main .edit-section .textarea-content .title-content .input-title{
+	height: 40px;
+	width: 620px;
+	font-size: 28px;
+	outline: none;
+	font-weight: bold;
+	font-family: "微软雅黑";
+	border: none;
+}
+.markdownCtrl .main .edit-section .textarea-content .title-content .title-publish{
+	height: 42px;
+	width: 675px;
+	font-size: 28px;
+	outline: none;
+	font-weight: bold;
+	font-family: "微软雅黑";
+	border: none;
+	word-break: break-all;
+    display: block;
+    height: auto;
+}
+.markdownCtrl .main .edit-section .chapterNav{
+    width: 180px;
+    height: 800px;
+    float: left;
+    background: #fff;
+    margin-top: 35px;
+    border-left: 1px solid #e2e3e5;
+    padding-top: 25px;
+    position: relative;
+    padding-bottom: 100px;
+    font-size: 12px;
+}
+.markdownCtrl .main .edit-section .chapterNav .leftLine {
+	width: 1px;
+	height: 30px;
+	background: #51B063;
+	display: block;
+	position: absolute;
+	left: -1px;
+}
+.markdownCtrl .main .edit-section .chapterNav li{
+	list-style:none;
+	color: #66667d;
+	margin: 5px 0;
+}
+.markdownCtrl .main .edit-section .chapterNav li p{
+	cursor: pointer;
+}
+.markdownCtrl .main .edit-section .chapterNav >ul{
+	padding-left: 8px;
+}
+.markdownCtrl .main .edit-section .chapterNav .firstLevel{
+	
+}
+.markdownCtrl .main .edit-section .chapterNav .secondLevel{
+	margin-left: 14px;
+}
+.markdownCtrl .main .edit-section .chapterNav .threeLevel{
+	margin-left: 28px;
+}
+.markdownCtrl .main .edit-section .chapterNav ul p.active{
+	color:#51B063 ;
+}
+/*左侧文档列表部分*/
+.markdownEditor .markdownCtrl .main .doc-list-content .docNum{
+	height:35px;
+	border-bottom: 1px solid #e9e9e9;
+	font-size: 14px;
+	line-height: 35px;
+	color: #a0a0a0;
+	padding-left: 15px;
+	margin: 0;
+}
+.markdownEditor .markdownCtrl .main .doc-list-content .searchTitle {
+	height: 40px;
+	border-bottom: 1px solid #E9E9E9;
+	font-size: 14px;
+	line-height: 40px;
+	padding-left: 15px;
+	margin: 0;
+}
+.markdownEditor .markdownCtrl .main .doc-list-content .searchTitle .glyphicon-search{
+	font-size: 12px;
+	color: #876682;
+}
+.markdownEditor .markdownCtrl .main .doc-list-content .searchTitle .seach-input {
+	margin-left: 10px;
+	outline: none;
+	border:0;
+	height: 20px;
+}
+.markdownEditor .markdownCtrl .main .doc-list-content .docList .deleteDoc{
+	float: right;
+	cursor: pointer;
+	line-height: 35px;
+	margin-right: 10px;
+    color: #d03b34;
+	font-size: 12px;
+	display: none;
+}
+.markdownEditor .markdownCtrl .main .doc-list-content .docList .docTitle{
+	display:block;
+	white-space:nowrap;
+	overflow:hidden; 
+	text-overflow:ellipsis;
+	float: left;
+	cursor:pointer;
+}
+.markdownEditor .markdownCtrl .main .doc-list-content .docList > p {
+	height: 35px;
+	padding-left: 15px;
+	line-height: 35px;
+	font-size: 14px;
+	border-bottom: 1px solid #E9E9E9;
+	color: #66667d;
+	margin: 0;
+	cursor: pointer;
+}
+.markdownEditor .markdownCtrl .main .doc-list-content .docList > p:hover .deleteDoc{
+	display: block;
+}
+.markdownEditor .markdownCtrl .main .doc-list-content .docList > p:hover .docTitle {
+	color: #51b063;
+}
+
+.markdownEditor .markdownCtrl .chosenClass .docTitle{
+	color: #51b063;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+	overflow:hidden
+}
+.markdownEditor .markdownCtrl .docTitle.noDraft{
+	max-width: 200px;
+}
+.markdownEditor .markdownCtrl .draft {
+	font-size: 14px;
+	color: #999;
+	float: left;
+	margin-right: 3px;
+}
+.markdownEditor .markdownCtrl .docTitle{
+	max-width: 200px;
+}
+/*文档返回所有project列表时*/
+.docsListAll{
+	width:1280px;
+	margin: 0 auto;
+	background: #FFFFFF;
+	padding-left: 50px;
+}
+.docsListAll .docsList-all{
+	padding-left: 30px;
+}
+.docsListAll .docsList-all a{
+	color: #3C3C3C;
+	text-decoration: none;
+}
+.docsListAll .docsList-all .project-title a{
+	cursor: pointer;
+    color: #337ab7;
+}
+.docsListAll .docsList-all .docs-project .project-title {
+	font-size: 14px;
+	height: 25px;
+	line-height: 25px;
+}
+.docsListAll .docsList-all .docs-project ul li{
+	font-size: 12px;
+	height: 20px;
+	line-height: 20px;
+	padding-left: 25px;
+}
+.docsListAll .docsList-all .docs-project ul li a{
+	
+}
+.docsListAll li{
+	list-style: none;
+}
+.docsListAll .docsList-action {
+	padding-top: 40px;
+}
+.docsListAll .docsList-action >span {
+	font-size: 18px;
+	margin-right: 750px;
+}
+.docsListAll .docsList-action select{
+	height: 26px;
+}
+.docsListAll .docsList-action button {
+	margin-left: 20px;
+	background: green;
+	color: #FFFFFF;
+	outline: none;
+}
+.docsListAll .projectSelectError {
+	border: 1px solid red;
+}
+.docsListAll .projectSelectSuccess {
+	outline: none;
+}
+/*文档二级导航栏*/
+.markdownEditor .subMenu{
+	width: 100%;
+	background:#222222;
+	min-height: 60px;
+	z-index: 100;
+}
+.markdownEditor .subMenu > ul{
+	width: 1140px;
+	margin: 0 auto;
+}
+.markdownEditor .subMenu > ul > li {
+	/*padding: 0 15px;*/
+    padding-top: 20px;
+    float: left;
+    list-style: none;
+}
+.markdownEditor .subMenu > ul > li > span{
+	padding: 0 15px;
+}
+.markdownEditor .subMenu > ul > li:hover > span >a{
+	color: red;
+}
+.markdownEditor .subMenu > ul > li > span a{
+	color: #ece8e8;
+	text-decoration: none;
+}
+/*dialog*/
+.pangu-dialog-content{
+	width: 300px;
+	height: 160px;
+	border: 1px solid #CCCCCC;
+	background: #FFFFFF;
+	position: absolute;
+	top: 200px;
+	left: 400px;
+	z-index: 100;
+}
+.pangu-dialog{
+	width: 100%;
+	height: 100%;
+}
+.pangu-dialog-zhezhao{
+	width: 100%;
+    background: #ccc;
+    height: 1000px;
+    opacity: 0.8;
+    top: 0;
+    position: absolute;
+    z-index: 99;
+}
+.pangu-dialog-header{
+	width: 100%;
+	height: 100px;
+}
+.pangu-dialog-header{
+	
+}
+/*message*/
+.pangu-message-content-success{
+	background:green;
+	max-width: 200px;
+	min-width: 100px;
+    width: fit-content;
+}
+.pangu-message-content-success p{
+	padding: 10px;
+	color: white;
+	text-align: center;
+}
+.pangu-message-content-error p{
+	padding: 10px;
+	color: #FFFFFF;
+	text-align: center;
+}
+.pangu-message-content-error{
+	background:red;
+	max-width: 200px;
+	min-width: 100px;
+    width: fit-content;
+}
+.myMessage{
+    position: absolute;
+    z-index: 500;
+}

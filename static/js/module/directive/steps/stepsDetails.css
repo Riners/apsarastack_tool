@@ -1,0 +1,156 @@
+.steps-details-content .details-item-table thead{
+	background: #f3f3f3;
+}
+.steps-details-content .details-item-table th{
+	border: 1px solid #CCCCCC;
+	height: 30px;
+	line-height: 30px;
+}
+.steps-details-content .details-item-table td{
+	border: 1px solid #CCCCCC;
+	height: 30px;
+	line-height: 30px;
+}
+.steps-details-content .details-item-top .base-info-title .top-item {
+	float: left;
+}
+.steps-details-content .details-item-top .base-info-title .top-item.status {
+	min-width: 45px;
+	text-align:center;
+}
+.steps-details-content .details-item-top .base-info-title .promp-error-reason {
+	max-width:100px;
+	background:#FFFFFF;
+	border: 1px solid #CCCCCC;
+}
+.steps-details-content .details-item-top .base-info-title .step-status {
+	padding:3px 8px;
+	background: #2ca055;
+	/*margin-right: 100px;*/
+	color: #FFFFFF;
+	height:22px;
+	line-height:16px;
+	/*top: -19px;*/
+	position: relative;
+}
+.steps-details-content .details-item-top .base-info-title .handle-switch {
+	border-radius: 3px;
+}
+.steps-details-content .details-item-top .base-info-title .handle-switch .auto {
+	background:#337ab7;
+}
+.steps-details-content .details-item-top .base-info-title .handle-switch .manual {
+	background:red;
+}
+.steps-details-content .details-item-top .base-info-title .handle-switch span.not-nanual {
+	background:#CCCCCC !important;
+}
+.steps-details-content .details-item-top .base-info-title .handle-switch span.not-auto {
+	background:#CCCCCC !important;
+}
+.steps-details-content .details-item-top .base-info-title .handle-switch span {
+	cursor: pointer;
+}
+.steps-details-content .details-item-top .base-info-title .step-status.error{
+	background: red;
+	height: 22px;
+}
+.steps-details-content .details-item-top .base-info-title .step-status.jump{
+	background: #FBD40A;
+	height: 22px;
+}
+.steps-details-content .details-item-top .base-info-title .begin-time {
+	margin-right: 50px;
+}
+.steps-details-content .details-item-top .base-info-title .during-time {
+	margin-right: 100px;
+}
+
+
+.step-details-item-content {
+	display: flex;
+	width: 100%;
+}
+.step-details-item-content .left-step {
+	width: 30px;
+	overflow: hidden;
+}
+.step-details-item-content .right-table {
+	flex: 1;
+}
+/*竖着步骤条样式*/
+.step-vertical-item .step-line{
+	width: 1px;
+	/*height: 100px;*/
+	background: #1890ff;
+	margin-left: 9px;
+	height: 100%;
+}
+.step-vertical-item .steps-icon{
+	width:20px;
+	height: 20px;
+	border-radius: 100%;
+	line-height: 20px;
+	text-align: center;
+}
+.step-vertical-item.step-vertical-finish .steps-icon {
+	border: 1px solid #1890ff;
+	color: #1890ff ;
+}
+.step-vertical-item.steps-vertical-process .steps-icon {
+	border: 1px solid #1890ff;
+	background: #1890ff;
+}
+.step-vertical-item.steps-vertical-error .steps-icon {
+	border: 1px solid red;
+	color: red;
+}
+.step-vertical-item.steps-vertical-error .step-line{
+	background: red;
+}
+.step-vertical-item.steps-vertical-jump .steps-icon {
+	border: 1px solid #fbd40a;
+	color: #fbd40a;
+}
+.step-vertical-item.steps-vertical-jump .step-line{
+	background: #fbd40a;
+}
+
+
+   .pop{
+      width:200px;
+      height:100px;
+      border:2px solid grey;
+      border-radius: 2px;
+      box-shadow: 2px 2px 2px grey;
+      position:absolute;
+      background-color:white;
+    }
+    .triangle-bottom{
+      width:0;
+      height:0;
+      border-top:20px solid grey;
+      border-left:10px dashed transparent;
+      border-right:10px dashed transparent;
+      position:absolute;
+      left:90px;
+      top:100px;
+    }　
+.steps-err-msg-content:after{
+	display:block;
+    clear:both;
+    height:0;
+    content: "";
+    visibility: hidden;
+    overflow:hidden;
+}
+.steps-err-msg-content .steps-err-msg-title{
+	float: left;
+}
+.steps-err-msg-content .refer-all-errMsg{
+	float: left;
+    background: #337AB7;
+    color: #FFFFFF;
+    border: 0;
+    margin-left:20px;
+}
