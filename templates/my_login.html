@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="x-ua-compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>login</title>
+  <style>
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+<form action="/my_login/" method="post">
+  {% csrf_token %}
+  <p>
+    <label for="username">用户名</label>
+    <input type="text" name="username" id="username">
+  </p>
+  <p>
+    <label for="pwd">密码</label>
+    <input type="password" name="pwd" id="pwd">
+    <span class="error"></span>
+  </p>
+  <p>
+    <input type="submit">
+    <span class="error">{{ error_msg }}</span>
+  </p>
+</form>
+</body>
+</html>

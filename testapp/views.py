@@ -10,9 +10,9 @@ from django.contrib import auth
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-
+import json
 from . import models
-from .myforms import RegisterForm
+# from .myforms import RegisterForm
 # Create your views here.
 from .myforms import UserForm
 from .models import User
@@ -76,9 +76,64 @@ def check_water(request):
 
 
 def host_info(request):
-    product= ['odps', 'aso', 'ecs']
+    tianji_api = "http://127.0.0.1:7070/api/v3/column/m.*"
+    ret = requests.get(tianji_api).json()
+    lll = []
+    vms = []
+    for i in ret:
+            if i['m.machine_type_with_nic_type'] not in'test_tianji_machin':
+                # print (i['m.ip'],i['m.machine_type_with_nic_type'])
+                # system_os = eval(i.get('m.currentos').encode("utf-8"))['os']
+                # ret1 = ("project: {}, ip_address: {}, hostname:{}, machine_type:{}, system_os:{}").format(i['m.project'], i['m.ip'], i['m.id'],i['m.machine_type_with_nic_type'],system_os)
+                # print (ret1)
+                # print (i)
+                # lll.append(i)
+                new_ip = i['m.ip']
+                new_hostname = i['m.id']
+                new_product = i['m.project']
+                new_system_os = eval(i.get('m.currentos').encode("utf-8"))['os']
+                new_machine_type = i['m.machine_type_with_nic_type']
+                new_dict = dict(zip(["ip",  "product"],[new_ip, new_product]))
 
-    return render(request, 'host_info.html',{"product": product})
+                if new_machine_type != 'VM':
+
+                    lll.append(new_product)
+
+                else:
+                    vms.append(new_product)
+
+    data_nc = {}
+    for i in set(lll):
+        print ("the machone of {} is : {}".format(i, lll.count(i)))
+        data_nc[i] = str(lll.count(i))
+    data_vm = {}
+    for i in set(vms):
+        print ("the machone of {} is : {}".format(i, vms.count(i)))
+        data_vm[i] = str(vms.count(i))
+
+
+
+
+
+
+    # # product= ['odps', 'aso', 'ecs']
+    # values = ['20', '30', '40']
+    # keys = ['oss', 'ecs', 'rds']
+    # data = {}
+    # # keys与values分别为该数据的键数组，值的数组。这里循环为字典添加对应键值
+    # for k, v in zip(keys, values):
+    #     data.update({k: v, }, )
+    # print data
+
+    # data = {u'minirds-mt': '2', u'vpc': '2', u'rds': '7', u'oss': '6', u'tianji': '20', u'base': '2', u'ecs': '6', u'odps': '10', u'slb': '6'}
+
+
+
+    return render(request, 'host_info.html', {'data_nc': json.dumps(data_nc),
+                                              'data_vm': json.dumps(data_vm)
+                                              })
+
+    # return render(request, 'host_info.html')
 
 def host_detail(request):
     return render(request, 'host_info.html')
@@ -151,63 +206,3 @@ def login(request):
     else:
         userform = UserForm()
     return render_to_response('login.html', {'userform': userform})
-
-
-
-
-
-
-
-
-def register(request):
-    # if request.session.get('is_login', None):
-    #     # 登录状态不允许注册，你可以修改这条原则
-    #     return redirect('/user19/index/')
-
-    if request.method == 'POST':
-        register_form = RegisterForm(request.POST)
-        message = '请检查填写的内容'
-        # 获取数据
-        if register_form.is_valid():
-            username = register_form.cleaned_data['username']
-
-            password1 = register_form.cleaned_data['password1']
-
-            password2 = register_form.cleaned_data['password2']
-
-            email = register_form.cleaned_data['email']
-            sex = register_form.cleaned_data['sex']
-
-            # 判断两次密码是否相同
-            if password1 != password2:
-                message = '两次输入的密码不同'
-                return render(request, 'register.html', locals())
-            else:
-
-                same_name_user = models.User.objects.filter(username=username)
-                print(same_name_user)
-                # 用户名唯一
-                if same_name_user:
-                    message = '用户名已经存在，请重新选择用户名！'
-                    # return  HttpResponse("用户名已经存在")
-                    return render(request, 'register.html', locals())
-
-                same_email_user = models.User.objects.filter(email=email)
-                if same_email_user:
-                    message = '该邮箱地址已经被注册，请使用别的邮箱'
-                    # return HttpResponse("邮箱地址已经注册")
-                    return render(request, 'register.html', locals())
-                # 当一切都OK的情况下，创建了新用户
-                new_user = models.User.objects.create()
-                new_user.username = username
-                # 使用加密密码
-                # new_user.password = hash_code(password1)
-                # new_user.password = password1
-                new_user.email = email
-                new_user.sex = sex
-                new_user.save()
-                return redirect('/login/')
-    # 如果请求不是POST，则渲染的是一个空的表单。
-    register_form = RegisterForm()
-    # 如果用户通过表单提交数据，但是数据验证、不合法，则渲染的是一个带有错误信息的表单
-    return render(request, 'register.html', locals())

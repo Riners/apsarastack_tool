@@ -11,13 +11,13 @@
         <div class="panel-heading" style="text-align: center"><b><h3>机器分布情况</h3></b></div>
         <div class="col-md-6">
             <div class="card card-primary">
-            <div id="container" style="height: 500px; width: 350px;margin-top: 50px">
+            <div id="container" style="height: 600px; width: 450px;margin-top: 50px">
             </div>
             </div>
 
             </div>
                <div class="col-md-6">
-    <div id="container3" style="height: 500px; width: 350px;margin-top: 50px">
+    <div id="container3" style="height: 600px; width: 550px;margin-top: 50px">
                  <div class="card card-danger">
                       </div>
                     </div>
@@ -30,12 +30,19 @@ $(function () {
     var dom1 = document.getElementById("container");
 var myChart1 = echarts.init(dom1);
 var app1 = {};
+var kv = new Array();//声明一个新的字典
+        kv = {{ data_nc|safe }};//取出后台传递的数据，此处添加safe过滤避免警告
+        var test = new Array();//声明一个新的字典用于存放数据
+        for (var logKey in kv) {
+        //将对应键值对取出存入test，logKey 为该字典的键
+          test.push({value: kv[logKey], name: logKey});
+        }
 option = null;
 option = {
     title: {
         text: '物理机',
         {#subtext: '',#}
-        left: 'center'
+        right: 'center'
     },
     tooltip: {
         trigger: 'item',
@@ -43,25 +50,21 @@ option = {
     },
     legend: {
         orient: 'vertical',
-        left: 'right',
-        data: [ 'used', 'aviliable']
+        left: ['50%', '70%'],
+        data: test
     },
     series: [
         {
             name: '物理机分布情况',
             type: 'pie',
             radius: '50%',
-            center: ['60%', '50%'],
-            data: [
-                {#{value: 120000, name: 'nc_cpu'},#}
-                {value: 40000, name: 'used'},
-                {value: 80000, name: 'aviliable'},
-            ],
+            center: ['70%', '50%'],
+            data: test,
             emphasis: {
                 itemStyle: {
                     shadowBlur: 10,
                     shadowOffsetX: 0,
-                    shadowColor: 'rgba(0, 0, 0, 0.5)'
+                    shadowColor: 'rgba(0, 0, 0, 1, 1, 1, 1, 0.5,)'
                 }
             }
         }
@@ -71,6 +74,13 @@ option = {
 var dom3 = document.getElementById("container3");
 var myChart3 = echarts.init(dom3);
 var app3 = {};
+var kv1 = new Array();//声明一个新的字典
+        kv1 = {{ data_vm|safe }};//取出后台传递的数据，此处添加safe过滤避免警告
+        var test1 = new Array();//声明一个新的字典用于存放数据
+        for (var logKey1 in kv1) {
+        //将对应键值对取出存入test，logKey 为该字典的键
+          test1.push({value: kv1[logKey1], name: logKey1});
+        }
 option3 = null;
 option3 = {
     title: {
@@ -84,20 +94,16 @@ option3 = {
     },
     legend: {
         orient: 'vertical',
-        left: 'right',
-        data: [ 'used', 'aviliable']
+        left: ['50%', '500'],
+        data: test1
     },
     series: [
         {
             name: 'vm分布情况',
             type: 'pie',
-            radius: '50%',
-            center: ['60%', '50%'],
-            data: [
-                {#{value: 120000, name: 'nc_cpu'},#}
-                {value: 40000, name: 'used'},
-                {value: 80000, name: 'aviliable'},
-            ],
+            radius: '40%',
+            center: ['70%', '50%'],
+            data: test1,
             emphasis: {
                 itemStyle: {
                     shadowBlur: 10,

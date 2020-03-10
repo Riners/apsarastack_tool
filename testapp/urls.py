@@ -18,7 +18,7 @@ urlpatterns = [
     # url(r'pie_test/', views.pie_test),
     url(r'resource_water/', views.resource_water),
     # url(r'login/', views.login),
-    url(r'register/', views.register),
+    # url(r'register/', views.register),
     url(r'host_info/', views.host_info),
     url(r'update_host/', views.update_host),
 ]

@@ -17,9 +17,10 @@ from django.conf.urls import url, include
 from django.contrib import admin
 
 from testapp import urls as testapp_urls
-
+from myuser import urls as myuser_urls
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'', include(testapp_urls)),
+    url(r'', include(myuser_urls)),
 ]
